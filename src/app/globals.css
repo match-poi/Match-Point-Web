@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pure-white: 255 255 255;
+  --lime: 198 255 0;
+}
+
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  color: rgb(var(--pure-white));
+}
+
+::selection {
+  background: rgba(var(--lime) / 0.22);
+}
+
+@keyframes mp-pulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 55px rgba(198, 255, 0, 0.8);
+  }
+  50% {
+    transform: translateY(0) scale(1.02);
+    box-shadow: 0 0 75px rgba(198, 255, 0, 1);
+  }
+}
+
+.btn-mp-pulse {
+  animation: mp-pulse 2.2s infinite ease-in-out;
+}
+

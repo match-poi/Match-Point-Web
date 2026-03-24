@@ -11,8 +11,8 @@ export default {
         graphite: {
           DEFAULT: "#0B0F14"
         },
-        lime: {
-          DEFAULT: "#B7FF3C"
+        accent: {
+          DEFAULT: "#FF6B00"
         },
         "pure-white": "#FFFFFF"
       }

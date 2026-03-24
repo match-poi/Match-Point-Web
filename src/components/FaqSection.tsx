@@ -71,7 +71,7 @@ export default function FaqSection() {
                   <span
                     className={`flex h-8 w-8 items-center justify-center rounded-full border border-transparent transition-all duration-200 ${
                       isOpen
-                        ? "border-lime bg-lime/10 text-lime rotate-[-18deg]"
+                        ? "border-accent bg-accent/10 text-accent rotate-[-18deg]"
                         : "border-white/20 bg-black/40 text-white/40"
                     }`}
                   >
@@ -87,7 +87,7 @@ export default function FaqSection() {
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="overflow-hidden border-t border-lime/30 px-4 pb-4 pt-2 text-sm text-white/75 sm:px-5 sm:pb-5">
+                  <div className="overflow-hidden border-t border-accent/30 px-4 pb-4 pt-2 text-sm text-white/75 sm:px-5 sm:pb-5">
                     {item.answer}
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export default function FaqSection() {
             href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20todav%C3%ADa%20tengo%20algunas%20dudas%20y%20me%20gustar%C3%ADa%20chatear."
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:border-lime hover:text-lime"
+            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:border-accent hover:text-accent"
           >
             ¿Todavía tienes dudas? Chatea con nosotros
           </a>

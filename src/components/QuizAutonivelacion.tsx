@@ -105,10 +105,10 @@ export default function QuizAutonivelacion() {
   return (
     <section className="border-t border-white/10 bg-black px-6 pb-20">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-3xl border border-lime/40 bg-neutral-900/90 p-6 shadow-[0_0_60px_rgba(198,255,0,0.12)] sm:p-8">
+        <div className="rounded-3xl border border-accent/40 bg-neutral-900/90 p-6 shadow-[0_0_60px_rgba(255,107,0,0.12)] sm:p-8">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
                 Quiz de Autonivelación
               </p>
               <h3 className="mt-2 text-xl font-semibold text-pure-white sm:text-2xl">
@@ -127,7 +127,7 @@ export default function QuizAutonivelacion() {
                 <button
                   type="button"
                   onClick={handleRestart}
-                  className="inline-flex h-7 items-center rounded-full border border-white/20 bg-black/60 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-lime hover:text-lime"
+                  className="inline-flex h-7 items-center rounded-full border border-white/20 bg-black/60 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-accent hover:text-accent"
                 >
                   Rehacer test
                 </button>
@@ -147,7 +147,7 @@ export default function QuizAutonivelacion() {
                     key={option.label}
                     type="button"
                     onClick={() => handleAnswer(option.value)}
-                    className="rounded-2xl border border-white/18 bg-black/60 px-4 py-3 text-left text-sm text-white/85 transition hover:border-lime hover:bg-lime/5 active:scale-[0.99]"
+                    className="rounded-2xl border border-white/18 bg-black/60 px-4 py-3 text-left text-sm text-white/85 transition hover:border-accent hover:bg-accent/5 active:scale-[0.99]"
                   >
                     {option.label}
                   </button>
@@ -156,7 +156,7 @@ export default function QuizAutonivelacion() {
 
               <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-black/60">
                 <div
-                  className="h-full rounded-full bg-lime transition-all duration-300"
+                  className="h-full rounded-full bg-accent transition-all duration-300"
                   style={{
                     width: `${((currentStep + 1) / QUESTIONS.length) * 100}%`
                   }}
@@ -167,14 +167,14 @@ export default function QuizAutonivelacion() {
 
           {isCompleted && recommendedLevel && (
             <div className="space-y-5">
-              <div className="rounded-2xl border border-lime/50 bg-black/70 px-4 py-4 sm:px-6 sm:py-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lime">
+              <div className="rounded-2xl border border-accent/50 bg-black/70 px-4 py-4 sm:px-6 sm:py-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
                   Resultado
                 </p>
                 <p className="mt-2 text-sm text-white/80">
                   Tu nivel recomendado es:
                 </p>
-                <p className="mt-1 text-2xl font-semibold text-lime sm:text-3xl">
+                <p className="mt-1 text-2xl font-semibold text-accent sm:text-3xl">
                   {recommendedLevel}
                 </p>
               </div>
@@ -183,7 +183,7 @@ export default function QuizAutonivelacion() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="group relative inline-flex w-full items-center justify-center rounded-full bg-lime px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(198,255,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(198,255,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                className="group relative inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
                 <span className="relative text-center">
                   Reservar clase en este nivel

@@ -8,7 +8,7 @@ export default function HomePage() {
     <main className="relative min-h-screen bg-black text-pure-white">
       {/* Halo de luz en verde lima detrás del contenido */}
       <div className="pointer-events-none absolute inset-0 opacity-60">
-        <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-lime/15 blur-3xl" />
+        <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
       </div>
 
       {/* Hero */}
@@ -23,7 +23,7 @@ export default function HomePage() {
 
           <h1 className="mt-6 text-balance text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
             <span className="block">MATCH</span>
-            <span className="block text-lime drop-shadow-[0_0_24px_rgba(198,255,0,0.9)]">
+            <span className="block text-accent drop-shadow-[0_0_24px_rgba(255,107,0,0.9)]">
               POINT
             </span>
           </h1>
@@ -37,7 +37,7 @@ export default function HomePage() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#reservar"
-              className="btn-mp-pulse group relative inline-flex items-center justify-center rounded-full bg-lime px-10 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_55px_rgba(198,255,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(198,255,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="btn-mp-pulse group relative inline-flex items-center justify-center rounded-full bg-accent px-10 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               <span className="relative">Reservar Clase</span>
               <span className="pointer-events-none absolute inset-0 rounded-full bg-white/20 opacity-0 blur group-hover:opacity-100" />
@@ -53,37 +53,37 @@ export default function HomePage() {
 
           {/* Navegación rápida por secciones */}
           <div className="mt-6 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
-            <a href="#servicios" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#servicios" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               Servicios
             </a>
-            <a href="#niveles" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#niveles" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               Niveles
             </a>
-            <a href="#comunidad" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#comunidad" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               Comunidad
             </a>
-            <a href="#tip" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#tip" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               Tips
             </a>
-            <a href="#faq" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#faq" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               FAQ
             </a>
-            <a href="#ubicacion" className="rounded-full border border-white/20 px-3 py-1 hover:border-lime hover:text-lime">
+            <a href="#ubicacion" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
               Ubicación
             </a>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-6 text-xs text-white/45">
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-lime" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Adultos · Niños · Competición
             </span>
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-lime" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Entrenadores certificados
             </span>
             <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-lime" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               Programas personalizados
             </span>
           </div>
@@ -96,8 +96,8 @@ export default function HomePage() {
         className="relative border-t border-white/10 bg-gradient-to-b from-black via-black to-neutral-950 px-6 py-20"
       >
         <div className="pointer-events-none absolute inset-0 opacity-50">
-          <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-lime/15 blur-3xl" />
-          <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-lime/10 blur-3xl" />
+          <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
+          <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
         </div>
 
         <div className="relative mx-auto max-w-6xl">
@@ -108,15 +108,15 @@ export default function HomePage() {
               </p>
               <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
                 Programas diseñados para{" "}
-                <span className="text-lime">ganar el punto clave</span>
+                <span className="text-accent">ganar el punto clave</span>
               </h2>
             </div>
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {/* Clases Grupales */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(198,255,0,0)] transition-all duration-300 hover:border-lime hover:shadow-[0_0_40px_rgba(198,255,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-lime">
+            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
                 <Users className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-semibold text-pure-white">
@@ -133,7 +133,7 @@ export default function HomePage() {
               <div className="mt-6 pt-2">
                 <button
                   type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-lime px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(198,255,0,0.7)] transition hover:shadow-[0_0_32px_rgba(198,255,0,1)]"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Consultar Horarios
                 </button>
@@ -141,8 +141,8 @@ export default function HomePage() {
             </article>
 
             {/* Clases Particulares */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(198,255,0,0)] transition-all duration-300 hover:border-lime hover:shadow-[0_0_40px_rgba(198,255,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-lime">
+            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
                 <CircleUserRound className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-semibold text-pure-white">
@@ -159,7 +159,7 @@ export default function HomePage() {
               <div className="mt-6 pt-2">
                 <button
                   type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-lime px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(198,255,0,0.7)] transition hover:shadow-[0_0_32px_rgba(198,255,0,1)]"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Agendar Sesión
                 </button>
@@ -167,8 +167,8 @@ export default function HomePage() {
             </article>
 
             {/* Alquiler de Canchas */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(198,255,0,0)] transition-all duration-300 hover:border-lime hover:shadow-[0_0_40px_rgba(198,255,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-lime">
+            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
                 <CalendarCheck className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-semibold text-pure-white">
@@ -185,7 +185,7 @@ export default function HomePage() {
               <div className="mt-6 pt-2">
                 <button
                   type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-lime px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(198,255,0,0.7)] transition hover:shadow-[0_0_32px_rgba(198,255,0,1)]"
+                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Reservar Cancha
                 </button>
@@ -196,7 +196,7 @@ export default function HomePage() {
           {/* Beneficios */}
           <div className="mt-16 space-y-6">
             <header className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
                 Beneficios por estar en MATCH POINT
               </p>
               <p className="mt-2 text-sm text-white/75">
@@ -205,25 +205,25 @@ export default function HomePage() {
             </header>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.3fr)]">
               {/* Alianza exclusiva con Top Ten */}
-              <article className="relative overflow-hidden rounded-2xl border border-lime/60 bg-black/80 p-6 shadow-[0_0_50px_rgba(198,255,0,0.5)]">
+              <article className="relative overflow-hidden rounded-2xl border border-accent/60 bg-black/80 p-6 shadow-[0_0_50px_rgba(255,107,0,0.5)]">
                 <div className="pointer-events-none absolute inset-0 opacity-70">
-                  <div className="absolute -top-24 right-[-2rem] h-56 w-56 rounded-full bg-lime/25 blur-3xl" />
+                  <div className="absolute -top-24 right-[-2rem] h-56 w-56 rounded-full bg-accent/25 blur-3xl" />
                 </div>
                 <div className="relative space-y-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-lime">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
                     Alianza exclusiva con Top Ten
                   </p>
                   <p className="text-sm text-white/80">
                     Por ser parte de MATCH POINT, tienes un{" "}
-                    <span className="font-semibold text-lime">10% OFF</span> en todas tus compras en
+                    <span className="font-semibold text-accent">10% OFF</span> en todas tus compras en
                     la tienda Top Ten.
                   </p>
 
-                  <div className="mt-4 inline-flex flex-col gap-2 rounded-2xl border border-dashed border-lime/80 bg-black/90 px-4 py-3 text-center shadow-[0_0_40px_rgba(198,255,0,0.9)]">
+                  <div className="mt-4 inline-flex flex-col gap-2 rounded-2xl border border-dashed border-accent/80 bg-black/90 px-4 py-3 text-center shadow-[0_0_40px_rgba(255,107,0,0.9)]">
                     <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/60">
                       Código de descuento
                     </span>
-                    <span className="text-lg font-extrabold tracking-[0.3em] text-lime">
+                    <span className="text-lg font-extrabold tracking-[0.3em] text-accent">
                       MATCHPOINT
                     </span>
                   </div>
@@ -237,19 +237,19 @@ export default function HomePage() {
                 </p>
                 <div className="mt-5 space-y-4 text-sm text-white/80">
                   <div>
-                    <p className="font-semibold text-lime">Canchas Pro</p>
+                    <p className="font-semibold text-accent">Canchas Pro</p>
                     <p className="text-xs text-white/75">
                       Polvo de ladrillo premium e iluminación LED profesional.
                     </p>
                   </div>
                   <div>
-                    <p className="font-semibold text-lime">Comunidad</p>
+                    <p className="font-semibold text-accent">Comunidad</p>
                     <p className="text-xs text-white/75">
                       Torneos internos, clínicas y el mejor ambiente de tenis.
                     </p>
                   </div>
                   <div>
-                    <p className="font-semibold text-lime">Materiales</p>
+                    <p className="font-semibold text-accent">Materiales</p>
                     <p className="text-xs text-white/75">
                       Prestamos raquetas de última generación para tus primeras clases.
                     </p>
@@ -274,7 +274,7 @@ export default function HomePage() {
               </p>
               <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
                 Niveles pensados para{" "}
-                <span className="text-lime">acompañar cada etapa</span>
+                <span className="text-accent">acompañar cada etapa</span>
               </h2>
             </div>
             <p className="max-w-md text-sm text-white/70">
@@ -290,8 +290,8 @@ export default function HomePage() {
 
             <div className="flex gap-4 overflow-x-auto pb-4 pt-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
               {/* Iniciantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-lime hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-lime">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
                   Iniciantes
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
@@ -300,8 +300,8 @@ export default function HomePage() {
               </article>
 
               {/* Pre-Principiantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-lime hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-lime">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
                   Pre-Principiantes
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
@@ -311,8 +311,8 @@ export default function HomePage() {
               </article>
 
               {/* Principiantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-lime hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-lime">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
                   Principiantes
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
@@ -321,8 +321,8 @@ export default function HomePage() {
               </article>
 
               {/* Pre-Intermedio */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-lime hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-lime">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
                   Pre-Intermedio
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
@@ -331,8 +331,8 @@ export default function HomePage() {
               </article>
 
               {/* Intermedio / Avanzado */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-lime hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-lime">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
                   Intermedio / Avanzado
                 </h3>
                 <p className="mt-3 text-sm text-white/80">
@@ -347,7 +347,7 @@ export default function HomePage() {
               href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20seg%C3%BAn%20mi%20nivel."
               target="_blank"
               rel="noreferrer"
-              className="group relative inline-flex items-center justify-center rounded-full bg-lime px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(198,255,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(198,255,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
               <span className="relative text-center">
                 Reserva tu clase según tu nivel
@@ -371,8 +371,8 @@ export default function HomePage() {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neutral-900 via-black to-neutral-950" />
 
               {/* Bordes solo en dos esquinas */}
-              <div className="pointer-events-none absolute left-0 top-0 h-12 w-12 rounded-tl-3xl border-l-2 border-t-2 border-lime" />
-              <div className="pointer-events-none absolute bottom-0 right-0 h-12 w-12 rounded-br-3xl border-b-2 border-r-2 border-lime" />
+              <div className="pointer-events-none absolute left-0 top-0 h-12 w-12 rounded-tl-3xl border-l-2 border-t-2 border-accent" />
+              <div className="pointer-events-none absolute bottom-0 right-0 h-12 w-12 rounded-br-3xl border-b-2 border-r-2 border-accent" />
 
               <div className="relative flex h-full w-full items-center justify-center text-center text-xs text-white/60 px-4">
                 Espacio para tu foto profesional
@@ -389,7 +389,7 @@ export default function HomePage() {
                 Liderando el juego en MATCH POINT
               </h2>
 
-              <h3 className="text-sm font-semibold text-lime">
+              <h3 className="text-sm font-semibold text-accent">
                 Mario Tomczuk
               </h3>
 
@@ -401,7 +401,7 @@ export default function HomePage() {
                 versión.
               </p>
 
-              <p className="pt-4 text-base italic text-lime">
+              <p className="pt-4 text-base italic text-accent">
                 Mario Tomczuk
               </p>
             </div>
@@ -416,14 +416,14 @@ export default function HomePage() {
               <div className="flex gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
                 <button
                   type="button"
-                  className="h-7 w-7 rounded-full border border-white/25 hover:border-lime hover:text-lime"
+                  className="h-7 w-7 rounded-full border border-white/25 hover:border-accent hover:text-accent"
                   aria-label="Foto anterior"
                 >
                   ‹
                 </button>
                 <button
                   type="button"
-                  className="h-7 w-7 rounded-full border border-white/25 hover:border-lime hover:text-lime"
+                  className="h-7 w-7 rounded-full border border-white/25 hover:border-accent hover:text-accent"
                   aria-label="Foto siguiente"
                 >
                   ›
@@ -431,7 +431,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative mx-auto max-w-xl aspect-[4/3] overflow-hidden rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_0%_0%,rgba(198,255,0,0.18),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.12),transparent_55%)]">
+            <div className="relative mx-auto max-w-xl aspect-[4/3] overflow-hidden rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_0%_0%,rgba(255,107,0,0.18),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.12),transparent_55%)]">
               <div className="absolute inset-0 bg-[url('/map-match-point.png')] bg-cover bg-center opacity-60" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             </div>
@@ -452,7 +452,7 @@ export default function HomePage() {
           </header>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-lime/50 bg-[#111111] p-6">
+            <article className="rounded-2xl border border-accent/50 bg-[#111111] p-6">
               <h3 className="text-lg font-semibold text-pure-white">
                 Jornadas de Partidos
               </h3>
@@ -462,7 +462,7 @@ export default function HomePage() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-lime/50 bg-[#111111] p-6">
+            <article className="rounded-2xl border border-accent/50 bg-[#111111] p-6">
               <h3 className="text-lg font-semibold text-pure-white">
                 Clínicas Especializadas
               </h3>
@@ -492,12 +492,12 @@ export default function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {/* Enero */}
-            <article className="relative rounded-2xl border border-lime/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(198,255,0,0.7)]">
+            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
               <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-lime/10 px-3 py-1 font-semibold text-lime">
+                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
                   Enero (Activo)
                 </span>
-                <Hand className="h-4 w-4 text-lime" aria-hidden="true" />
+                <Hand className="h-4 w-4 text-accent" aria-hidden="true" />
               </div>
               <h3 className="text-sm font-semibold text-pure-white">
                 La Empuñadura Continental
@@ -509,12 +509,12 @@ export default function HomePage() {
             </article>
 
             {/* Febrero */}
-            <article className="relative rounded-2xl border border-lime/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(198,255,0,0.7)]">
+            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
               <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-lime/10 px-3 py-1 font-semibold text-lime">
+                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
                   Febrero (Activo)
                 </span>
-                <Zap className="h-4 w-4 text-lime" aria-hidden="true" />
+                <Zap className="h-4 w-4 text-accent" aria-hidden="true" />
               </div>
               <h3 className="text-sm font-semibold text-pure-white">
                 El Split Step
@@ -526,12 +526,12 @@ export default function HomePage() {
             </article>
 
             {/* Marzo */}
-            <article className="relative rounded-2xl border border-lime/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(198,255,0,0.7)]">
+            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
               <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-lime/10 px-3 py-1 font-semibold text-lime">
+                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
                   Marzo (Activo)
                 </span>
-                <Ruler className="h-4 w-4 text-lime" aria-hidden="true" />
+                <Ruler className="h-4 w-4 text-accent" aria-hidden="true" />
               </div>
               <h3 className="text-sm font-semibold text-pure-white">
                 Control de Distancia
@@ -597,7 +597,7 @@ export default function HomePage() {
                 href="https://www.google.com/maps/search/?api=1&query=Match+Point+Potosi+1657+Montevideo+Uruguay"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-lime px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black shadow-[0_0_26px_rgba(198,255,0,0.8)] transition hover:shadow-[0_0_36px_rgba(198,255,0,1)]"
+                className="rounded-full bg-accent px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black shadow-[0_0_26px_rgba(255,107,0,0.8)] transition hover:shadow-[0_0_36px_rgba(255,107,0,1)]"
               >
                 Ver en Google Maps
               </a>
@@ -611,7 +611,7 @@ export default function HomePage() {
               </h2>
               <p className="text-sm text-white/75">
                 Ubicados en el corazón de{" "}
-                <span className="font-semibold text-lime">
+                <span className="font-semibold text-accent">
                   Carrasco, Montevideo
                 </span>
                 , MATCH POINT es la academia de tenis de referencia para todos
@@ -631,9 +631,9 @@ export default function HomePage() {
                   Horario
                 </p>
                 <p className="mt-1">
-                  Lunes a Viernes · <span className="text-lime">08:00 a 22:00</span>
+                  Lunes a Viernes · <span className="text-accent">08:00 a 22:00</span>
                   {"  |  "}
-                  Sábados · <span className="text-lime">09:00 a 18:00</span>
+                  Sábados · <span className="text-accent">09:00 a 18:00</span>
                 </p>
               </div>
               <div>
@@ -644,7 +644,7 @@ export default function HomePage() {
                   href="https://wa.me/59898260543"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-1 inline-flex items-center gap-2 text-lime hover:underline"
+                  className="mt-1 inline-flex items-center gap-2 text-accent hover:underline"
                 >
                   +598 9826 0543
                 </a>
@@ -655,7 +655,7 @@ export default function HomePage() {
               href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20quiero%20coordinar%20una%20visita%20o%20clase."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-lime px-8 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_40px_rgba(198,255,0,0.7)] transition hover:shadow-[0_0_60px_rgba(198,255,0,1)]"
+              className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_40px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_60px_rgba(255,107,0,1)]"
             >
               Ver opciones en WhatsApp
             </a>
@@ -679,25 +679,25 @@ export default function HomePage() {
           </div>
 
           <nav className="flex flex-wrap items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.18em]">
-            <a href="#top" className="hover:text-lime">
+            <a href="#top" className="hover:text-accent">
               Inicio
             </a>
-            <a href="#servicios" className="hover:text-lime">
+            <a href="#servicios" className="hover:text-accent">
               Clases
             </a>
-            <a href="#servicios" className="hover:text-lime">
+            <a href="#servicios" className="hover:text-accent">
               Alquiler
             </a>
-            <a href="#niveles" className="hover:text-lime">
+            <a href="#niveles" className="hover:text-accent">
               Niveles
             </a>
-            <a href="#comunidad" className="hover:text-lime">
+            <a href="#comunidad" className="hover:text-accent">
               Comunidad
             </a>
-            <a href="#tip" className="hover:text-lime">
+            <a href="#tip" className="hover:text-accent">
               Tip del mes
             </a>
-            <a href="#faq" className="hover:text-lime">
+            <a href="#faq" className="hover:text-accent">
               Preguntas frecuentes
             </a>
           </nav>
@@ -707,7 +707,7 @@ export default function HomePage() {
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-lime hover:text-lime"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-accent hover:text-accent"
               aria-label="Instagram MATCH POINT"
             >
               <Instagram className="h-4 w-4" aria-hidden="true" />

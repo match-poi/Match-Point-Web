@@ -1,5 +1,6 @@
 "use client";
 
+import { WHATSAPP_CTA_URL } from "@/constants/whatsapp";
 import { useMemo, useState } from "react";
 
 type QuestionOption = {
@@ -93,15 +94,6 @@ export default function QuizAutonivelacion() {
     setCurrentStep(0);
   };
 
-  const whatsappUrl = useMemo(() => {
-    if (!recommendedLevel) return "#";
-    const base = "https://wa.me/59898260543";
-    const text = encodeURIComponent(
-      `Hola MATCH POINT, quiero reservar una clase en el nivel ${recommendedLevel}.`
-    );
-    return `${base}?text=${text}`;
-  }, [recommendedLevel]);
-
   return (
     <section className="border-t border-white/10 bg-black px-6 pb-20">
       <div className="mx-auto max-w-6xl">
@@ -180,15 +172,12 @@ export default function QuizAutonivelacion() {
               </div>
 
               <a
-                href={whatsappUrl}
+                href={WHATSAPP_CTA_URL}
                 target="_blank"
-                rel="noreferrer"
-                className="group relative inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                rel="noopener noreferrer"
+                className="relative z-20 inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
               >
-                <span className="relative text-center">
-                  Reservar clase en este nivel
-                </span>
-                <span className="pointer-events-none absolute inset-0 rounded-full bg-white/20 opacity-0 blur group-hover:opacity-100" />
+                Reservar clase en este nivel
               </a>
             </div>
           )}

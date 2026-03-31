@@ -1,12 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  output: "export",
+  output: 'export', // ESTA LÍNEA ES LA QUE CREA LA CARPETA OUT
   images: {
-    unoptimized: true
-  }
+    unoptimized: true,
+  },
 };
 
-export default nextConfig;
-
+export default nextConfig

@@ -1,5 +1,9 @@
 import QuizAutonivelacion from "../components/QuizAutonivelacion";
 import FaqSection from "../components/FaqSection";
+import {
+  WHATSAPP_CTA_URL,
+  WHATSAPP_DISPLAY_NUMBER
+} from "../constants/whatsapp";
 import Image from "next/image";
 import { CalendarCheck, CircleUserRound, Hand, Instagram, Ruler, Sparkles, Zap, Users } from "lucide-react";
 
@@ -7,14 +11,14 @@ export default function HomePage() {
   return (
     <main className="relative min-h-screen bg-black text-pure-white">
       {/* Halo de luz en verde lima detrás del contenido */}
-      <div className="pointer-events-none absolute inset-0 opacity-60">
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
         <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
       </div>
 
       {/* Hero */}
       <section
         id="top"
-        className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20 sm:py-28"
+        className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20 sm:py-28"
       >
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-white/70">
@@ -34,13 +38,14 @@ export default function HomePage() {
             en otro club.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="relative z-10 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href="#reservar"
-              className="btn-mp-pulse group relative inline-flex items-center justify-center rounded-full bg-accent px-10 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              href={WHATSAPP_CTA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-mp-pulse relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-10 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
-              <span className="relative">Reservar Clase</span>
-              <span className="pointer-events-none absolute inset-0 rounded-full bg-white/20 opacity-0 blur group-hover:opacity-100" />
+              Reservar Clase
             </a>
 
             <a
@@ -93,14 +98,14 @@ export default function HomePage() {
       {/* Nuestros Servicios */}
       <section
         id="servicios"
-        className="relative border-t border-white/10 bg-gradient-to-b from-black via-black to-neutral-950 px-6 py-20"
+        className="relative z-10 border-t border-white/10 bg-gradient-to-b from-black via-black to-neutral-950 px-6 py-20"
       >
-        <div className="pointer-events-none absolute inset-0 opacity-50">
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-50">
           <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
           <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
@@ -130,13 +135,15 @@ export default function HomePage() {
                 <li>• Máximo 4 alumnos por cancha</li>
                 <li>• Materiales incluidos</li>
               </ul>
-              <div className="mt-6 pt-2">
-                <button
-                  type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
+              <div className="relative z-20 mt-6 pt-2">
+                <a
+                  href={WHATSAPP_CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Consultar Horarios
-                </button>
+                </a>
               </div>
             </article>
 
@@ -156,13 +163,15 @@ export default function HomePage() {
                 <li>• Ideal para parejas o amigos del mismo nivel</li>
                 <li>• Flexibilidad horaria total</li>
               </ul>
-              <div className="mt-6 pt-2">
-                <button
-                  type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
+              <div className="relative z-20 mt-6 pt-2">
+                <a
+                  href={WHATSAPP_CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Agendar Sesión
-                </button>
+                </a>
               </div>
             </article>
 
@@ -182,13 +191,15 @@ export default function HomePage() {
                 <li>• Iluminación LED nocturna</li>
                 <li>• Alquiler de raquetas y pelotas</li>
               </ul>
-              <div className="mt-6 pt-2">
-                <button
-                  type="button"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
+              <div className="relative z-20 mt-6 pt-2">
+                <a
+                  href={WHATSAPP_CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
                 >
                   Reservar Cancha
-                </button>
+                </a>
               </div>
             </article>
           </div>
@@ -209,7 +220,7 @@ export default function HomePage() {
                 <div className="pointer-events-none absolute inset-0 opacity-70">
                   <div className="absolute -top-24 right-[-2rem] h-56 w-56 rounded-full bg-accent/25 blur-3xl" />
                 </div>
-                <div className="relative space-y-3">
+                <div className="relative z-10 space-y-3">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
                     Alianza exclusiva con Top Ten
                   </p>
@@ -264,9 +275,9 @@ export default function HomePage() {
       {/* Tu Camino al Éxito */}
       <section
         id="niveles"
-        className="border-t border-white/10 bg-black px-6 py-20"
+        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
       >
-        <div className="mx-auto max-w-6xl">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <header className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
@@ -342,17 +353,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center">
+          <div className="relative z-20 mt-10 flex justify-center">
             <a
-              href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20quiero%20reservar%20una%20clase%20de%20prueba%20seg%C3%BAn%20mi%20nivel."
+              href={WHATSAPP_CTA_URL}
               target="_blank"
-              rel="noreferrer"
-              className="group relative inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              rel="noopener noreferrer"
+              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
             >
-              <span className="relative text-center">
-                Reserva tu clase según tu nivel
-              </span>
-              <span className="pointer-events-none absolute inset-0 rounded-full bg-white/20 opacity-0 blur group-hover:opacity-100" />
+              Reserva tu clase según tu nivel
             </a>
           </div>
         </div>
@@ -363,8 +371,8 @@ export default function HomePage() {
       <FaqSection />
 
       {/* Perfil del Fundador */}
-      <section className="border-t border-white/10 bg-[#1e1e1e] px-6 py-20">
-        <div className="mx-auto max-w-6xl space-y-10">
+      <section className="relative z-10 border-t border-white/10 bg-[#1e1e1e] px-6 py-20">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
             {/* Foto / marco */}
             <div className="relative mx-auto h-64 w-64 max-w-full overflow-hidden rounded-3xl bg-black/70 sm:h-72 sm:w-72">
@@ -440,8 +448,11 @@ export default function HomePage() {
       </section>
 
       {/* Comunidad y Eventos */}
-      <section id="comunidad" className="border-t border-white/10 bg-black px-6 py-20">
-        <div className="mx-auto max-w-6xl space-y-8">
+      <section
+        id="comunidad"
+        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
+      >
+        <div className="relative z-10 mx-auto max-w-6xl space-y-8">
           <header className="space-y-2 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
               Comunidad y Eventos
@@ -478,9 +489,9 @@ export default function HomePage() {
       {/* Academia de Tips 2024 */}
       <section
         id="tip"
-        className="border-t border-white/10 bg-gradient-to-r from-black via-[#050505] to-black px-6 py-20"
+        className="relative z-10 border-t border-white/10 bg-gradient-to-r from-black via-[#050505] to-black px-6 py-20"
       >
-        <div className="mx-auto max-w-6xl space-y-8">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-8">
           <header className="space-y-2 text-center">
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60">
               Academia de Tips 2024
@@ -572,9 +583,9 @@ export default function HomePage() {
       {/* Ubicación y Contacto */}
       <section
         id="ubicacion"
-        className="border-t border-white/10 bg-black px-6 py-20"
+        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
       >
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row">
           <div className="w-full overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-3 shadow-[0_0_40px_rgba(0,0,0,0.6)] lg:max-w-[60%]">
             <div className="relative aspect-[16/9] w-full max-h-64 overflow-hidden rounded-2xl bg-[#050505]">
               <Image
@@ -586,21 +597,31 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <div className="mt-3 flex items-center justify-between rounded-2xl bg-black/70 px-4 py-3 text-xs text-white/70">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-black/70 px-4 py-3 text-xs text-white/70">
               <div>
                 <p className="font-semibold text-pure-white">MATCH POINT · Carrasco</p>
                 <p className="text-[11px] text-white/60">
                   Potosí 1657 · Montevideo · Uruguay
                 </p>
               </div>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Match+Point+Potosi+1657+Montevideo+Uruguay"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full bg-accent px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black shadow-[0_0_26px_rgba(255,107,0,0.8)] transition hover:shadow-[0_0_36px_rgba(255,107,0,1)]"
-              >
-                Ver en Google Maps
-              </a>
+              <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+                <a
+                  href={WHATSAPP_CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-20 cursor-pointer rounded-full bg-accent px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black shadow-[0_0_26px_rgba(255,107,0,0.8)] transition hover:shadow-[0_0_36px_rgba(255,107,0,1)]"
+                >
+                  Consultar por WhatsApp
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Match+Point+Potosi+1657+Montevideo+Uruguay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/60 underline-offset-2 hover:text-white hover:underline"
+                >
+                  Ver en Google Maps
+                </a>
+              </div>
             </div>
           </div>
 
@@ -641,21 +662,21 @@ export default function HomePage() {
                   WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/59898260543"
+                  href={WHATSAPP_CTA_URL}
                   target="_blank"
-                  rel="noreferrer"
-                  className="mt-1 inline-flex items-center gap-2 text-accent hover:underline"
+                  rel="noopener noreferrer"
+                  className="relative z-20 mt-1 inline-flex cursor-pointer items-center gap-2 text-accent hover:underline"
                 >
-                  +598 9826 0543
+                  {WHATSAPP_DISPLAY_NUMBER}
                 </a>
               </div>
             </div>
 
             <a
-              href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20quiero%20coordinar%20una%20visita%20o%20clase."
+              href={WHATSAPP_CTA_URL}
               target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_40px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_60px_rgba(255,107,0,1)]"
+              rel="noopener noreferrer"
+              className="relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_40px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_60px_rgba(255,107,0,1)]"
             >
               Ver opciones en WhatsApp
             </a>
@@ -664,7 +685,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/95 px-6 py-8 text-xs text-white/60">
+      <footer className="relative z-10 border-t border-white/10 bg-black/95 px-6 py-8 text-xs text-white/60">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
             <p className="text-sm font-semibold text-pure-white">

@@ -1,5 +1,6 @@
 "use client";
 
+import { WHATSAPP_CTA_URL } from "@/constants/whatsapp";
 import { CircleDot } from "lucide-react";
 import { useState } from "react";
 
@@ -44,8 +45,11 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="border-t border-white/10 bg-black px-6 py-20">
-      <div className="mx-auto max-w-4xl">
+    <section
+      id="faq"
+      className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
+    >
+      <div className="relative z-10 mx-auto max-w-4xl">
         <header className="mb-10 space-y-3 text-center">
           <h2 className="text-3xl font-semibold text-pure-white md:text-4xl">
             Despeja tus dudas
@@ -98,10 +102,10 @@ export default function FaqSection() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href="https://wa.me/59898260543?text=Hola%20MATCH%20POINT%2C%20todav%C3%ADa%20tengo%20algunas%20dudas%20y%20me%20gustar%C3%ADa%20chatear."
+            href={WHATSAPP_CTA_URL}
             target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:border-accent hover:text-accent"
+            rel="noopener noreferrer"
+            className="relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:border-accent hover:text-accent"
           >
             ¿Todavía tienes dudas? Chatea con nosotros
           </a>

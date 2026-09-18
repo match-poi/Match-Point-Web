@@ -61,3 +61,16 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+
+      - name: Verificar que la web pública se actualizó
+        run: |
+          for i in 1 2 3 4 5 6; do
+            if curl -sfL "https://matchpointmvd.com/" | grep -q "logo-lockup-green"; then
+              echo "OK: matchpointmvd.com muestra la versión nueva."
+              exit 0
+            fi
+            echo "Esperando ($i/6)..."
+            sleep 15
+          done
+          echo "::error::El FTP terminó pero la web sigue vieja. Casi seguro FTP_SERVER_DIR=/public_html/ — debe ser solo / (barra). Los archivos quedaron en matchpointmvd.com/public_html/ . Cambiá el secret y volvé a ejecutar el workflow."
+          exit 1

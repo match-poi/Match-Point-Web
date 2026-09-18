@@ -66,10 +66,10 @@ Cada `git push` a `main` ejecuta el workflow **Deploy to Hostinger** (build + su
 Cuando esto funciona, publicar es solo:
 
 ```bash
-git add .
-git commit -m "Describe el cambio"
-git push origin main
+npm run publish -- "Qué cambiaste en una frase"
 ```
+
+(Eso hace `git add`, `commit` y `push`; GitHub sube solo a Hostinger.)
 
 Esperar 2–4 min y revisar https://matchpointmvd.com (Cmd+Shift+R).
 

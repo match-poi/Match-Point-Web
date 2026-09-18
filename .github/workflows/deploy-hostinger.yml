@@ -31,6 +31,18 @@ jobs:
       - name: Build (static export)
         run: npm run build
 
+      - name: Prepare FTP server directory
+        id: ftp_dir
+        env:
+          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+        run: |
+          if [ -z "$FTP_SERVER_DIR" ]; then
+            echo "::error::Falta el secret FTP_SERVER_DIR (ej. /public_html/)"
+            exit 1
+          fi
+          dir="${FTP_SERVER_DIR%/}/"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
@@ -38,7 +50,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ steps.ftp_dir.outputs.dir }}
           # Hostinger: suele funcionar ftp; si falla, cambiar a ftps en el workflow.
           protocol: ftps
           port: 21

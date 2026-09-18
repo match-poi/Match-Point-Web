@@ -58,7 +58,7 @@ Cada `git push` a `main` ejecuta el workflow **Deploy to Hostinger** (build + su
 | `FTP_SERVER` | Host FTP de Hostinger (sin `ftp://`), ej. `ftp.matchpointmvd.com` o el que muestre hPanel → **Archivos → Cuentas FTP** |
 | `FTP_USERNAME` | Usuario FTP (cuenta apuntando a `public_html`) |
 | `FTP_PASSWORD` | Contraseña de esa cuenta FTP |
-| `FTP_SERVER_DIR` | Carpeta remota, casi siempre `/public_html/` (con `/` al final) |
+| `FTP_SERVER_DIR` | Carpeta remota: `/public_html/` **o** `/home/u777838732/domains/matchpointmvd.com/public_html/` (debe terminar en `/`; el workflow la corrige si falta) |
 
 3. Probar: **Actions** → **Deploy to Hostinger** → **Run workflow** (botón manual).  
 4. Si falla el paso FTP: en hPanel revisar que la cuenta FTP tenga directorio `public_html`; probar los mismos datos en FileZilla. Si Hostinger pide FTPS, avisar a quien mantenga el repo para ajustar el workflow.

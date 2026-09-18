@@ -23,5 +23,26 @@ npm install
 npm run dev
 ```
 
-Luego abre `http://localhost:3000`.
+Dev local (puerto fijo):
+
+```bash
+npm run dev:clean
+```
+
+Abrí `http://127.0.0.1:3011`.
+
+## Publicar en matchpointmvd.com (automático)
+
+1. Configurar secrets en GitHub (una vez): ver **§1.3** en `GUIA-COLABORADORES.md` (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, `FTP_SERVER_DIR`).
+2. Subir cambios a `main`:
+
+```bash
+git add .
+git commit -m "Tu mensaje"
+git push origin main
+```
+
+3. Seguir el deploy en [GitHub Actions](https://github.com/match-poi/Match-Point-Web/actions) (workflow **Deploy to Hostinger**).
+
+Build local de respaldo: `npm run build` → contenido en `out/`.
 

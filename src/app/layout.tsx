@@ -10,18 +10,18 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title:
-    "MATCH POINT | Academia de Tenis en Carrasco | Clases Particulares y Alquiler de Canchas",
+    "MATCH POINT Club | Tu club de tenis en Montevideo | Comunidad, Ligas y Membresías",
   description:
-    "MATCH POINT es la academia de tenis en Carrasco, Montevideo, especializada en clases particulares, entrenamientos grupales y alquiler de canchas para todos los niveles.",
+    "MATCH POINT es tu club de tenis en Carrasco, Montevideo. Entrenamiento, competencia, ligas internas, torneos y una comunidad activa para todos los niveles.",
   keywords: [
-    "academia de tenis",
-    "clases de tenis",
-    "clases particulares de tenis",
-    "entrenamiento de tenis",
-    "alquiler de canchas de tenis",
+    "club de tenis",
+    "club de tenis Montevideo",
     "tenis Carrasco",
-    "tenis Montevideo",
-    "MATCH POINT"
+    "membresía tenis",
+    "ligas de tenis",
+    "torneos de tenis",
+    "comunidad tenis",
+    "MATCH POINT Club"
   ]
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={inter.variable}>
-      <body className="min-h-screen font-sans antialiased bg-black text-pure-white">
+      <body className="min-h-screen font-sans antialiased bg-cream text-brand-blue">
         {children}
       </body>
     </html>

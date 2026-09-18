@@ -1,273 +1,390 @@
+import AcademiaTipsLazy from "../components/AcademiaTipsLazy";
+import SiteFooterBanner from "../components/SiteFooterBanner";
+import SiteTopBanner from "../components/SiteTopBanner";
 import QuizAutonivelacion from "../components/QuizAutonivelacion";
 import FaqSection from "../components/FaqSection";
+import ProximosEventos from "../components/ProximosEventos";
+import { CLUB_COURT_VIDEO_EMBED_URL } from "../constants/club";
 import {
   WHATSAPP_CTA_URL,
-  WHATSAPP_DISPLAY_NUMBER
+  WHATSAPP_DISPLAY_NUMBER,
+  WHATSAPP_MEMBERSHIP_URL
 } from "../constants/whatsapp";
 import Image from "next/image";
-import { CalendarCheck, CircleUserRound, Hand, Instagram, Ruler, Sparkles, Zap, Users } from "lucide-react";
+import { Building2, Gift, Trophy, UserPlus } from "lucide-react";
+
+const EXPERIENCIA_PILARES = [
+  {
+    icon: Building2,
+    title: "Infraestructura y Canchas",
+    desc: "Polvo de ladrillo premium, iluminación LED y espacios listos para entrenar o competir.",
+    href: "#experiencia-canchas",
+    detail:
+      "Canchas en Carrasco con superficie de polvo de ladrillo, iluminación para jugar de noche y un entorno cuidado para entrenar o jugar partidos con socios. Reservás desde el club según tu plan."
+  },
+  {
+    icon: UserPlus,
+    title: "Comunidad y juego",
+    desc: "Encontrá rivales de tu nivel, armá partidos y conectá con socios activos del club.",
+    href: "#experiencia-comunidad",
+    detail:
+      "Grupo de socios activo, domingos sociales y coordinación por WhatsApp para sumar a la cancha. No venís solo: el club te ayuda a encontrar juego acorde a tu nivel."
+  },
+  {
+    icon: Trophy,
+    title: "Torneos y Ranking MP",
+    desc: "Competí en torneos internos y sumá puntos en el ranking oficial del club.",
+    href: "#experiencia-ranking",
+    detail:
+      "Calendario de torneos internos y fechas del Ranking MP por categoría. Medís tu progreso, competís con regularidad y cerrás el año con instancias especiales para socios."
+  },
+  {
+    icon: Gift,
+    title: "Ventajas Exclusivas & Pro-Shop",
+    desc: "10% OFF en Top Ten con código MATCHPOINT, alquiler de equipamiento y beneficios de socio.",
+    href: "#experiencia-ventajas",
+    detail:
+      "Beneficios reales de socio: descuento en Top Ten con el código MATCHPOINT, acceso a alquiler de raquetas y pelotas, y promos puntuales del club en equipamiento."
+  }
+] as const;
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-black text-pure-white">
-      {/* Halo de luz en verde lima detrás del contenido */}
+    <>
+      <SiteTopBanner />
+
+    <main className="relative min-h-screen bg-cream text-brand-blue">
+      {/* Halo suave verde olivo */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
-        <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl" />
+        <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
       </div>
 
       {/* Hero */}
       <section
         id="top"
-        className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 py-20 sm:py-28"
+        className="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-8 sm:pb-20 sm:pt-10"
       >
         <div className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-[0.35em] uppercase text-white/70">
-            Academia de tenis
-          </p>
-
-          <h1 className="mt-6 text-balance text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
-            <span className="block">MATCH</span>
-            <span className="block text-accent drop-shadow-[0_0_24px_rgba(255,107,0,0.9)]">
-              POINT
-            </span>
+          <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-blue sm:text-5xl md:text-6xl">
+            Tu club de tenis en Montevideo
           </h1>
 
-          <p className="mt-6 max-w-xl text-pretty text-base md:text-lg leading-relaxed text-white/75">
-            Clases de tenis de alto impacto para jugadores que quieren ganar el punto decisivo.
-            Metodología profesional, foco total en cada golpe y una energía que no vas a encontrar
-            en otro club.
+          <p className="mt-6 max-w-xl text-pretty text-base md:text-lg leading-relaxed text-brand-blue/75">
+            Entrenamiento, competencia y comunidad en un solo lugar.
           </p>
 
           <div className="relative z-10 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href={WHATSAPP_CTA_URL}
+              href={WHATSAPP_MEMBERSHIP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-mp-pulse relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-10 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="btn-cta"
             >
-              Reservar Clase
+              Quiero ser Socio
             </a>
 
-            <a
-              href="#servicios"
-              className="inline-flex items-center justify-center rounded-full border border-white/18 bg-white/5 px-8 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
-            >
-              Ver servicios
+            <a href="#video-club" className="btn-secondary">
+              Conocer el Club
             </a>
           </div>
 
-          {/* Navegación rápida por secciones */}
-          <div className="mt-6 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
-            <a href="#servicios" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              Servicios
-            </a>
-            <a href="#niveles" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              Niveles
-            </a>
-            <a href="#comunidad" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              Comunidad
-            </a>
-            <a href="#tip" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              Tips
-            </a>
-            <a href="#faq" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              FAQ
-            </a>
-            <a href="#ubicacion" className="rounded-full border border-white/20 px-3 py-1 hover:border-accent hover:text-accent">
-              Ubicación
-            </a>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-6 text-xs text-white/45">
+          <div className="mt-8 flex flex-wrap gap-6 text-xs text-brand-blue/60">
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Adultos · Niños · Competición
+              Canchas premium · Carrasco
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Entrenadores certificados
+              Torneos y Ranking MP
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Programas personalizados
+              Comunidad activa de socios
             </span>
           </div>
         </div>
       </section>
 
-      {/* Nuestros Servicios */}
+      {/* Video — Conocer el Club */}
+      <section id="video-club" className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-16">
+        <div className="mx-auto max-w-4xl space-y-6">
+          <header className="space-y-2 text-center">
+            <p className="section-label">Conocé el club</p>
+            <h2 className="text-2xl font-semibold text-brand-blue md:text-3xl">
+              Recorrido por nuestras canchas
+            </h2>
+          </header>
+
+          <div className="overflow-hidden rounded-2xl border border-brand-blue/15 bg-white shadow-sm">
+            {CLUB_COURT_VIDEO_EMBED_URL ? (
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src={CLUB_COURT_VIDEO_EMBED_URL}
+                  title="Video Match Point Club — Canchas"
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <div className="relative aspect-video w-full bg-brand-blue/5">
+                <Image
+                  src="/map-match-point.png"
+                  alt="Vista del club Match Point en Carrasco"
+                  fill
+                  className="object-cover opacity-90"
+                  sizes="(max-width: 896px) 100vw, 896px"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-brand-blue/40 px-6 text-center">
+                  <p className="text-sm font-semibold text-cream">
+                    Video del club — próximamente
+                  </p>
+                  <p className="max-w-md text-xs text-cream/85">
+                    Mientras tanto, escribinos por WhatsApp y te mostramos la cancha en persona o
+                    te enviamos el material.
+                  </p>
+                  <a href={WHATSAPP_CTA_URL} target="_blank" rel="noopener noreferrer" className="btn-cta-sm">
+                    Ver la cancha
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Experiencia MatchPoint Club */}
       <section
-        id="servicios"
-        className="relative z-10 border-t border-white/10 bg-gradient-to-b from-black via-black to-neutral-950 px-6 py-20"
+        id="experiencia"
+        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-50">
-          <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
-          <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
+        <div className="mx-auto max-w-6xl space-y-10">
+          <header className="space-y-3 text-center">
+            <p className="section-label">Experiencia MatchPoint Club</p>
+            <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">
+              Más que canchas: un ecosistema completo de tenis
+            </h2>
+            <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
+              Tocá cada pilar para ver más. Infraestructura, comunidad, competencia y beneficios de
+              socio.
+            </p>
+          </header>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {EXPERIENCIA_PILARES.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  className="card-light group flex flex-col transition-all duration-200 hover:border-primary hover:shadow-md"
+                >
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-200 group-hover:bg-accent group-hover:text-brand-blue">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-base font-semibold text-brand-blue">{item.title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-brand-blue/70">{item.desc}</p>
+                  <span className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                    Ver más →
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {EXPERIENCIA_PILARES.map((item) => (
+              <article
+                key={item.href}
+                id={item.href.replace("#", "")}
+                className="scroll-mt-28 rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold text-brand-blue">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-brand-blue/75">{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Membresías y Planes */}
+      <section
+        id="membresias"
+        className="relative z-10 border-t border-primary/20 bg-primary px-6 py-20"
+      >
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-40">
+          <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-lime/20 blur-3xl" />
+          <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-cream/10 blur-3xl" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-                Nuestros Servicios
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
+                Membresías y Planes
               </p>
-              <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
-                Programas diseñados para{" "}
-                <span className="text-accent">ganar el punto clave</span>
+              <h2 className="mt-3 text-3xl font-semibold text-cream md:text-4xl">
+                Elegí cómo querés{" "}
+                <span className="text-lime">pertenecer al club</span>
               </h2>
             </div>
+            <p className="max-w-md text-sm text-cream/80">
+              Cada plan suma algo distinto: jugar y conectar, entrenar con método, o competir con
+              Ranking MP.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {/* Clases Grupales */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
-                <Users className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg font-semibold text-pure-white">
-                Entrenamiento Grupal
-              </h3>
-              <p className="mt-2 text-sm text-white/75">
-                La mejor forma de aprender, competir y socializar.
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            {/* Plan Jugador */}
+            <article className="card-light flex h-full flex-col">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
+                Plan Jugador
               </p>
-              <ul className="mt-4 space-y-1.5 text-xs text-white/70">
-                <li>• Grupos reducidos por nivel</li>
-                <li>• Máximo 4 alumnos por cancha</li>
-                <li>• Materiales incluidos</li>
+              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Viví el club</h3>
+              <p className="mt-2 text-sm text-brand-blue/70">
+                Ideal si querés jugar seguido, conocer gente y usar las canchas sin clases fijas.
+              </p>
+              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Reserva de canchas (turno estándar)
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Comunidad y juego por nivel
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Encuentros sociales dominicales
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  10% OFF Top Ten — código MATCHPOINT
+                </li>
+                <li className="flex items-center gap-2 text-brand-blue/50 line-through decoration-brand-blue/30">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue/20" />
+                  Clases grupales incluidas
+                </li>
               </ul>
-              <div className="relative z-20 mt-6 pt-2">
-                <a
-                  href={WHATSAPP_CTA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
-                >
-                  Consultar Horarios
-                </a>
-              </div>
+              <a
+                href={WHATSAPP_MEMBERSHIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary mt-6 w-full text-xs tracking-[0.16em]"
+              >
+                Consultar Plan Jugador
+              </a>
             </article>
 
-            {/* Clases Particulares */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
-                <CircleUserRound className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg font-semibold text-pure-white">
-                Clases Particulares (1-1 o 1-2)
-              </h3>
-              <p className="mt-2 text-sm text-white/75">
-                Entrenamiento personalizado de máxima intensidad para uno o dos alumnos.
+            {/* Plan Entrenamiento — más popular */}
+            <article className="relative flex h-full flex-col rounded-2xl border-2 border-primary bg-white p-6 shadow-lg">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-lime px-4 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-brand-blue">
+                Más popular
+              </span>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
+                Plan Entrenamiento
               </p>
-              <ul className="mt-4 space-y-1.5 text-xs text-white/70">
-                <li>• Corrección técnica profunda</li>
-                <li>• Ideal para parejas o amigos del mismo nivel</li>
-                <li>• Flexibilidad horaria total</li>
+              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Mejorá con método</h3>
+              <p className="mt-2 text-sm text-brand-blue/70">
+                Plan Jugador + clases semanales por nivel. El equilibrio entre progreso y comunidad.
+              </p>
+              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Todo lo del Plan Jugador
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  1 clase grupal semanal por nivel
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Hasta 4 alumnos por cancha · materiales incluidos
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Prioridad en reservas de cancha
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Descuento en clínicas del club
+                </li>
               </ul>
-              <div className="relative z-20 mt-6 pt-2">
-                <a
-                  href={WHATSAPP_CTA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
-                >
-                  Agendar Sesión
-                </a>
-              </div>
+              <a
+                href={WHATSAPP_MEMBERSHIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-cta mt-6 w-full text-xs tracking-[0.16em]"
+              >
+                Quiero ser Socio
+              </a>
             </article>
 
-            {/* Alquiler de Canchas */}
-            <article className="group relative flex h-full flex-col rounded-2xl border border-white/12 bg-[#1a1a1a] p-6 shadow-[0_0_0_rgba(255,107,0,0)] transition-all duration-300 hover:border-accent hover:shadow-[0_0_40px_rgba(255,107,0,0.55)]">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/40 text-accent">
-                <CalendarCheck className="h-5 w-5" aria-hidden="true" />
-              </div>
-              <h3 className="text-lg font-semibold text-pure-white">
-                Alquiler de Pista
-              </h3>
-              <p className="mt-2 text-sm text-white/75">
-                Reserva tu espacio para jugar tus partidos con amigos.
+            {/* Plan Competición */}
+            <article className="card-light flex h-full flex-col">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
+                Plan Competición
               </p>
-              <ul className="mt-4 space-y-1.5 text-xs text-white/70">
-                <li>• Canchas de polvo de ladrillo premium</li>
-                <li>• Iluminación LED nocturna</li>
-                <li>• Alquiler de raquetas y pelotas</li>
+              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Competí en serio</h3>
+              <p className="mt-2 text-sm text-brand-blue/70">
+                Para quienes buscan torneos, Ranking MP y acompañamiento técnico de competencia.
+              </p>
+              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Todo lo del Plan Jugador
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Ranking MP oficial + fechas del calendario
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Inscripción preferencial a torneos internos
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  2 clínicas de competencia incluidas al año
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                  Seguimiento técnico con coach del club
+                </li>
               </ul>
-              <div className="relative z-20 mt-6 pt-2">
-                <a
-                  href={WHATSAPP_CTA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_24px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_32px_rgba(255,107,0,1)]"
-                >
-                  Reservar Cancha
-                </a>
-              </div>
+              <a
+                href={WHATSAPP_MEMBERSHIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary mt-6 w-full text-xs tracking-[0.16em]"
+              >
+                Consultar Plan Competición
+              </a>
             </article>
           </div>
 
-          {/* Beneficios */}
-          <div className="mt-16 space-y-6">
-            <header className="text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
-                Beneficios por estar en MATCH POINT
-              </p>
-              <p className="mt-2 text-sm text-white/75">
-                Ventajas exclusivas para quienes entrenan en nuestra academia.
-              </p>
-            </header>
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.3fr)]">
-              {/* Alianza exclusiva con Top Ten */}
-              <article className="relative overflow-hidden rounded-2xl border border-accent/60 bg-black/80 p-6 shadow-[0_0_50px_rgba(255,107,0,0.5)]">
-                <div className="pointer-events-none absolute inset-0 opacity-70">
-                  <div className="absolute -top-24 right-[-2rem] h-56 w-56 rounded-full bg-accent/25 blur-3xl" />
-                </div>
-                <div className="relative z-10 space-y-3">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-accent">
-                    Alianza exclusiva con Top Ten
+          {/* Alianza Top Ten */}
+          <div className="mt-14">
+            <article className="relative overflow-hidden rounded-2xl border border-accent/40 bg-accent p-6 shadow-md">
+              <div className="relative z-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+                <div className="flex-1 space-y-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/90">
+                    Beneficio exclusivo de socio
                   </p>
-                  <p className="text-sm text-white/80">
-                    Por ser parte de MATCH POINT, tienes un{" "}
-                    <span className="font-semibold text-accent">10% OFF</span> en todas tus compras en
-                    la tienda Top Ten.
+                  <p className="text-sm text-cream">
+                    <span className="font-semibold text-lime">10% OFF</span> en Top Ten con tu
+                    membresía activa del club.
                   </p>
-
-                  <div className="mt-4 inline-flex flex-col gap-2 rounded-2xl border border-dashed border-accent/80 bg-black/90 px-4 py-3 text-center shadow-[0_0_40px_rgba(255,107,0,0.9)]">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-white/60">
-                      Código de descuento
-                    </span>
-                    <span className="text-lg font-extrabold tracking-[0.3em] text-accent">
-                      MATCHPOINT
-                    </span>
-                  </div>
                 </div>
-              </article>
-
-              {/* Beneficios de la academia */}
-              <div className="rounded-2xl border border-white/12 bg-black/80 p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">
-                  Beneficios de la academia
-                </p>
-                <div className="mt-5 space-y-4 text-sm text-white/80">
-                  <div>
-                    <p className="font-semibold text-accent">Canchas Pro</p>
-                    <p className="text-xs text-white/75">
-                      Polvo de ladrillo premium e iluminación LED profesional.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-accent">Comunidad</p>
-                    <p className="text-xs text-white/75">
-                      Torneos internos, clínicas y el mejor ambiente de tenis.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-accent">Materiales</p>
-                    <p className="text-xs text-white/75">
-                      Prestamos raquetas de última generación para tus primeras clases.
-                    </p>
-                  </div>
+                <div className="inline-flex flex-col gap-1 rounded-2xl bg-lime px-5 py-3 text-center shadow-sm">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-blue/70">
+                    Código
+                  </span>
+                  <span className="text-lg font-extrabold tracking-[0.3em] text-brand-blue">
+                    MATCHPOINT
+                  </span>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -275,78 +392,75 @@ export default function HomePage() {
       {/* Tu Camino al Éxito */}
       <section
         id="niveles"
-        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
+        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
         <div className="relative z-10 mx-auto max-w-6xl">
           <header className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-                Tu Camino al Éxito
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+              <p className="section-label">Tu Camino al Éxito</p>
+              <h2 className="mt-3 text-3xl font-semibold text-brand-blue md:text-4xl">
                 Niveles pensados para{" "}
-                <span className="text-accent">acompañar cada etapa</span>
+                <span className="text-primary">acompañar cada etapa</span>
               </h2>
             </div>
-            <p className="max-w-md text-sm text-white/70">
+            <p className="max-w-md text-sm text-brand-blue/70">
               Desde tu primer contacto con la raqueta hasta el alto rendimiento. Un camino claro,
               estructurado y exigente, adaptado a cómo se juega hoy al tenis.
             </p>
           </header>
 
-          {/* Tabs / tarjetas horizontales */}
           <div className="relative">
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-cream to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-cream to-transparent" />
 
-            <div className="flex gap-4 overflow-x-auto pb-4 pt-2 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent">
-              {/* Iniciantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+            <div className="flex gap-4 overflow-x-auto pb-4 pt-2">
+              {/* Iniciantes — activo */}
+              <article className="min-w-[260px] flex-1 rounded-2xl border-2 border-primary bg-lime px-5 py-6 shadow-sm transition-all duration-200">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">
                   Iniciantes
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mt-3 text-sm text-brand-blue/80">
                   Tu punto de partida. Cero conocimiento, máxima motivación.
                 </p>
               </article>
 
               {/* Pre-Principiantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-brand-blue/20 bg-white px-5 py-6 transition-all duration-200 hover:border-primary hover:bg-lime/40">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">
                   Pre-Principiantes
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mt-3 text-sm text-brand-blue/80">
                   Refinando el golpe. Para quienes juegan social pero buscan consistencia en el
                   peloteo.
                 </p>
               </article>
 
               {/* Principiantes */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-brand-blue/20 bg-white px-5 py-6 transition-all duration-200 hover:border-primary hover:bg-lime/40">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">
                   Principiantes
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mt-3 text-sm text-brand-blue/80">
                   Entrando al juego. Ya mantienes el peloteo, juegas puntos y dominas el saque.
                 </p>
               </article>
 
               {/* Pre-Intermedio */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-brand-blue/20 bg-white px-5 py-6 transition-all duration-200 hover:border-primary hover:bg-lime/40">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">
                   Pre-Intermedio
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mt-3 text-sm text-brand-blue/80">
                   Sintiendo la red. Dominio de voleas y listo para la competición social.
                 </p>
               </article>
 
               {/* Intermedio / Avanzado */}
-              <article className="min-w-[260px] flex-1 rounded-2xl border border-white/15 bg-neutral-950/80 px-5 py-6 transition hover:border-accent hover:bg-neutral-900/80">
-                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-accent">
+              <article className="min-w-[260px] flex-1 rounded-2xl border border-brand-blue/20 bg-white px-5 py-6 transition-all duration-200 hover:border-primary hover:bg-lime/40">
+                <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-brand-blue">
                   Intermedio / Avanzado
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mt-3 text-sm text-brand-blue/80">
                   Alto Rendimiento. Perfeccionamiento técnico y competición regular.
                 </p>
               </article>
@@ -355,12 +469,12 @@ export default function HomePage() {
 
           <div className="relative z-20 mt-10 flex justify-center">
             <a
-              href={WHATSAPP_CTA_URL}
+              href={WHATSAPP_MEMBERSHIP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="btn-cta text-xs tracking-[0.22em]"
             >
-              Reserva tu clase según tu nivel
+              Unirme al Club
             </a>
           </div>
         </div>
@@ -371,46 +485,71 @@ export default function HomePage() {
       <FaqSection />
 
       {/* Perfil del Fundador */}
-      <section className="relative z-10 border-t border-white/10 bg-[#1e1e1e] px-6 py-20">
+      <section className="relative z-10 border-t border-primary/20 bg-primary px-6 py-20">
         <div className="relative z-10 mx-auto max-w-6xl space-y-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
             {/* Foto / marco */}
-            <div className="relative mx-auto h-64 w-64 max-w-full overflow-hidden rounded-3xl bg-black/70 sm:h-72 sm:w-72">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neutral-900 via-black to-neutral-950" />
+            <div className="relative mx-auto h-64 w-64 max-w-full overflow-hidden rounded-3xl border-2 border-cream/25 bg-primary-dark sm:h-72 sm:w-72">
+              <div className="absolute inset-0 rounded-3xl bg-primary-dark/80" />
 
-              {/* Bordes solo en dos esquinas */}
-              <div className="pointer-events-none absolute left-0 top-0 h-12 w-12 rounded-tl-3xl border-l-2 border-t-2 border-accent" />
-              <div className="pointer-events-none absolute bottom-0 right-0 h-12 w-12 rounded-br-3xl border-b-2 border-r-2 border-accent" />
+              <div className="pointer-events-none absolute left-0 top-0 h-12 w-12 rounded-tl-3xl border-l-2 border-t-2 border-lime" />
+              <div className="pointer-events-none absolute bottom-0 right-0 h-12 w-12 rounded-br-3xl border-b-2 border-r-2 border-lime" />
 
-              <div className="relative flex h-full w-full items-center justify-center text-center text-xs text-white/60 px-4">
+              <div className="relative flex h-full w-full items-center justify-center px-4 text-center text-xs text-cream/70">
                 Espacio para tu foto profesional
               </div>
             </div>
 
             {/* Texto */}
             <div className="flex-1 space-y-4">
-              <p className="inline-flex items-center rounded-full border border-white/20 bg-black/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">
+              <p className="inline-flex items-center rounded-full border border-cream/30 bg-cream/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-cream/90">
                 Fundador & Director
               </p>
 
-              <h2 className="text-2xl font-semibold text-pure-white sm:text-3xl">
+              <h2 className="text-2xl font-semibold text-cream sm:text-3xl">
                 Liderando el juego en MATCH POINT
               </h2>
 
-              <h3 className="text-sm font-semibold text-accent">
-                Mario Tomczuk
+              <h3 className="text-sm font-semibold text-lime">
+                Lic. Mario Tomczuk
               </h3>
 
-              <p className="text-sm text-white/80">
-                Soy Mario Tomczuk, entrenador y fundador de esta academia. Mi filosofía se basa en
-                que el tenis es mucho más que técnica; es disciplina, estrategia y, sobre todo,
-                comunidad. Diseñé MATCH POINT para ser el lugar donde cada jugador, desde el que
-                agarra una raqueta por primera vez hasta el competidor avanzado, encuentre su mejor
-                versión.
+              <p className="text-sm text-cream/85">
+                Soy Lic. Mario Tomczuk, entrenador y fundador de Match Point Club. Creé este espacio
+                para que el tenis sea técnica, pero también pertenencia: un lugar en Carrasco donde
+                entrenás, competís y crecés con otros socios.
               </p>
 
-              <p className="pt-4 text-base italic text-accent">
-                Mario Tomczuk
+              <div className="grid gap-4 pt-2 sm:grid-cols-3">
+                <div className="rounded-xl border border-cream/20 bg-cream/5 p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">Misión</p>
+                  <p className="mt-2 text-xs text-cream/85">
+                    Acercar el tenis de calidad a todos los niveles, con método y calidez.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-cream/20 bg-cream/5 p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">Visión</p>
+                  <p className="mt-2 text-xs text-cream/85">
+                    Ser el club de referencia en Montevideo por comunidad, formación y competencia.
+                  </p>
+                </div>
+                <div className="rounded-xl border border-cream/20 bg-cream/5 p-4">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">Valores</p>
+                  <p className="mt-2 text-xs text-cream/85">
+                    Respeto, constancia, juego limpio y espíritu de club.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-sm text-cream/85">
+                <span className="font-semibold text-cream">Recorrido profesional:</span> formación
+                en tenis y educación física, años entrenando desde iniciantes hasta competidores, y
+                dirección técnica de Match Point en Carrasco — combinando clínica, planificación y
+                cultura de equipo.
+              </p>
+
+              <p className="pt-2 text-base italic text-lime">
+                Lic. Mario Tomczuk
               </p>
             </div>
           </div>
@@ -418,20 +557,20 @@ export default function HomePage() {
           {/* Galería compacta tipo carrusel simple */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/70">
                 Galería MATCH POINT
               </p>
-              <div className="flex gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
+              <div className="flex gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/70">
                 <button
                   type="button"
-                  className="h-7 w-7 rounded-full border border-white/25 hover:border-accent hover:text-accent"
+                  className="h-7 w-7 rounded-full border border-cream/30 text-cream transition-all duration-200 hover:border-lime hover:text-lime"
                   aria-label="Foto anterior"
                 >
                   ‹
                 </button>
                 <button
                   type="button"
-                  className="h-7 w-7 rounded-full border border-white/25 hover:border-accent hover:text-accent"
+                  className="h-7 w-7 rounded-full border border-cream/30 text-cream transition-all duration-200 hover:border-lime hover:text-lime"
                   aria-label="Foto siguiente"
                 >
                   ›
@@ -439,45 +578,38 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative mx-auto max-w-xl aspect-[4/3] overflow-hidden rounded-2xl border border-white/15 bg-[radial-gradient(circle_at_0%_0%,rgba(255,107,0,0.18),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(255,255,255,0.12),transparent_55%)]">
-              <div className="absolute inset-0 bg-[url('/map-match-point.png')] bg-cover bg-center opacity-60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+            <div className="relative mx-auto aspect-[4/3] max-w-xl overflow-hidden rounded-2xl border border-cream/20 bg-primary-dark">
+              <div className="absolute inset-0 bg-[url('/map-match-point.png')] bg-cover bg-center opacity-50" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comunidad y Eventos */}
+      <ProximosEventos />
+
+      {/* Comunidad del Club */}
       <section
         id="comunidad"
-        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
+        className="relative z-10 border-t border-brand-blue/10 bg-white px-6 py-16"
       >
-        <div className="relative z-10 mx-auto max-w-6xl space-y-8">
-          <header className="space-y-2 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/60">
-              Comunidad y Eventos
-            </p>
-            <h2 className="text-3xl font-semibold text-pure-white md:text-4xl">
-              Compartí la pista más allá de tus clases
-            </h2>
-          </header>
-
+        <div className="relative z-10 mx-auto max-w-6xl">
           <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-accent/50 bg-[#111111] p-6">
-              <h3 className="text-lg font-semibold text-pure-white">
+            <article className="rounded-2xl border border-brand-blue/10 bg-cream p-6">
+              <h3 className="text-lg font-semibold text-brand-blue">
                 Jornadas de Partidos
               </h3>
-              <p className="mt-2 text-sm text-white/75">
-                Nuestros Domingos de competencia social. Formato americano para medirte con
+              <p className="mt-2 text-sm text-brand-blue/70">
+                Nuestros domingos de competencia social. Formato americano para medirte con
                 jugadores de tu nivel en un ambiente relajado.
               </p>
             </article>
 
-            <article className="rounded-2xl border border-accent/50 bg-[#111111] p-6">
-              <h3 className="text-lg font-semibold text-pure-white">
+            <article className="rounded-2xl border border-brand-blue/10 bg-cream p-6">
+              <h3 className="text-lg font-semibold text-brand-blue">
                 Clínicas Especializadas
               </h3>
-              <p className="mt-2 text-sm text-white/75">
+              <p className="mt-2 text-sm text-brand-blue/70">
                 Sesiones intensivas de 2 horas enfocadas en golpes específicos:
                 Saque, Volea o Smash.
               </p>
@@ -486,108 +618,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Academia de Tips 2024 */}
-      <section
-        id="tip"
-        className="relative z-10 border-t border-white/10 bg-gradient-to-r from-black via-[#050505] to-black px-6 py-20"
-      >
-        <div className="relative z-10 mx-auto max-w-6xl space-y-8">
-          <header className="space-y-2 text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-white/60">
-              Academia de Tips 2024
-            </p>
-            <h2 className="text-3xl font-semibold text-pure-white md:text-4xl">
-              12 meses de consejos para mejorar tu tenis
-            </h2>
-          </header>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {/* Enero */}
-            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
-              <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
-                  Enero (Activo)
-                </span>
-                <Hand className="h-4 w-4 text-accent" aria-hidden="true" />
-              </div>
-              <h3 className="text-sm font-semibold text-pure-white">
-                La Empuñadura Continental
-              </h3>
-              <p className="mt-2 text-xs text-white/75">
-                La base para el saque y la volea. Te da control, estabilidad y transición rápida
-                entre golpes cerca de la red.
-              </p>
-            </article>
-
-            {/* Febrero */}
-            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
-              <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
-                  Febrero (Activo)
-                </span>
-                <Zap className="h-4 w-4 text-accent" aria-hidden="true" />
-              </div>
-              <h3 className="text-sm font-semibold text-pure-white">
-                El Split Step
-              </h3>
-              <p className="mt-2 text-xs text-white/75">
-                El salto de lectura para reaccionar más rápido. Aterriza justo cuando tu rival
-                impacta la pelota para salir en la dirección correcta.
-              </p>
-            </article>
-
-            {/* Marzo */}
-            <article className="relative rounded-2xl border border-accent/70 bg-black/80 p-5 shadow-[0_0_35px_rgba(255,107,0,0.7)]">
-              <div className="mb-3 flex items-center justify-between text-xs text-white/70">
-                <span className="rounded-full bg-accent/10 px-3 py-1 font-semibold text-accent">
-                  Marzo (Activo)
-                </span>
-                <Ruler className="h-4 w-4 text-accent" aria-hidden="true" />
-              </div>
-              <h3 className="text-sm font-semibold text-pure-white">
-                Control de Distancia
-              </h3>
-              <p className="mt-2 text-xs text-white/75">
-                Usa el brazo no hábil como “medidor” para ajustar la distancia a la pelota y
-                encontrar siempre el punto ideal de impacto.
-              </p>
-            </article>
-
-            {/* Abril a Diciembre - Próximamente */}
-            {[
-              "Abril · El Top-spin",
-              "Mayo · Táctica de Dobles",
-              "Junio · El Slice de Revés",
-              "Julio · Juego de Pies",
-              "Agosto · Saque con Efecto",
-              "Septiembre · Mentalidad Ganadora",
-              "Octubre · Ataque a la red",
-              "Noviembre · Defensa desde el fondo",
-              "Diciembre · Estrategia de Partido"
-            ].map((label) => (
-              <article
-                key={label}
-                className="relative rounded-2xl border border-white/15 bg-black/70 p-5 opacity-60"
-              >
-                <div className="mb-3 flex items-center justify-between text-xs text-white/60">
-                  <span>{label}</span>
-                  <Sparkles className="h-4 w-4 text-white/40" aria-hidden="true" />
-                </div>
-                <p className="text-[11px] text-white/55">Próximamente</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AcademiaTipsLazy />
 
       {/* Ubicación y Contacto */}
       <section
         id="ubicacion"
-        className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
+        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row">
-          <div className="w-full overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-neutral-900 via-black to-neutral-950 p-3 shadow-[0_0_40px_rgba(0,0,0,0.6)] lg:max-w-[60%]">
-            <div className="relative aspect-[16/9] w-full max-h-64 overflow-hidden rounded-2xl bg-[#050505]">
+          <div className="w-full overflow-hidden rounded-2xl border border-brand-blue/10 bg-white p-3 shadow-sm lg:max-w-[60%]">
+            <div className="relative aspect-[16/9] w-full max-h-64 overflow-hidden rounded-2xl bg-cream">
               <Image
                 src="/map-match-point.png"
                 alt="Ubicación de MATCH POINT en Carrasco"
@@ -597,10 +637,10 @@ export default function HomePage() {
                 priority
               />
             </div>
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-black/70 px-4 py-3 text-xs text-white/70">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-cream px-4 py-3 text-xs text-brand-blue/70">
               <div>
-                <p className="font-semibold text-pure-white">MATCH POINT · Carrasco</p>
-                <p className="text-[11px] text-white/60">
+                <p className="font-semibold text-brand-blue">MATCH POINT · Carrasco</p>
+                <p className="text-[11px] text-brand-blue/60">
                   Potosí 1657 · Montevideo · Uruguay
                 </p>
               </div>
@@ -609,7 +649,7 @@ export default function HomePage() {
                   href={WHATSAPP_CTA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative z-20 cursor-pointer rounded-full bg-accent px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-black shadow-[0_0_26px_rgba(255,107,0,0.8)] transition hover:shadow-[0_0_36px_rgba(255,107,0,1)]"
+                  className="btn-cta-sm"
                 >
                   Consultar por WhatsApp
                 </a>
@@ -617,7 +657,7 @@ export default function HomePage() {
                   href="https://www.google.com/maps/search/?api=1&query=Match+Point+Potosi+1657+Montevideo+Uruguay"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/60 underline-offset-2 hover:text-white hover:underline"
+                  className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-blue/60 underline-offset-2 transition-colors duration-200 hover:text-brand-blue hover:underline"
                 >
                   Ver en Google Maps
                 </a>
@@ -627,28 +667,28 @@ export default function HomePage() {
 
           <div className="flex w-full flex-col justify-between space-y-6 lg:max-w-sm">
             <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-pure-white md:text-3xl">
+              <h2 className="text-2xl font-semibold text-brand-blue md:text-3xl">
                 Ubicación y contacto
               </h2>
-              <p className="text-sm text-white/75">
+              <p className="text-sm text-brand-blue/75">
                 Ubicados en el corazón de{" "}
                 <span className="font-semibold text-accent">
                   Carrasco, Montevideo
                 </span>
-                , MATCH POINT es la academia de tenis de referencia para todos
+                , MATCH POINT es el club de tenis de referencia para todos
                 los niveles.
               </p>
             </div>
 
-            <div className="space-y-4 text-sm text-white/80">
+            <div className="space-y-4 text-sm text-brand-blue/80">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blue/50">
                   Dirección
                 </p>
                 <p className="mt-1">Potosí 1657 · Carrasco · Montevideo</p>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blue/50">
                   Horario
                 </p>
                 <p className="mt-1">
@@ -658,14 +698,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-blue/50">
                   WhatsApp
                 </p>
                 <a
                   href={WHATSAPP_CTA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative z-20 mt-1 inline-flex cursor-pointer items-center gap-2 text-accent hover:underline"
+                  className="relative z-20 mt-1 inline-flex cursor-pointer items-center gap-2 font-semibold text-accent transition-colors duration-200 hover:text-[#e55a00] hover:underline"
                 >
                   {WHATSAPP_DISPLAY_NUMBER}
                 </a>
@@ -673,70 +713,20 @@ export default function HomePage() {
             </div>
 
             <a
-              href={WHATSAPP_CTA_URL}
+              href={WHATSAPP_MEMBERSHIP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.18em] text-black shadow-[0_0_40px_rgba(255,107,0,0.7)] transition hover:shadow-[0_0_60px_rgba(255,107,0,1)]"
+              className="btn-cta text-xs tracking-[0.18em]"
             >
-              Ver opciones en WhatsApp
+              Quiero ser Socio
             </a>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 bg-black/95 px-6 py-8 text-xs text-white/60">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="text-sm font-semibold text-pure-white">
-              MATCH POINT
-            </p>
-            <p className="text-[11px] text-white/45">
-              Academia de tenis en Potosí 1657, Carrasco, Montevideo.
-            </p>
-            <p className="text-[11px] text-white/45">
-              Lunes a Viernes 08:00 - 22:00 | Sábados 09:00 - 18:00
-            </p>
-          </div>
-
-          <nav className="flex flex-wrap items-center gap-4 text-[11px] font-semibold uppercase tracking-[0.18em]">
-            <a href="#top" className="hover:text-accent">
-              Inicio
-            </a>
-            <a href="#servicios" className="hover:text-accent">
-              Clases
-            </a>
-            <a href="#servicios" className="hover:text-accent">
-              Alquiler
-            </a>
-            <a href="#niveles" className="hover:text-accent">
-              Niveles
-            </a>
-            <a href="#comunidad" className="hover:text-accent">
-              Comunidad
-            </a>
-            <a href="#tip" className="hover:text-accent">
-              Tip del mes
-            </a>
-            <a href="#faq" className="hover:text-accent">
-              Preguntas frecuentes
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 text-white/70 transition hover:border-accent hover:text-accent"
-              aria-label="Instagram MATCH POINT"
-            >
-              <Instagram className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooterBanner />
     </main>
+    </>
   );
 }
 

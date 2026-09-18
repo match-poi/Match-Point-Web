@@ -39,8 +39,13 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          protocol: ftp
+          # Hostinger: suele funcionar ftp; si falla, cambiar a ftps en el workflow.
+          protocol: ftps
           port: 21
-          timeout: 60000
+          timeout: 120000
           dangerous-clean-slate: false
           log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

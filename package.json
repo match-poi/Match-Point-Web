@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1 -p 3011",
+    "dev:clean": "rm -rf .next && next dev -H 127.0.0.1 -p 3011",
     "build": "next build",
+    "build:clean": "rm -rf .next && next build",
+    "preview:static": "python3 -m http.server 8766 --directory out",
+    "preview": "npm run build:clean && npm run preview:static",
     "start": "next start",
     "lint": "next lint"
   },

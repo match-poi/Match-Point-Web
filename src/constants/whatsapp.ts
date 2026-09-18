@@ -8,4 +8,7 @@ export const WHATSAPP_PHONE_WA_ME = "59892687634";
 export const WHATSAPP_CTA_URL =
   "https://wa.me/59892687634?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre...";
 
+export const WHATSAPP_MEMBERSHIP_URL =
+  "https://wa.me/59892687634?text=Hola%2C%20quiero%20ser%20socio%20de%20Match%20Point%20Club.";
+
 export const WHATSAPP_DISPLAY_NUMBER = "+598 92 687 634";

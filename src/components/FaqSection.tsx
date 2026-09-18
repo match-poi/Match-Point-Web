@@ -11,29 +11,29 @@ type FaqItem = {
 
 const FAQS: FaqItem[] = [
   {
-    question: "¿Qué sucede si llueve?",
+    question: "¿Qué pasa si llueve?",
     answer:
-      "En caso de lluvia, las clases se suspenden y se reprograman. Avisamos siempre con al menos una hora de antelación vía WhatsApp."
+      "Si el clima no acompaña, movemos la actividad o la reprogramamos. Te avisamos con tiempo por WhatsApp para que no vengas al club de más."
   },
   {
-    question: "¿Necesito llevar mi propia raqueta?",
+    question: "¿Tengo que traer raqueta?",
     answer:
-      "¡No es necesario! Si estás dando tus primeros pasos, en MATCH POINT te prestamos la raqueta para tus clases sin costo adicional."
+      "No hace falta al principio. En Match Point te prestamos raqueta para tus clases mientras arrancás — sin costo extra."
   },
   {
-    question: "¿Cómo se cancela o recupera una clase?",
+    question: "¿Cómo recupero una clase?",
     answer:
-      "Para recuperar una clase, pedimos avisar con 24 horas de anticipación. Así mantenemos la dinámica de los grupos organizada."
+      "Con 24 horas de aviso podés reprogramar. Así cuidamos la dinámica de cada grupo y el respeto entre socios."
   },
   {
-    question: "¿Hay estacionamiento en el predio?",
+    question: "¿Hay estacionamiento?",
     answer:
-      "El estacionamiento es sobre la calle, pero es una zona muy tranquila: casi siempre hay lugar libre y los autos quedan estacionados a la vista de las canchas."
+      "Es en la calle, en una zona tranquila de Carrasco. Casi siempre hay lugar y las canchas quedan a la vista."
   },
   {
-    question: "¿Puedo empezar de cero absoluto?",
+    question: "¿Puedo empezar sin haber jugado nunca?",
     answer:
-      '¡Totalmente! Nuestra especialidad es el nivel "Iniciantes". Te enseñamos desde cómo agarrar la raqueta hasta tus primeros partidos.'
+      'Sí, y es lo nuestro. El nivel Iniciantes está pensado para quien agarra la raqueta por primera vez: agarre, peloteo y tus primeros partidos con confianza.'
   }
 ];
 
@@ -45,17 +45,14 @@ export default function FaqSection() {
   };
 
   return (
-    <section
-      id="faq"
-      className="relative z-10 border-t border-white/10 bg-black px-6 py-20"
-    >
-      <div className="relative z-10 mx-auto max-w-4xl">
+    <section id="faq" className="border-t border-brand-blue/10 bg-cream px-6 py-20">
+      <div className="mx-auto max-w-4xl">
         <header className="mb-10 space-y-3 text-center">
-          <h2 className="text-3xl font-semibold text-pure-white md:text-4xl">
-            Despeja tus dudas
+          <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">
+            Despejá tus dudas
           </h2>
-          <p className="text-sm text-white/70">
-            Las preguntas que más recibimos de jugadores que están a punto de entrar a la pista.
+          <p className="text-sm text-brand-blue/70">
+            Lo que más nos preguntan antes de sumarse al club.
           </p>
         </header>
 
@@ -65,7 +62,7 @@ export default function FaqSection() {
             return (
               <div
                 key={item.question}
-                className="overflow-hidden rounded-2xl border border-neutral-800 bg-[#121212]"
+                className="overflow-hidden rounded-2xl border border-brand-blue/15 bg-white shadow-sm"
               >
                 <button
                   type="button"
@@ -73,15 +70,15 @@ export default function FaqSection() {
                   className="flex w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5"
                 >
                   <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full border border-transparent transition-all duration-200 ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
                       isOpen
-                        ? "border-accent bg-accent/10 text-accent rotate-[-18deg]"
-                        : "border-white/20 bg-black/40 text-white/40"
+                        ? "border-primary bg-lime text-brand-blue rotate-[-18deg]"
+                        : "border-brand-blue/20 bg-cream text-brand-blue/40"
                     }`}
                   >
                     <CircleDot className="h-4 w-4" aria-hidden="true" />
                   </span>
-                  <span className="flex-1 text-sm font-medium text-pure-white sm:text-base">
+                  <span className="flex-1 text-sm font-medium text-brand-blue sm:text-base">
                     {item.question}
                   </span>
                 </button>
@@ -91,7 +88,7 @@ export default function FaqSection() {
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
-                  <div className="overflow-hidden border-t border-accent/30 px-4 pb-4 pt-2 text-sm text-white/75 sm:px-5 sm:pb-5">
+                  <div className="overflow-hidden border-t border-primary/20 px-4 pb-4 pt-2 text-sm text-brand-blue/80 sm:px-5 sm:pb-5">
                     {item.answer}
                   </div>
                 </div>
@@ -105,13 +102,12 @@ export default function FaqSection() {
             href={WHATSAPP_CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-20 inline-flex cursor-pointer items-center justify-center rounded-full border border-white/30 bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:border-accent hover:text-accent"
+            className="inline-flex cursor-pointer items-center justify-center rounded-full border-2 border-accent bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent transition-all duration-200 hover:bg-accent hover:text-brand-blue"
           >
-            ¿Todavía tienes dudas? Chatea con nosotros
+            ¿Querés charlar con el club? Escribinos
           </a>
         </div>
       </div>
     </section>
   );
 }
-

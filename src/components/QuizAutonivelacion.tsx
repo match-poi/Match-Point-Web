@@ -47,22 +47,10 @@ const QUESTIONS: Question[] = [
 function getRecommendedLevel(answers: number[]): string {
   const [q1, q2, q3] = answers;
 
-  if (q1 === 0 && q2 === 0 && q3 === 0) {
-    return "Iniciantes";
-  }
-
-  if (q3 === 2) {
-    return "Intermedio/Avanzado";
-  }
-
-  if (q2 === 2 && q3 >= 1) {
-    return "Pre-Intermedio";
-  }
-
-  if (q2 >= 1 && q3 === 0) {
-    return "Principiantes";
-  }
-
+  if (q1 === 0 && q2 === 0 && q3 === 0) return "Iniciantes";
+  if (q3 === 2) return "Intermedio/Avanzado";
+  if (q2 === 2 && q3 >= 1) return "Pre-Intermedio";
+  if (q2 >= 1 && q3 === 0) return "Principiantes";
   return "Pre-Principiantes";
 }
 
@@ -70,10 +58,7 @@ export default function QuizAutonivelacion() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
 
-  const isCompleted = useMemo(
-    () => currentStep >= QUESTIONS.length,
-    [currentStep]
-  );
+  const isCompleted = useMemo(() => currentStep >= QUESTIONS.length, [currentStep]);
 
   const recommendedLevel = useMemo(() => {
     if (!isCompleted || answers.length !== QUESTIONS.length) return "";
@@ -95,31 +80,27 @@ export default function QuizAutonivelacion() {
   };
 
   return (
-    <section className="border-t border-white/10 bg-black px-6 pb-20">
+    <section className="border-t border-brand-blue/10 bg-cream px-6 pb-20">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-3xl border border-accent/40 bg-neutral-900/90 p-6 shadow-[0_0_60px_rgba(255,107,0,0.12)] sm:p-8">
+        <div className="rounded-3xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-8">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
-                Quiz de Autonivelación
-              </p>
-              <h3 className="mt-2 text-xl font-semibold text-pure-white sm:text-2xl">
-                Descubre tu punto de partida en MATCH POINT
+              <p className="section-label">Quiz de Autonivelación</p>
+              <h3 className="mt-2 text-xl font-semibold text-brand-blue sm:text-2xl">
+                Descubre tu punto de partida en MatchPoint Club
               </h3>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-white/70">
+            <div className="flex items-center gap-2 text-xs text-brand-blue/70">
               {!isCompleted ? (
-                <>
-                  <span className="inline-flex h-7 items-center rounded-full bg-black/60 px-3 font-semibold uppercase tracking-[0.18em] text-white/70">
-                    Paso {currentStep + 1} de {QUESTIONS.length}
-                  </span>
-                </>
+                <span className="inline-flex h-7 items-center rounded-full bg-lime px-3 font-semibold uppercase tracking-[0.18em] text-brand-blue">
+                  Paso {currentStep + 1} de {QUESTIONS.length}
+                </span>
               ) : (
                 <button
                   type="button"
                   onClick={handleRestart}
-                  className="inline-flex h-7 items-center rounded-full border border-white/20 bg-black/60 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-accent hover:text-accent"
+                  className="inline-flex h-7 items-center rounded-full border border-brand-blue/25 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime/50"
                 >
                   Rehacer test
                 </button>
@@ -129,7 +110,7 @@ export default function QuizAutonivelacion() {
 
           {!isCompleted && currentQuestion && (
             <div className="space-y-4">
-              <p className="text-sm font-medium text-pure-white sm:text-base">
+              <p className="text-sm font-medium text-brand-blue sm:text-base">
                 {currentQuestion.title}
               </p>
 
@@ -139,16 +120,16 @@ export default function QuizAutonivelacion() {
                     key={option.label}
                     type="button"
                     onClick={() => handleAnswer(option.value)}
-                    className="rounded-2xl border border-white/18 bg-black/60 px-4 py-3 text-left text-sm text-white/85 transition hover:border-accent hover:bg-accent/5 active:scale-[0.99]"
+                    className="rounded-2xl border border-brand-blue/20 bg-cream px-4 py-3 text-left text-sm text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime active:scale-[0.99]"
                   >
                     {option.label}
                   </button>
                 ))}
               </div>
 
-              <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-black/60">
+              <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-cream">
                 <div
-                  className="h-full rounded-full bg-accent transition-all duration-300"
+                  className="h-full rounded-full bg-primary transition-all duration-300"
                   style={{
                     width: `${((currentStep + 1) / QUESTIONS.length) * 100}%`
                   }}
@@ -159,14 +140,12 @@ export default function QuizAutonivelacion() {
 
           {isCompleted && recommendedLevel && (
             <div className="space-y-5">
-              <div className="rounded-2xl border border-accent/50 bg-black/70 px-4 py-4 sm:px-6 sm:py-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
+              <div className="rounded-2xl border border-primary/30 bg-lime/40 px-4 py-4 sm:px-6 sm:py-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-blue">
                   Resultado
                 </p>
-                <p className="mt-2 text-sm text-white/80">
-                  Tu nivel recomendado es:
-                </p>
-                <p className="mt-1 text-2xl font-semibold text-accent sm:text-3xl">
+                <p className="mt-2 text-sm text-brand-blue/80">Tu nivel recomendado es:</p>
+                <p className="mt-1 text-2xl font-semibold text-brand-blue sm:text-3xl">
                   {recommendedLevel}
                 </p>
               </div>
@@ -175,9 +154,9 @@ export default function QuizAutonivelacion() {
                 href={WHATSAPP_CTA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-20 inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-xs font-extrabold uppercase tracking-[0.22em] text-black shadow-[0_0_55px_rgba(255,107,0,0.8)] transition-all duration-200 hover:shadow-[0_0_80px_rgba(255,107,0,1)] hover:translate-y-[1px] active:translate-y-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                className="btn-cta w-full text-center text-xs tracking-[0.22em]"
               >
-                Reservar clase en este nivel
+                Reservar membresía en este nivel
               </a>
             </div>
           )}
@@ -186,4 +165,3 @@ export default function QuizAutonivelacion() {
     </section>
   );
 }
-

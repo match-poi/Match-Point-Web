@@ -3,50 +3,15 @@ import SiteFooterBanner from "../components/SiteFooterBanner";
 import SiteTopBanner from "../components/SiteTopBanner";
 import QuizAutonivelacion from "../components/QuizAutonivelacion";
 import FaqSection from "../components/FaqSection";
+import ExperienciaPilares from "../components/ExperienciaPilares";
 import ProximosEventos from "../components/ProximosEventos";
-import { CLUB_COURT_VIDEO_EMBED_URL } from "../constants/club";
+import { CLUB_INSTAGRAM_REEL_URL, FOUNDER_PHOTO_SRC } from "../constants/club";
 import {
   WHATSAPP_CTA_URL,
   WHATSAPP_DISPLAY_NUMBER,
   WHATSAPP_MEMBERSHIP_URL
 } from "../constants/whatsapp";
 import Image from "next/image";
-import { Building2, Gift, Trophy, UserPlus } from "lucide-react";
-
-const EXPERIENCIA_PILARES = [
-  {
-    icon: Building2,
-    title: "Infraestructura y Canchas",
-    desc: "Polvo de ladrillo premium, iluminación LED y espacios listos para entrenar o competir.",
-    href: "#experiencia-canchas",
-    detail:
-      "Canchas en Carrasco con superficie de polvo de ladrillo, iluminación para jugar de noche y un entorno cuidado para entrenar o jugar partidos con socios. Reservás desde el club según tu plan."
-  },
-  {
-    icon: UserPlus,
-    title: "Comunidad y juego",
-    desc: "Encontrá rivales de tu nivel, armá partidos y conectá con socios activos del club.",
-    href: "#experiencia-comunidad",
-    detail:
-      "Grupo de socios activo, domingos sociales y coordinación por WhatsApp para sumar a la cancha. No venís solo: el club te ayuda a encontrar juego acorde a tu nivel."
-  },
-  {
-    icon: Trophy,
-    title: "Torneos y Ranking MP",
-    desc: "Competí en torneos internos y sumá puntos en el ranking oficial del club.",
-    href: "#experiencia-ranking",
-    detail:
-      "Calendario de torneos internos y fechas del Ranking MP por categoría. Medís tu progreso, competís con regularidad y cerrás el año con instancias especiales para socios."
-  },
-  {
-    icon: Gift,
-    title: "Ventajas Exclusivas & Pro-Shop",
-    desc: "10% OFF en Top Ten con código MATCHPOINT, alquiler de equipamiento y beneficios de socio.",
-    href: "#experiencia-ventajas",
-    detail:
-      "Beneficios reales de socio: descuento en Top Ten con el código MATCHPOINT, acceso a alquiler de raquetas y pelotas, y promos puntuales del club en equipamiento."
-  }
-] as const;
 
 export default function HomePage() {
   return (
@@ -83,7 +48,12 @@ export default function HomePage() {
               Quiero ser Socio
             </a>
 
-            <a href="#video-club" className="btn-secondary">
+            <a
+              href={CLUB_INSTAGRAM_REEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
               Conocer el Club
             </a>
           </div>
@@ -91,7 +61,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-wrap gap-6 text-xs text-brand-blue/60">
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Canchas premium · Carrasco
+              Cancha premium · Carrasco
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -105,54 +75,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Video — Conocer el Club */}
-      <section id="video-club" className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-16">
-        <div className="mx-auto max-w-4xl space-y-6">
-          <header className="space-y-2 text-center">
-            <p className="section-label">Conocé el club</p>
-            <h2 className="text-2xl font-semibold text-brand-blue md:text-3xl">
-              Recorrido por nuestras canchas
-            </h2>
-          </header>
-
-          <div className="overflow-hidden rounded-2xl border border-brand-blue/15 bg-white shadow-sm">
-            {CLUB_COURT_VIDEO_EMBED_URL ? (
-              <div className="relative aspect-video w-full">
-                <iframe
-                  src={CLUB_COURT_VIDEO_EMBED_URL}
-                  title="Video Match Point Club — Canchas"
-                  className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ) : (
-              <div className="relative aspect-video w-full bg-brand-blue/5">
-                <Image
-                  src="/map-match-point.png"
-                  alt="Vista del club Match Point en Carrasco"
-                  fill
-                  className="object-cover opacity-90"
-                  sizes="(max-width: 896px) 100vw, 896px"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-brand-blue/40 px-6 text-center">
-                  <p className="text-sm font-semibold text-cream">
-                    Video del club — próximamente
-                  </p>
-                  <p className="max-w-md text-xs text-cream/85">
-                    Mientras tanto, escribinos por WhatsApp y te mostramos la cancha en persona o
-                    te enviamos el material.
-                  </p>
-                  <a href={WHATSAPP_CTA_URL} target="_blank" rel="noopener noreferrer" className="btn-cta-sm">
-                    Ver la cancha
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Experiencia MatchPoint Club */}
       <section
         id="experiencia"
@@ -162,7 +84,7 @@ export default function HomePage() {
           <header className="space-y-3 text-center">
             <p className="section-label">Experiencia MatchPoint Club</p>
             <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">
-              Más que canchas: un ecosistema completo de tenis
+              Más que una cancha: un ecosistema completo de tenis
             </h2>
             <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
               Tocá cada pilar para ver más. Infraestructura, comunidad, competencia y beneficios de
@@ -170,40 +92,7 @@ export default function HomePage() {
             </p>
           </header>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {EXPERIENCIA_PILARES.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  className="card-light group flex flex-col transition-all duration-200 hover:border-primary hover:shadow-md"
-                >
-                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-200 group-hover:bg-accent group-hover:text-brand-blue">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </div>
-                  <h3 className="text-base font-semibold text-brand-blue">{item.title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-brand-blue/70">{item.desc}</p>
-                  <span className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                    Ver más →
-                  </span>
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {EXPERIENCIA_PILARES.map((item) => (
-              <article
-                key={item.href}
-                id={item.href.replace("#", "")}
-                className="scroll-mt-28 rounded-2xl border border-brand-blue/10 bg-white p-6 shadow-sm"
-              >
-                <h3 className="text-lg font-semibold text-brand-blue">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-brand-blue/75">{item.detail}</p>
-              </article>
-            ))}
-          </div>
+          <ExperienciaPilares />
         </div>
       </section>
 
@@ -242,12 +131,12 @@ export default function HomePage() {
               </p>
               <h3 className="mt-2 text-2xl font-bold text-brand-blue">Viví el club</h3>
               <p className="mt-2 text-sm text-brand-blue/70">
-                Ideal si querés jugar seguido, conocer gente y usar las canchas sin clases fijas.
+                Ideal si querés jugar seguido, conocer gente y usar la cancha sin clases fijas.
               </p>
               <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Reserva de canchas (turno estándar)
+                  Reserva de cancha (turno estándar)
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -490,14 +379,16 @@ export default function HomePage() {
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
             {/* Foto / marco */}
             <div className="relative mx-auto h-64 w-64 max-w-full overflow-hidden rounded-3xl border-2 border-cream/25 bg-primary-dark sm:h-72 sm:w-72">
-              <div className="absolute inset-0 rounded-3xl bg-primary-dark/80" />
+              <Image
+                src={FOUNDER_PHOTO_SRC}
+                alt="Lic. Mario Tomczuk — Match Point Club"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 288px) 288px, 288px"
+              />
 
               <div className="pointer-events-none absolute left-0 top-0 h-12 w-12 rounded-tl-3xl border-l-2 border-t-2 border-lime" />
               <div className="pointer-events-none absolute bottom-0 right-0 h-12 w-12 rounded-br-3xl border-b-2 border-r-2 border-lime" />
-
-              <div className="relative flex h-full w-full items-center justify-center px-4 text-center text-xs text-cream/70">
-                Espacio para tu foto profesional
-              </div>
             </div>
 
             {/* Texto */}
@@ -530,7 +421,7 @@ export default function HomePage() {
                 <div className="rounded-xl border border-cream/20 bg-cream/5 p-4">
                   <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-lime">Visión</p>
                   <p className="mt-2 text-xs text-cream/85">
-                    Ser el club de referencia en Montevideo por comunidad, formación y competencia.
+                    Ser un club de referencia en Montevideo por comunidad, formación y competencia.
                   </p>
                 </div>
                 <div className="rounded-xl border border-cream/20 bg-cream/5 p-4">

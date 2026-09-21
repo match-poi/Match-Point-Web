@@ -1,5 +1,6 @@
-/**
- * Pegá acá el ID o URL embed de YouTube del video de la cancha.
- * Ejemplo embed: https://www.youtube.com/embed/XXXXXXXXXXX
- */
-export const CLUB_COURT_VIDEO_EMBED_URL = "";
+/** Recorrido de la cancha — reel en Instagram del club */
+export const CLUB_INSTAGRAM_REEL_URL =
+  "https://www.instagram.com/reel/DcwnQ7Vgm0t/";
+
+/** Foto del fundador (sección presentación) */
+export const FOUNDER_PHOTO_SRC = "/mario-tomczuk-presentacion.jpg";

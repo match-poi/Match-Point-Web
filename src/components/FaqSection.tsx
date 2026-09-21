@@ -28,7 +28,7 @@ const FAQS: FaqItem[] = [
   {
     question: "¿Hay estacionamiento?",
     answer:
-      "Es en la calle, en una zona tranquila de Carrasco. Casi siempre hay lugar y las canchas quedan a la vista."
+      "Es en la calle, en una zona tranquila de Carrasco. Casi siempre hay lugar y la cancha queda a la vista."
   },
   {
     question: "¿Puedo empezar sin haber jugado nunca?",

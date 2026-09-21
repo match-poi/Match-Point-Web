@@ -4,12 +4,13 @@ import SiteTopBanner from "../components/SiteTopBanner";
 import QuizAutonivelacion from "../components/QuizAutonivelacion";
 import FaqSection from "../components/FaqSection";
 import ExperienciaPilares from "../components/ExperienciaPilares";
+import ClasesYServiciosSection from "../components/ClasesYServiciosSection";
 import ProximosEventos from "../components/ProximosEventos";
 import { CLUB_INSTAGRAM_REEL_URL, FOUNDER_PHOTO_SRC } from "../constants/club";
 import {
+  WHATSAPP_CONSULTAR_CUPOS_URL,
   WHATSAPP_CTA_URL,
-  WHATSAPP_DISPLAY_NUMBER,
-  WHATSAPP_MEMBERSHIP_URL
+  WHATSAPP_DISPLAY_NUMBER
 } from "../constants/whatsapp";
 import Image from "next/image";
 
@@ -40,12 +41,12 @@ export default function HomePage() {
 
           <div className="relative z-10 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href={WHATSAPP_MEMBERSHIP_URL}
+              href={WHATSAPP_CONSULTAR_CUPOS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta"
             >
-              Quiero ser Socio
+              Consultar cupos
             </a>
 
             <a
@@ -69,7 +70,7 @@ export default function HomePage() {
             </span>
             <span className="inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Comunidad activa de socios
+              Comunidad activa de jugadores
             </span>
           </div>
         </div>
@@ -87,8 +88,8 @@ export default function HomePage() {
               Más que una cancha: un ecosistema completo de tenis
             </h2>
             <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
-              Tocá cada pilar para ver más. Infraestructura, comunidad, competencia y beneficios de
-              socio.
+              Tocá cada pilar para ver más. Infraestructura, comunidad, competencia y beneficios del
+              club.
             </p>
           </header>
 
@@ -96,187 +97,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Membresías y Planes */}
-      <section
-        id="membresias"
-        className="relative z-10 border-t border-primary/20 bg-primary px-6 py-20"
-      >
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-40">
-          <div className="absolute -top-32 left-1/4 h-64 w-64 rounded-full bg-lime/20 blur-3xl" />
-          <div className="absolute bottom-[-6rem] right-1/4 h-64 w-64 rounded-full bg-cream/10 blur-3xl" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
-                Membresías y Planes
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold text-cream md:text-4xl">
-                Elegí cómo querés{" "}
-                <span className="text-lime">pertenecer al club</span>
-              </h2>
-            </div>
-            <p className="max-w-md text-sm text-cream/80">
-              Cada plan suma algo distinto: jugar y conectar, entrenar con método, o competir con
-              Ranking MP.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {/* Plan Jugador */}
-            <article className="card-light flex h-full flex-col">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
-                Plan Jugador
-              </p>
-              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Viví el club</h3>
-              <p className="mt-2 text-sm text-brand-blue/70">
-                Ideal si querés jugar seguido, conocer gente y usar la cancha sin clases fijas.
-              </p>
-              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Reserva de cancha (turno estándar)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Comunidad y juego por nivel
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Encuentros sociales dominicales
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  10% OFF Top Ten — código MATCHPOINT
-                </li>
-                <li className="flex items-center gap-2 text-brand-blue/50 line-through decoration-brand-blue/30">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-blue/20" />
-                  Clases grupales incluidas
-                </li>
-              </ul>
-              <a
-                href={WHATSAPP_MEMBERSHIP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary mt-6 w-full text-xs tracking-[0.16em]"
-              >
-                Consultar Plan Jugador
-              </a>
-            </article>
-
-            {/* Plan Entrenamiento — más popular */}
-            <article className="relative flex h-full flex-col rounded-2xl border-2 border-primary bg-white p-6 shadow-lg">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-lime px-4 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-brand-blue">
-                Más popular
-              </span>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
-                Plan Entrenamiento
-              </p>
-              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Mejorá con método</h3>
-              <p className="mt-2 text-sm text-brand-blue/70">
-                Plan Jugador + clases semanales por nivel. El equilibrio entre progreso y comunidad.
-              </p>
-              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Todo lo del Plan Jugador
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  1 clase grupal semanal por nivel
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Hasta 4 alumnos por cancha · materiales incluidos
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Prioridad en reservas de cancha
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Descuento en clínicas del club
-                </li>
-              </ul>
-              <a
-                href={WHATSAPP_MEMBERSHIP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-cta mt-6 w-full text-xs tracking-[0.16em]"
-              >
-                Quiero ser Socio
-              </a>
-            </article>
-
-            {/* Plan Competición */}
-            <article className="card-light flex h-full flex-col">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
-                Plan Competición
-              </p>
-              <h3 className="mt-2 text-2xl font-bold text-brand-blue">Competí en serio</h3>
-              <p className="mt-2 text-sm text-brand-blue/70">
-                Para quienes buscan torneos, Ranking MP y acompañamiento técnico de competencia.
-              </p>
-              <ul className="mt-5 flex-1 space-y-2 text-sm text-brand-blue/80">
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Todo lo del Plan Jugador
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Ranking MP oficial + fechas del calendario
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Inscripción preferencial a torneos internos
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  2 clínicas de competencia incluidas al año
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  Seguimiento técnico con coach del club
-                </li>
-              </ul>
-              <a
-                href={WHATSAPP_MEMBERSHIP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary mt-6 w-full text-xs tracking-[0.16em]"
-              >
-                Consultar Plan Competición
-              </a>
-            </article>
-          </div>
-
-          {/* Alianza Top Ten */}
-          <div className="mt-14">
-            <article className="relative overflow-hidden rounded-2xl border border-accent/40 bg-accent p-6 shadow-md">
-              <div className="relative z-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                <div className="flex-1 space-y-2">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/90">
-                    Beneficio exclusivo de socio
-                  </p>
-                  <p className="text-sm text-cream">
-                    <span className="font-semibold text-lime">10% OFF</span> en Top Ten con tu
-                    membresía activa del club.
-                  </p>
-                </div>
-                <div className="inline-flex flex-col gap-1 rounded-2xl bg-lime px-5 py-3 text-center shadow-sm">
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-blue/70">
-                    Código
-                  </span>
-                  <span className="text-lg font-extrabold tracking-[0.3em] text-brand-blue">
-                    MATCHPOINT
-                  </span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      <ClasesYServiciosSection />
 
       {/* Tu Camino al Éxito */}
       <section
@@ -330,7 +151,7 @@ export default function HomePage() {
                   Principiantes
                 </h3>
                 <p className="mt-3 text-sm text-brand-blue/80">
-                  Entrando al juego. Ya mantienes el peloteo, juegas puntos y dominas el saque.
+                  Entrando al juego. Ya mantenés el peloteo, jugás puntos y dominás el saque.
                 </p>
               </article>
 
@@ -356,14 +177,20 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative z-20 mt-10 flex justify-center">
+          <div className="relative z-20 mt-10 flex flex-wrap justify-center gap-3">
             <a
-              href={WHATSAPP_MEMBERSHIP_URL}
+              href="#servicios"
+              className="btn-secondary text-xs tracking-[0.22em]"
+            >
+              Ver clases y servicios
+            </a>
+            <a
+              href={WHATSAPP_CONSULTAR_CUPOS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta text-xs tracking-[0.22em]"
             >
-              Unirme al Club
+              Consultar cupos
             </a>
           </div>
         </div>
@@ -409,7 +236,7 @@ export default function HomePage() {
               <p className="text-sm text-cream/85">
                 Soy Lic. Mario Tomczuk, entrenador y fundador de Match Point Club. Creé este espacio
                 para que el tenis sea técnica, pero también pertenencia: un lugar en Carrasco donde
-                entrenás, competís y crecés con otros socios.
+                entrenás, competís y crecés con otros jugadores del club.
               </p>
 
               <div className="grid gap-4 pt-2 sm:grid-cols-3">
@@ -605,12 +432,12 @@ export default function HomePage() {
             </div>
 
             <a
-              href={WHATSAPP_MEMBERSHIP_URL}
+              href={WHATSAPP_CONSULTAR_CUPOS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta text-xs tracking-[0.18em]"
             >
-              Quiero ser Socio
+              Consultar cupos
             </a>
           </div>
         </div>

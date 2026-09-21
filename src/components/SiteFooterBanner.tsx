@@ -4,9 +4,9 @@ import { Instagram } from "lucide-react";
 import { SITE_NAV_LINKS } from "@/constants/navigation";
 import { INSTAGRAM_PUBLIC_URL } from "@/constants/social";
 import {
+  WHATSAPP_CONSULTAR_CUPOS_URL,
   WHATSAPP_CTA_URL,
-  WHATSAPP_DISPLAY_NUMBER,
-  WHATSAPP_MEMBERSHIP_URL
+  WHATSAPP_DISPLAY_NUMBER
 } from "@/constants/whatsapp";
 
 export default function SiteFooterBanner() {
@@ -24,12 +24,12 @@ export default function SiteFooterBanner() {
             <BrandWordmark tone="dark" />
           </a>
           <a
-            href={WHATSAPP_MEMBERSHIP_URL}
+            href={WHATSAPP_CONSULTAR_CUPOS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-cta-sm shrink-0"
           >
-            Quiero ser Socio
+            Consultar cupos
           </a>
         </div>
 

@@ -1,6 +1,6 @@
 export const SITE_NAV_LINKS = [
   { href: "#experiencia", label: "El Club" },
-  { href: "#membresias", label: "Membresías" },
+  { href: "#servicios", label: "Clases y servicios" },
   { href: "#eventos", label: "Eventos" },
   { href: "#niveles", label: "Niveles" },
   { href: "#faq", label: "FAQ" },

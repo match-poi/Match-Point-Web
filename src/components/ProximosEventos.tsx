@@ -1,5 +1,8 @@
 import { OPEN_TRAINING_EVENT } from "@/constants/events";
-import { WHATSAPP_CTA_URL, WHATSAPP_MEMBERSHIP_URL } from "@/constants/whatsapp";
+import {
+  WHATSAPP_CTA_URL,
+  WHATSAPP_RESERVAR_EVENTO_URL
+} from "@/constants/whatsapp";
 import { CalendarDays, Lock, Sparkles, Trophy } from "lucide-react";
 
 export default function ProximosEventos() {
@@ -48,7 +51,7 @@ export default function ProximosEventos() {
             </p>
 
             <a
-              href={WHATSAPP_MEMBERSHIP_URL}
+              href={WHATSAPP_RESERVAR_EVENTO_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta-sm mt-2 w-full text-center text-[10px] tracking-[0.16em]"

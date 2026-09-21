@@ -18,7 +18,7 @@ export const SITE_FAQS: FaqItem[] = [
   {
     question: "¿Cómo recupero una clase?",
     answer:
-      "Con 24 horas de aviso podés reprogramar. Así cuidamos la dinámica de cada grupo y el respeto entre socios."
+      "Con 24 horas de aviso podés reprogramar. Así cuidamos la dinámica de cada grupo y el respeto entre jugadores."
   },
   {
     question: "¿Hay estacionamiento?",

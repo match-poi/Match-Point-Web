@@ -1,6 +1,6 @@
 import BrandWordmark from "@/components/BrandWordmark";
 import { SITE_NAV_LINKS } from "@/constants/navigation";
-import { WHATSAPP_MEMBERSHIP_URL } from "@/constants/whatsapp";
+import { WHATSAPP_CONSULTAR_CUPOS_URL } from "@/constants/whatsapp";
 
 export default function SiteTopBanner() {
   return (
@@ -27,12 +27,12 @@ export default function SiteTopBanner() {
               ))}
             </nav>
             <a
-              href={WHATSAPP_MEMBERSHIP_URL}
+              href={WHATSAPP_CONSULTAR_CUPOS_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta-sm mx-auto shrink-0 sm:mx-0"
             >
-              Unirme al Club
+              Consultar cupos
             </a>
           </div>
         </div>

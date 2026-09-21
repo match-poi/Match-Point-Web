@@ -1,7 +1,11 @@
 "use client";
 
-import { WHATSAPP_CTA_URL } from "@/constants/whatsapp";
-import { useMemo, useState } from "react";
+import {
+  clearQuizLevelFromSession,
+  saveQuizLevelToSession
+} from "@/constants/quiz-session";
+import { whatsAppQuizNivelUrl } from "@/constants/whatsapp";
+import { useEffect, useMemo, useState } from "react";
 
 type QuestionOption = {
   label: string;
@@ -26,7 +30,7 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 2,
-    title: "¿Logras mantener un peloteo fluido desde el fondo?",
+    title: "¿Lográs mantener un peloteo fluido desde el fondo?",
     options: [
       { label: "No", value: 0 },
       { label: "A veces", value: 1 },
@@ -35,7 +39,7 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 3,
-    title: "¿Dominas el saque de arriba y juegas puntos?",
+    title: "¿Dominás el saque de arriba y jugás puntos?",
     options: [
       { label: "No", value: 0 },
       { label: "Estoy en eso", value: 1 },
@@ -65,6 +69,12 @@ export default function QuizAutonivelacion() {
     return getRecommendedLevel(answers);
   }, [answers, isCompleted]);
 
+  useEffect(() => {
+    if (recommendedLevel) {
+      saveQuizLevelToSession(recommendedLevel);
+    }
+  }, [recommendedLevel]);
+
   const currentQuestion = !isCompleted ? QUESTIONS[currentStep] : null;
 
   const handleAnswer = (value: number) => {
@@ -77,7 +87,12 @@ export default function QuizAutonivelacion() {
   const handleRestart = () => {
     setAnswers([]);
     setCurrentStep(0);
+    clearQuizLevelFromSession();
   };
+
+  const quizWhatsAppUrl = recommendedLevel
+    ? whatsAppQuizNivelUrl(recommendedLevel)
+    : "#";
 
   return (
     <section className="border-t border-brand-blue/10 bg-cream px-6 pb-20">
@@ -87,7 +102,7 @@ export default function QuizAutonivelacion() {
             <div>
               <p className="section-label">Quiz de Autonivelación</p>
               <h3 className="mt-2 text-xl font-semibold text-brand-blue sm:text-2xl">
-                Descubre tu punto de partida en MatchPoint Club
+                Descubrí tu punto de partida en Match Point Club
               </h3>
             </div>
 
@@ -151,12 +166,12 @@ export default function QuizAutonivelacion() {
               </div>
 
               <a
-                href={WHATSAPP_CTA_URL}
+                href={quizWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cta w-full text-center text-xs tracking-[0.22em]"
               >
-                Reservar membresía en este nivel
+                Consultar grupos para este nivel
               </a>
             </div>
           )}

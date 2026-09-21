@@ -10,15 +10,15 @@ const PILARES = [
     title: "Infraestructura y cancha",
     desc: "Polvo de ladrillo premium, iluminación LED y un espacio listo para entrenar o competir.",
     detail:
-      "Contamos con una cancha en Carrasco con superficie de polvo de ladrillo e iluminación para jugar de noche. Un entorno cuidado para entrenar o jugar partidos con socios. Reservás turno desde el club según tu plan."
+      "Contamos con una cancha en Carrasco con superficie de polvo de ladrillo e iluminación para jugar de noche. Un entorno cuidado para entrenar o jugar partidos con otros jugadores. Reservás turno según disponibilidad de alquiler o tu grupo de clases."
   },
   {
     id: "comunidad",
     icon: UserPlus,
     title: "Comunidad y juego",
-    desc: "Encontrá rivales de tu nivel, armá partidos y conectá con socios activos del club.",
+    desc: "Encontrá rivales de tu nivel, armá partidos y conectá con jugadores activos del club.",
     detail:
-      "Grupo de socios activo, domingos sociales y coordinación por WhatsApp para sumar a la cancha. No venís solo: el club te ayuda a encontrar juego acorde a tu nivel."
+      "Comunidad activa, domingos sociales y coordinación por WhatsApp para sumar a la cancha. No venís solo: el club te ayuda a encontrar juego acorde a tu nivel."
   },
   {
     id: "ranking",
@@ -26,15 +26,15 @@ const PILARES = [
     title: "Torneos y Ranking MP",
     desc: "Competí en torneos internos y sumá puntos en el ranking oficial del club.",
     detail:
-      "Calendario de torneos internos y fechas del Ranking MP por categoría. Medís tu progreso, competís con regularidad y cerrás el año con instancias especiales para socios."
+      "Calendario de torneos internos y fechas del Ranking MP por categoría. Medís tu progreso, competís con regularidad y cerrás el año con instancias especiales para la comunidad del club."
   },
   {
     id: "ventajas",
     icon: Gift,
     title: "Ventajas Exclusivas & Pro-Shop",
-    desc: "10% OFF en Top Ten con código MATCHPOINT, alquiler de equipamiento y beneficios de socio.",
+    desc: "10% OFF en Top Ten con código MATCHPOINT y beneficios para la comunidad Match Point.",
     detail:
-      "Beneficios reales de socio: descuento en Top Ten con el código MATCHPOINT, acceso a alquiler de raquetas y pelotas, y promos puntuales del club en equipamiento."
+      "Beneficio exclusivo para la comunidad Match Point: descuento en Top Ten con el código MATCHPOINT, acceso a alquiler de raquetas y pelotas, y promos puntuales del club en equipamiento."
   }
 ] as const;
 

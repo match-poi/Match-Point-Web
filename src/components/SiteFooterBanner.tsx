@@ -2,7 +2,7 @@ import BrandWordmark from "@/components/BrandWordmark";
 import SiteChromeWatermark from "@/components/SiteChromeWatermark";
 import { Instagram } from "lucide-react";
 import { SITE_NAV_LINKS } from "@/constants/navigation";
-import { INSTAGRAM_PUBLIC_URL } from "@/constants/social";
+import { INSTAGRAM_FOOTER_URL } from "@/constants/social";
 import {
   WHATSAPP_CONSULTAR_CUPOS_URL,
   WHATSAPP_CTA_URL,
@@ -74,7 +74,7 @@ export default function SiteFooterBanner() {
 
           <div className="flex flex-col items-center gap-4 sm:items-start lg:items-end">
             <a
-              href={INSTAGRAM_PUBLIC_URL}
+              href={INSTAGRAM_FOOTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-blue/25 text-brand-blue/80 transition-all duration-200 hover:border-accent hover:text-accent"

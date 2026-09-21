@@ -33,15 +33,22 @@ jobs:
 
       - name: Verificar artefactos SEO en out/
         run: |
+          rm -rf "out/_next 2" 2>/dev/null || true
           test -f out/index.html
+          ! grep -q 'Conocé el club' out/index.html
+          grep -q 'Conocer el Club' out/index.html
           test -f out/robots.txt
           test -f out/sitemap.xml
           test -f out/og-matchpoint.jpg
           test -f out/mario-tomczuk-presentacion.jpg
           test -f out/manifest.webmanifest
+          test -f out/.htaccess
+          test -f out/icons/apple-touch-icon.png
+          test -f out/icons/icon-512.png
           test -f out/404.html
           grep -q 'application/ld+json' out/index.html
           grep -q 'rel="canonical"' out/index.html
+          grep -q 'og-matchpoint.jpg' out/index.html
 
       - name: Prepare FTP server directory
         id: ftp_dir
@@ -76,13 +83,27 @@ jobs:
 
       - name: Verificar que la web pública se actualizó
         run: |
+          check_ok=0
           for i in 1 2 3 4 5 6; do
-            if curl -sfL "https://matchpointmvd.com/" | grep -q "logo-lockup-green"; then
-              echo "OK: matchpointmvd.com muestra la versión nueva."
-              exit 0
+            html="$(curl -sfL "https://matchpointmvd.com/")" || true
+            og="$(curl -sfI "https://matchpointmvd.com/og-matchpoint.jpg" | head -1)" || true
+            mario="$(curl -sfI "https://matchpointmvd.com/mario-tomczuk-presentacion.jpg" | head -1)" || true
+            robots="$(curl -sfI "https://matchpointmvd.com/robots.txt" | head -1)" || true
+            if echo "$html" | grep -q "logo-lockup-green" \
+              && echo "$html" | grep -qv "Conocé el club" \
+              && echo "$html" | grep -q "Conocer el Club" \
+              && echo "$html" | grep -q "og-matchpoint.jpg" \
+              && echo "$og" | grep -q "200" \
+              && echo "$mario" | grep -q "200" \
+              && echo "$robots" | grep -q "200"; then
+              echo "OK: sitio, OG, foto fundador y robots.txt en producción."
+              check_ok=1
+              break
             fi
-            echo "Esperando ($i/6)..."
+            echo "Esperando ($i/6)... og=$og robots=$robots"
             sleep 15
           done
-          echo "::error::El FTP terminó pero la web sigue vieja. Casi seguro FTP_SERVER_DIR=/public_html/ — debe ser solo / (barra). Los archivos quedaron en matchpointmvd.com/public_html/ . Cambiá el secret y volvé a ejecutar el workflow."
-          exit 1
+          if [ "$check_ok" -ne 1 ]; then
+            echo "::error::El FTP terminó pero faltan archivos en producción (OG, mario, robots o HTML SEO). Revisá FTP_SERVER_DIR=/ (no /public_html/) y volvé a ejecutar el workflow."
+            exit 1
+          fi

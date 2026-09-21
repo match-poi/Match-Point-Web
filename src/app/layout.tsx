@@ -11,7 +11,8 @@ import {
   SITE_TITLE_DEFAULT,
   SITE_TITLE_TEMPLATE,
   SITE_URL,
-  THEME_COLOR
+  THEME_COLOR,
+  absoluteUrl
 } from "@/constants/site";
 import { buildStructuredDataGraph } from "@/lib/structured-data";
 import type { Metadata, Viewport } from "next";
@@ -23,6 +24,8 @@ const inter = Inter({
   display: "swap",
   variable: "--font-sans"
 });
+
+const ogImageAbsoluteUrl = absoluteUrl(OG_IMAGE_PATH);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -58,7 +61,8 @@ export const metadata: Metadata = {
     locale: OG_LOCALE,
     images: [
       {
-        url: OG_IMAGE_PATH,
+        url: ogImageAbsoluteUrl,
+        secureUrl: ogImageAbsoluteUrl,
         width: OG_IMAGE_WIDTH,
         height: OG_IMAGE_HEIGHT,
         alt: OG_IMAGE_ALT,
@@ -71,13 +75,19 @@ export const metadata: Metadata = {
     title: SITE_TITLE_DEFAULT,
     description: SITE_DESCRIPTION,
     images: {
-      url: OG_IMAGE_PATH,
+      url: ogImageAbsoluteUrl,
       alt: OG_IMAGE_ALT
     }
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/logo-match-point-principal.png", type: "image/png" }]
+    apple: [
+      {
+        url: "/icons/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180"
+      }
+    ]
   },
   manifest: "/manifest.webmanifest"
 };

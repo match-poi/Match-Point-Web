@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export', // ESTA LÍNEA ES LA QUE CREA LA CARPETA OUT
+  output: "export",
+  trailingSlash: true,
   images: {
-    unoptimized: true,
-  },
+    unoptimized: true
+  }
 };
 
 export default nextConfig

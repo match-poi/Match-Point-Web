@@ -1,6 +1,6 @@
 import { OPEN_TRAINING_EVENT } from "@/constants/events";
 import { SITE_FAQS } from "@/constants/faq";
-import { CLUB_INSTAGRAM_REEL_URL } from "@/constants/club";
+import { INSTAGRAM_PROFILE_URL } from "@/constants/social";
 import {
   CLUB_ADDRESS,
   CLUB_OPENING_HOURS,
@@ -29,7 +29,32 @@ function openingHoursSpecification() {
 }
 
 export function buildStructuredDataGraph(): Record<string, unknown> {
-  const sameAs = [CLUB_INSTAGRAM_REEL_URL].filter(Boolean);
+  const organization: Record<string, unknown> = {
+    "@type": ["SportsActivityLocation", "LocalBusiness"],
+    "@id": ORGANIZATION_ID,
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    telephone: WHATSAPP_DISPLAY_NUMBER,
+    image: [OG_URL, FOUNDER_PHOTO],
+    logo: LOGO_URL,
+    address: {
+      "@type": "PostalAddress",
+      ...CLUB_ADDRESS,
+      addressCountry: "UY"
+    },
+    openingHoursSpecification: openingHoursSpecification(),
+    areaServed: {
+      "@type": "City",
+      name: "Montevideo",
+      addressCountry: "UY"
+    },
+    founder: { "@id": FOUNDER_ID }
+  };
+
+  if (INSTAGRAM_PROFILE_URL) {
+    organization.sameAs = [INSTAGRAM_PROFILE_URL];
+  }
 
   return {
     "@context": "https://schema.org",
@@ -43,29 +68,7 @@ export function buildStructuredDataGraph(): Record<string, unknown> {
         inLanguage: "es-UY",
         publisher: { "@id": ORGANIZATION_ID }
       },
-      {
-        "@type": ["SportsActivityLocation", "LocalBusiness"],
-        "@id": ORGANIZATION_ID,
-        name: SITE_NAME,
-        url: SITE_URL,
-        description: SITE_DESCRIPTION,
-        telephone: WHATSAPP_DISPLAY_NUMBER,
-        image: [OG_URL, FOUNDER_PHOTO],
-        logo: LOGO_URL,
-        address: {
-          "@type": "PostalAddress",
-          ...CLUB_ADDRESS,
-          addressCountry: "UY"
-        },
-        openingHoursSpecification: openingHoursSpecification(),
-        areaServed: {
-          "@type": "City",
-          name: "Montevideo",
-          addressCountry: "UY"
-        },
-        founder: { "@id": FOUNDER_ID },
-        sameAs
-      },
+      organization,
       {
         "@type": "Person",
         "@id": FOUNDER_ID,

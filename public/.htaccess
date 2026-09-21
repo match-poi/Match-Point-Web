@@ -1,14 +1,17 @@
-# MATCH POINT — reglas seguras para export estático en Hostinger (Apache)
+# MATCH POINT — reglas seguras para export estático en Hostinger (Apache/LiteSpeed)
+AddType application/manifest+json .webmanifest
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # HTTPS
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # www → dominio raíz
+  # www → apex (ruta y query string; evita ciclos con apex)
   RewriteCond %{HTTP_HOST} ^www\.matchpointmvd\.com$ [NC]
-  RewriteRule ^ https://matchpointmvd.com%{REQUEST_URI} [L,R=301]
+  RewriteRule ^ https://matchpointmvd.com%{REQUEST_URI} [L,R=301,QSA]
+
+  # HTTP → HTTPS (solo apex; www ya redirige arriba)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} ^matchpointmvd\.com$ [NC]
+  RewriteRule ^ https://matchpointmvd.com%{REQUEST_URI} [L,R=301,QSA]
 </IfModule>
 
 # 404 explícita (Next export genera 404.html)

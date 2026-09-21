@@ -1,0 +1,25 @@
+{
+  "name": "MATCH POINT Club",
+  "short_name": "Match Point",
+  "description": "Club de tenis en Carrasco, Montevideo. Clases, entrenamiento, torneos y comunidad.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "lang": "es-UY",
+  "background_color": "#f5f7e8",
+  "theme_color": "#738765",
+  "icons": [
+    {
+      "src": "/logo-match-point-principal.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

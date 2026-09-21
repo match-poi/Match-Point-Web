@@ -1,44 +1,13 @@
 "use client";
 
+import { SITE_FAQS } from "@/constants/faq";
 import { WHATSAPP_CTA_URL } from "@/constants/whatsapp";
 import { CircleDot } from "lucide-react";
-import { useState } from "react";
-
-type FaqItem = {
-  question: string;
-  answer: string;
-};
-
-const FAQS: FaqItem[] = [
-  {
-    question: "¿Qué pasa si llueve?",
-    answer:
-      "Si el clima no acompaña, movemos la actividad o la reprogramamos. Te avisamos con tiempo por WhatsApp para que no vengas al club de más."
-  },
-  {
-    question: "¿Tengo que traer raqueta?",
-    answer:
-      "No hace falta al principio. En Match Point te prestamos raqueta para tus clases mientras arrancás — sin costo extra."
-  },
-  {
-    question: "¿Cómo recupero una clase?",
-    answer:
-      "Con 24 horas de aviso podés reprogramar. Así cuidamos la dinámica de cada grupo y el respeto entre socios."
-  },
-  {
-    question: "¿Hay estacionamiento?",
-    answer:
-      "Es en la calle, en una zona tranquila de Carrasco. Casi siempre hay lugar y la cancha queda a la vista."
-  },
-  {
-    question: "¿Puedo empezar sin haber jugado nunca?",
-    answer:
-      'Sí, y es lo nuestro. El nivel Iniciantes está pensado para quien agarra la raqueta por primera vez: agarre, peloteo y tus primeros partidos con confianza.'
-  }
-];
+import { useId, useState } from "react";
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
 
   const handleToggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
@@ -57,16 +26,22 @@ export default function FaqSection() {
         </header>
 
         <div className="space-y-3">
-          {FAQS.map((item, index) => {
+          {SITE_FAQS.map((item, index) => {
             const isOpen = openIndex === index;
+            const panelId = `${baseId}-faq-panel-${index}`;
+            const buttonId = `${baseId}-faq-button-${index}`;
+
             return (
               <div
                 key={item.question}
                 className="overflow-hidden rounded-2xl border border-brand-blue/15 bg-white shadow-sm"
               >
                 <button
+                  id={buttonId}
                   type="button"
                   onClick={() => handleToggle(index)}
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
                   className="flex w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5"
                 >
                   <span
@@ -84,6 +59,9 @@ export default function FaqSection() {
                 </button>
 
                 <div
+                  id={panelId}
+                  role="region"
+                  aria-labelledby={buttonId}
                   className={`grid transition-all duration-200 ${
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}

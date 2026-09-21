@@ -31,6 +31,18 @@ jobs:
       - name: Build (static export)
         run: npm run build
 
+      - name: Verificar artefactos SEO en out/
+        run: |
+          test -f out/index.html
+          test -f out/robots.txt
+          test -f out/sitemap.xml
+          test -f out/og-matchpoint.jpg
+          test -f out/mario-tomczuk-presentacion.jpg
+          test -f out/manifest.webmanifest
+          test -f out/404.html
+          grep -q 'application/ld+json' out/index.html
+          grep -q 'rel="canonical"' out/index.html
+
       - name: Prepare FTP server directory
         id: ftp_dir
         env:

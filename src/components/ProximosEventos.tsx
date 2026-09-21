@@ -1,3 +1,4 @@
+import { OPEN_TRAINING_EVENT } from "@/constants/events";
 import { WHATSAPP_CTA_URL, WHATSAPP_MEMBERSHIP_URL } from "@/constants/whatsapp";
 import { CalendarDays, Lock, Sparkles, Trophy } from "lucide-react";
 
@@ -32,13 +33,13 @@ export default function ProximosEventos() {
                 Entrenamiento
               </p>
               <h3 className="mt-1 text-lg font-semibold text-brand-blue">
-                Entrenar para competir — torneos sociales
+                {OPEN_TRAINING_EVENT.name}
               </h3>
             </div>
 
             <p className="flex items-center gap-2 text-xs text-brand-blue/60">
               <CalendarDays className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              Domingo 4 de octubre · 1 h 30
+              {OPEN_TRAINING_EVENT.displayDate}
             </p>
 
             <p className="flex-1 text-sm leading-relaxed text-brand-blue/70">

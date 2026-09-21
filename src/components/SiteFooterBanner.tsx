@@ -2,6 +2,7 @@ import BrandWordmark from "@/components/BrandWordmark";
 import SiteChromeWatermark from "@/components/SiteChromeWatermark";
 import { Instagram } from "lucide-react";
 import { SITE_NAV_LINKS } from "@/constants/navigation";
+import { INSTAGRAM_PUBLIC_URL } from "@/constants/social";
 import {
   WHATSAPP_CTA_URL,
   WHATSAPP_DISPLAY_NUMBER,
@@ -73,9 +74,9 @@ export default function SiteFooterBanner() {
 
           <div className="flex flex-col items-center gap-4 sm:items-start lg:items-end">
             <a
-              href="https://instagram.com"
+              href={INSTAGRAM_PUBLIC_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-brand-blue/25 text-brand-blue/80 transition-all duration-200 hover:border-accent hover:text-accent"
               aria-label="Instagram MATCH POINT"
             >

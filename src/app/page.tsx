@@ -382,8 +382,9 @@ export default function HomePage() {
               <Image
                 src={FOUNDER_PHOTO_SRC}
                 alt="Lic. Mario Tomczuk — Match Point Club"
-                fill
-                className="object-cover object-top"
+                width={768}
+                height={1024}
+                className="h-full w-full object-cover object-top"
                 sizes="(max-width: 288px) 288px, 288px"
               />
 

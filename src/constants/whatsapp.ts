@@ -1,4 +1,7 @@
-import { openTrainingEventWhatsAppMessage } from "@/constants/events";
+import {
+  hotelDelLagoTournamentWhatsAppMessage,
+  openTrainingEventWhatsAppMessage
+} from "@/constants/events";
 
 /** Sin + ni espacios (solo dígitos) */
 export const WHATSAPP_PHONE_WA_ME = "59892687634";
@@ -56,6 +59,10 @@ export const WHATSAPP_ALQUILER_CANCHA_URL = createWhatsAppUrl(
 
 export const WHATSAPP_RESERVAR_EVENTO_URL = createWhatsAppUrl(
   openTrainingEventWhatsAppMessage()
+);
+
+export const WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL = createWhatsAppUrl(
+  hotelDelLagoTournamentWhatsAppMessage()
 );
 
 export function whatsAppQuizNivelUrl(level: string): string {

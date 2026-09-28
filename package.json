@@ -7,8 +7,8 @@
     "dev:clean": "rm -rf .next && next dev -H 127.0.0.1 -p 3011",
     "build": "next build",
     "build:clean": "rm -rf .next && next build",
-    "preview:static": "python3 -m http.server 8766 --directory out",
-    "preview": "npm run build:clean && npm run preview:static",
+    "preview:static": "python3 -m http.server 8766 --bind 127.0.0.1 --directory out",
+    "preview": "npm run build && node -e \"console.log('\\n✅ Vista previa (copia de producción):\\n   http://127.0.0.1:8766\\n\\n   (No uses localhost:3000 ni 3011 para esto.)\\n   Ctrl+C para detener.\\n')\" && npm run preview:static",
     "start": "next start",
     "lint": "next lint",
     "publish": "bash scripts/publish.sh"

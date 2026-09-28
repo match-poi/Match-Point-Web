@@ -1,6 +1,7 @@
 import BrandWordmark from "@/components/BrandWordmark";
 import SiteChromeWatermark from "@/components/SiteChromeWatermark";
 import { Instagram } from "lucide-react";
+import Link from "next/link";
 import { SITE_NAV_LINKS } from "@/constants/navigation";
 import { INSTAGRAM_FOOTER_URL } from "@/constants/social";
 import {
@@ -16,13 +17,13 @@ export default function SiteFooterBanner() {
 
       <div className="relative z-[1] mx-auto max-w-6xl px-6 py-10 sm:py-12">
         <div className="flex flex-col items-center gap-8 border-b border-brand-blue/10 pb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-          <a
-            href="#top"
+          <Link
+            href="/"
             className="flex w-full justify-center sm:w-auto sm:justify-start"
             aria-label="Volver al inicio"
           >
             <BrandWordmark tone="dark" />
-          </a>
+          </Link>
           <a
             href={WHATSAPP_CONSULTAR_CUPOS_URL}
             target="_blank"
@@ -55,20 +56,20 @@ export default function SiteFooterBanner() {
             className="flex flex-col items-center gap-2 sm:items-start"
             aria-label="Enlaces del pie"
           >
-            <a
-              href="#top"
+            <Link
+              href="/"
               className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue/80 transition-colors hover:text-primary"
             >
               Inicio
-            </a>
+            </Link>
             {SITE_NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue/80 transition-colors hover:text-primary"
               >
                 {link.label === "FAQ" ? "Preguntas frecuentes" : link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 

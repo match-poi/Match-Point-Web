@@ -1,9 +1,11 @@
-import { OPEN_TRAINING_EVENT } from "@/constants/events";
+import { HOTEL_DEL_LAGO_TOURNAMENT, OPEN_TRAINING_EVENT } from "@/constants/events";
 import {
   WHATSAPP_CTA_URL,
-  WHATSAPP_RESERVAR_EVENTO_URL
+  WHATSAPP_RESERVAR_EVENTO_URL,
+  WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL
 } from "@/constants/whatsapp";
-import { CalendarDays, Lock, Sparkles, Trophy } from "lucide-react";
+import { CalendarDays, Sparkles, Trophy } from "lucide-react";
+import Link from "next/link";
 
 export default function ProximosEventos() {
   return (
@@ -15,7 +17,7 @@ export default function ProximosEventos() {
             Próximos Eventos del Club
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
-            Una fecha confirmada y un eventazo en camino. Reservá tu lugar o guardá la fecha.
+            Entrenamiento con cupos limitados y torneo en Punta del Este con inscripciones abiertas.
           </p>
         </header>
 
@@ -63,7 +65,7 @@ export default function ProximosEventos() {
           {/* Save the date — eventazo oculto */}
           <article
             className="relative overflow-hidden rounded-2xl border border-brand-blue/15 bg-primary px-6 py-10 text-center shadow-md lg:col-span-3 lg:px-10 lg:py-12"
-            aria-label="Save the date — detalles del evento próximamente"
+            aria-label="Torneo Match Point — Hotel del Lago, Punta del Este"
           >
             <div
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(241,254,159,0.12),transparent_55%)]"
@@ -77,20 +79,48 @@ export default function ProximosEventos() {
             </p>
 
             <div className="relative z-[1] flex min-h-[220px] flex-col items-center justify-center gap-4 lg:min-h-[260px]">
-              <Sparkles className="h-5 w-5 text-lime/80" aria-hidden="true" />
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <Sparkles className="h-5 w-5 text-lime/80" aria-hidden="true" />
+                <span className="rounded-full bg-lime px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
+                  Inscripciones abiertas
+                </span>
+              </div>
               <p className="text-xs font-semibold uppercase tracking-[0.4em] text-lime">
-                Save the date
+                Torneo Match Point
               </p>
               <p className="text-2xl font-semibold text-cream sm:text-3xl md:text-4xl">
-                19 y 20 de diciembre
+                {HOTEL_DEL_LAGO_TOURNAMENT.displayDates.replace(" de 2026", "")}
               </p>
               <p className="text-sm font-medium uppercase tracking-[0.22em] text-cream/85">
-                Hotel del Lago
+                {HOTEL_DEL_LAGO_TOURNAMENT.venueDisplay}
               </p>
-              <p className="inline-flex items-center gap-2 text-xs text-cream/55">
-                <Lock className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                Detalles del eventazo — próximamente
+              <p className="max-w-md text-xs leading-relaxed text-cream/60">
+                Categorías y formato del torneo — próximamente en la web.
               </p>
+              <div className="mt-1 flex w-full max-w-sm flex-col gap-2.5">
+                <a
+                  href={HOTEL_DEL_LAGO_TOURNAMENT.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cta-sm w-full text-center text-[10px] tracking-[0.16em]"
+                >
+                  {HOTEL_DEL_LAGO_TOURNAMENT.registrationCtaLabel}
+                </a>
+                <a
+                  href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime"
+                >
+                  Consultar por WhatsApp
+                </a>
+                <Link
+                  href={HOTEL_DEL_LAGO_TOURNAMENT.path}
+                  className="text-[10px] font-semibold uppercase tracking-[0.14em] text-cream/70 underline-offset-2 transition-colors hover:text-lime hover:underline"
+                >
+                  Ver página del torneo
+                </Link>
+              </div>
             </div>
           </article>
         </div>

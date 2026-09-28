@@ -198,7 +198,7 @@ export default function HomePage() {
 
       <QuizAutonivelacion />
 
-      <FaqSection />
+      <ProximosEventos />
 
       {/* Perfil del Fundador */}
       <section className="relative z-10 border-t border-primary/20 bg-primary px-6 py-20">
@@ -305,39 +305,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ProximosEventos />
-
-      {/* Comunidad del Club */}
-      <section
-        id="comunidad"
-        className="relative z-10 border-t border-brand-blue/10 bg-white px-6 py-16"
-      >
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-2xl border border-brand-blue/10 bg-cream p-6">
-              <h3 className="text-lg font-semibold text-brand-blue">
-                Jornadas de Partidos
-              </h3>
-              <p className="mt-2 text-sm text-brand-blue/70">
-                Nuestros domingos de competencia social. Formato americano para medirte con
-                jugadores de tu nivel en un ambiente relajado.
-              </p>
-            </article>
-
-            <article className="rounded-2xl border border-brand-blue/10 bg-cream p-6">
-              <h3 className="text-lg font-semibold text-brand-blue">
-                Clínicas Especializadas
-              </h3>
-              <p className="mt-2 text-sm text-brand-blue/70">
-                Sesiones intensivas de 2 horas enfocadas en golpes específicos:
-                Saque, Volea o Smash.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <AcademiaTipsLazy />
+
+      <FaqSection />
 
       {/* Ubicación y Contacto */}
       <section

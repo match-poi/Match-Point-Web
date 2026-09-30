@@ -11,16 +11,17 @@ import {
   absoluteUrl
 } from "@/constants/site";
 import { WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL } from "@/constants/whatsapp";
-import { CalendarDays, MapPin, Sparkles } from "lucide-react";
+import { CalendarDays, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 const canonicalUrl = absoluteUrl(HOTEL_DEL_LAGO_TOURNAMENT.path);
 const ogImageUrl = absoluteUrl(OG_IMAGE_PATH);
+const t = HOTEL_DEL_LAGO_TOURNAMENT;
 
 export const metadata: Metadata = {
-  title: HOTEL_DEL_LAGO_TOURNAMENT.metaTitle,
-  description: HOTEL_DEL_LAGO_TOURNAMENT.metaDescription,
+  title: t.metaTitle,
+  description: t.metaDescription,
   alternates: {
     canonical: canonicalUrl
   },
@@ -28,8 +29,8 @@ export const metadata: Metadata = {
     type: "website",
     url: canonicalUrl,
     siteName: SITE_NAME,
-    title: HOTEL_DEL_LAGO_TOURNAMENT.metaTitle,
-    description: HOTEL_DEL_LAGO_TOURNAMENT.metaDescription,
+    title: t.metaTitle,
+    description: t.metaDescription,
     locale: OG_LOCALE,
     images: [
       {
@@ -44,8 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: HOTEL_DEL_LAGO_TOURNAMENT.metaTitle,
-    description: HOTEL_DEL_LAGO_TOURNAMENT.metaDescription,
+    title: t.metaTitle,
+    description: t.metaDescription,
     images: { url: ogImageUrl, alt: OG_IMAGE_ALT }
   }
 };
@@ -63,22 +64,31 @@ export default function TorneoHotelDelLagoPage() {
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
-              Torneo Match Point
+              {t.kicker}
             </p>
-            <h1 className="mt-4 text-balance text-3xl font-semibold text-cream sm:text-4xl md:text-5xl">
-              {HOTEL_DEL_LAGO_TOURNAMENT.pageTitle}
+            <h1 className="mt-4 text-balance text-3xl font-semibold uppercase leading-tight text-cream sm:text-4xl md:text-[2.75rem]">
+              {t.pageHeadline}
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-pretty text-sm leading-relaxed text-cream/85 sm:text-base">
-              {HOTEL_DEL_LAGO_TOURNAMENT.intro}
+            <p className="mt-5 text-lg font-semibold text-lime sm:text-xl">
+              {t.dateVenueLine}
             </p>
-            <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
+            <p className="mx-auto mt-2 text-xs font-medium uppercase tracking-[0.2em] text-cream/75">
+              {t.venueLocality}
+            </p>
+            <p className="mx-auto mt-6 max-w-xl text-pretty text-sm leading-relaxed text-cream/90 sm:text-base">
+              {t.presentation}
+            </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm font-semibold uppercase tracking-[0.12em] text-cream/95 sm:text-[13px]">
+              {t.audienceLine}
+            </p>
+            <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
               <a
-                href={HOTEL_DEL_LAGO_TOURNAMENT.registrationUrl}
+                href={t.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cta text-xs tracking-[0.18em]"
               >
-                {HOTEL_DEL_LAGO_TOURNAMENT.registrationCtaLabel}
+                {t.registrationCtaLabel}
               </a>
               <a
                 href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
@@ -101,7 +111,7 @@ export default function TorneoHotelDelLagoPage() {
         </section>
 
         <section className="relative z-10 px-6 py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-6xl space-y-8">
             <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-primary px-6 py-10 text-center shadow-lg sm:px-10 sm:py-14">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(241,254,159,0.14),transparent_55%)]"
@@ -116,7 +126,7 @@ export default function TorneoHotelDelLagoPage() {
                     Fecha
                   </p>
                   <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl md:text-4xl">
-                    {HOTEL_DEL_LAGO_TOURNAMENT.displayDates}
+                    {t.displayDates}
                   </p>
                 </div>
 
@@ -128,32 +138,49 @@ export default function TorneoHotelDelLagoPage() {
                     Sede
                   </p>
                   <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl">
-                    {HOTEL_DEL_LAGO_TOURNAMENT.venueName}
+                    {t.venueName}
                   </p>
                   <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-cream/80">
-                    {HOTEL_DEL_LAGO_TOURNAMENT.venueLocality}
+                    {t.venueLocality}
                   </p>
                 </div>
               </div>
             </div>
 
-            <article className="mt-8 rounded-2xl border border-brand-blue/15 bg-white p-6 text-center shadow-sm sm:p-8">
-              <div className="mx-auto flex max-w-lg flex-col items-center gap-3">
-                <Sparkles className="h-5 w-5 text-accent" aria-hidden="true" />
-                <p className="text-sm leading-relaxed text-brand-blue/80 sm:text-base">
-                  {HOTEL_DEL_LAGO_TOURNAMENT.categoriesFormatPendingCopy}
-                </p>
+            <article className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10">
+              <div className="space-y-2 text-center">
+                <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl">
+                  {t.weekendSectionTitle}
+                </h2>
               </div>
+
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {t.weekendBlocks.map((block) => (
+                  <li
+                    key={block.title}
+                    className="rounded-xl border border-brand-blue/10 bg-cream/60 p-5 text-left"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                      {block.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">{block.body}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="border-t border-brand-blue/10 pt-6 text-center text-sm leading-relaxed text-brand-blue/85 sm:text-base">
+                {t.closingParagraph}
+              </p>
             </article>
 
-            <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
               <a
-                href={HOTEL_DEL_LAGO_TOURNAMENT.registrationUrl}
+                href={t.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cta text-xs tracking-[0.18em]"
               >
-                {HOTEL_DEL_LAGO_TOURNAMENT.registrationCtaLabel}
+                {t.registrationCtaLabel}
               </a>
               <a
                 href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}

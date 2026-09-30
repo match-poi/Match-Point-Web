@@ -85,17 +85,17 @@ export default function ProximosEventos() {
                   Inscripciones abiertas
                 </span>
               </div>
-              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-lime">
-                Torneo Match Point
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lime">
+                {HOTEL_DEL_LAGO_TOURNAMENT.kicker}
               </p>
-              <p className="text-2xl font-semibold text-cream sm:text-3xl md:text-4xl">
-                {HOTEL_DEL_LAGO_TOURNAMENT.displayDates.replace(" de 2026", "")}
+              <p className="max-w-lg text-balance text-lg font-semibold uppercase leading-snug text-cream sm:text-xl">
+                {HOTEL_DEL_LAGO_TOURNAMENT.tagline}
               </p>
-              <p className="text-sm font-medium uppercase tracking-[0.22em] text-cream/85">
-                {HOTEL_DEL_LAGO_TOURNAMENT.venueDisplay}
+              <p className="text-base font-semibold text-lime sm:text-lg">
+                {HOTEL_DEL_LAGO_TOURNAMENT.dateVenueShort}
               </p>
-              <p className="max-w-md text-xs leading-relaxed text-cream/60">
-                Categorías y formato del torneo — próximamente en la web.
+              <p className="max-w-md text-sm leading-relaxed text-cream/80">
+                {HOTEL_DEL_LAGO_TOURNAMENT.cardTeaser}
               </p>
               <div className="mt-1 flex w-full max-w-sm flex-col gap-2.5">
                 <a

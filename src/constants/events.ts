@@ -19,6 +19,32 @@ export type HotelDelLagoWeekendBlock = {
   body: string;
 };
 
+/** Tarifa de inscripción (monto en pesos uruguayos, sin símbolo). */
+export type HotelDelLagoPricingItem = {
+  label: string;
+  amountUyu: number;
+};
+
+/** Inscripción y precios — torneo Hotel del Lago. */
+export type HotelDelLagoTournamentPricing = {
+  sectionTitle: string;
+  earlyBirdHeading: string;
+  earlyBirdDeadline: string;
+  socialCategoriesHeading: string;
+  socialTiers: readonly HotelDelLagoPricingItem[];
+  primeraHeading: string;
+  primeraRegistration: HotelDelLagoPricingItem;
+  primeraEarlyBirdNote: string;
+  clarifications: readonly string[];
+};
+
+/** Formato $X.XXX (punto de miles) para montos en UYU. */
+export function formatHotelDelLagoPriceUyu(amountUyu: number): string {
+  const digits = Math.round(amountUyu).toString();
+  const withThousands = digits.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return `$${withThousands}`;
+}
+
 /** Torneo Match Point — Hotel del Lago (Punta del Este). */
 export const HOTEL_DEL_LAGO_TOURNAMENT = {
   path: "/torneo-hotel-del-lago/",
@@ -42,6 +68,25 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
   presentation:
     "Te invitamos a cerrar el año compartiendo cancha con quienes te cruzaste durante el año y con jugadores de otros clubes, para disfrutar de este deporte que tanto nos gusta.",
   audienceLine: "Todos los niveles · Todos los clubes · Todos los profes",
+  pricing: {
+    sectionTitle: "Inscripción y precios",
+    earlyBirdHeading: "Inscripción anticipada",
+    earlyBirdDeadline: "Hasta el 31 de octubre de 2026",
+    socialCategoriesHeading: "Categorías sociales",
+    socialTiers: [
+      { label: "Una categoría", amountUyu: 1300 },
+      { label: "Dos categorías", amountUyu: 2500 }
+    ],
+    primeraHeading: "Primera categoría",
+    primeraRegistration: { label: "Inscripción", amountUyu: 1600 },
+    primeraEarlyBirdNote:
+      "La tarifa anticipada de las categorías sociales no aplica a Primera.",
+    clarifications: [
+      "En dobles, el importe es por persona.",
+      "La inscripción se confirma al completar el formulario, realizar el pago y adjuntar el comprobante.",
+      "Consultá por WhatsApp los valores y condiciones de las actividades del hotel."
+    ]
+  } satisfies HotelDelLagoTournamentPricing,
   weekendSectionTitle: "Un fin de semana para compartir",
   weekendBlocks: [
     {

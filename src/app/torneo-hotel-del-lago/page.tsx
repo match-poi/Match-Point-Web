@@ -1,6 +1,9 @@
 import SiteFooterBanner from "@/components/SiteFooterBanner";
 import SiteTopBanner from "@/components/SiteTopBanner";
-import { HOTEL_DEL_LAGO_TOURNAMENT } from "@/constants/events";
+import {
+  formatHotelDelLagoPriceUyu,
+  HOTEL_DEL_LAGO_TOURNAMENT
+} from "@/constants/events";
 import {
   OG_IMAGE_ALT,
   OG_IMAGE_HEIGHT,
@@ -112,6 +115,85 @@ export default function TorneoHotelDelLagoPage() {
 
         <section className="relative z-10 px-6 py-12 sm:py-16">
           <div className="mx-auto max-w-6xl space-y-8">
+            <article
+              id="inscripcion-y-precios"
+              className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10"
+              aria-labelledby="inscripcion-y-precios-heading"
+            >
+              <div className="space-y-2 text-center">
+                <h2
+                  id="inscripcion-y-precios-heading"
+                  className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl"
+                >
+                  {t.pricing.sectionTitle}
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="rounded-xl border border-primary/20 bg-cream/60 p-5 sm:p-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                    {t.pricing.earlyBirdHeading}
+                  </p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-blue/80">
+                    {t.pricing.earlyBirdDeadline}
+                  </p>
+                  <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue/70">
+                    {t.pricing.socialCategoriesHeading}
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand-blue/90">
+                    {t.pricing.socialTiers.map((tier) => (
+                      <li key={tier.label} className="flex flex-wrap items-baseline gap-x-2">
+                        <span>{tier.label}:</span>
+                        <span className="font-semibold text-brand-blue">
+                          {formatHotelDelLagoPriceUyu(tier.amountUyu)} por persona.
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-xl border border-brand-blue/10 bg-white p-5 sm:p-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                    {t.pricing.primeraHeading}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-brand-blue/90">
+                    <span>{t.pricing.primeraRegistration.label}: </span>
+                    <span className="font-semibold text-brand-blue">
+                      {formatHotelDelLagoPriceUyu(t.pricing.primeraRegistration.amountUyu)} por
+                      jugador.
+                    </span>
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">
+                    {t.pricing.primeraEarlyBirdNote}
+                  </p>
+                </div>
+
+                <div className="border-t border-brand-blue/10 pt-6">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue/70">
+                    Aclaraciones
+                  </p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-brand-blue/85">
+                    {t.pricing.clarifications.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="flex justify-center border-t border-brand-blue/10 pt-6">
+                <a
+                  href={t.registrationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-cta text-xs tracking-[0.18em]"
+                >
+                  {t.registrationCtaLabel}
+                </a>
+              </div>
+            </article>
+
+
+
             <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-primary px-6 py-10 text-center shadow-lg sm:px-10 sm:py-14">
               <div
                 className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(241,254,159,0.14),transparent_55%)]"

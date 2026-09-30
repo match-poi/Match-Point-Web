@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function ProximosEventos() {
   return (
-    <section id="eventos" className="border-t border-brand-blue/10 bg-cream px-6 py-20">
+    <section id="eventos" className="border-t border-brand-blue/10 bg-cream px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl space-y-10">
         <header className="space-y-3 text-center">
           <p className="section-label">Social & Eventos</p>
@@ -78,23 +78,26 @@ export default function ProximosEventos() {
               Eventazo
             </p>
 
-            <div className="relative z-[1] flex min-h-[220px] flex-col items-center justify-center gap-4 lg:min-h-[260px]">
+            <div className="relative z-[1] flex min-h-[220px] w-full flex-col items-center justify-center gap-3 lg:min-h-[260px] lg:gap-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lime">
+                {HOTEL_DEL_LAGO_TOURNAMENT.kicker}
+              </p>
+              <h3 className="max-w-lg text-balance text-[clamp(1.0625rem,4.2vw,1.375rem)] font-semibold uppercase leading-[1.2] text-cream">
+                {HOTEL_DEL_LAGO_TOURNAMENT.tagline}
+              </h3>
+              <p className="text-base font-semibold text-lime sm:text-lg">
+                {HOTEL_DEL_LAGO_TOURNAMENT.displayDates}
+              </p>
+              <p className="text-base font-medium text-cream/90">
+                {HOTEL_DEL_LAGO_TOURNAMENT.venueDisplay}
+              </p>
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <Sparkles className="h-5 w-5 text-lime/80" aria-hidden="true" />
                 <span className="rounded-full bg-lime px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
                   Inscripciones abiertas
                 </span>
               </div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-lime">
-                {HOTEL_DEL_LAGO_TOURNAMENT.kicker}
-              </p>
-              <p className="max-w-lg text-balance text-lg font-semibold uppercase leading-snug text-cream sm:text-xl">
-                {HOTEL_DEL_LAGO_TOURNAMENT.tagline}
-              </p>
-              <p className="text-base font-semibold text-lime sm:text-lg">
-                {HOTEL_DEL_LAGO_TOURNAMENT.dateVenueShort}
-              </p>
-              <p className="max-w-md text-sm leading-relaxed text-cream/80">
+              <p className="max-w-md text-base leading-relaxed text-cream/80">
                 {HOTEL_DEL_LAGO_TOURNAMENT.cardTeaser}
               </p>
               <div className="mt-1 flex w-full max-w-sm flex-col gap-2.5">
@@ -110,7 +113,7 @@ export default function ProximosEventos() {
                   href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime"
+                  className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime"
                 >
                   Consultar por WhatsApp
                 </a>

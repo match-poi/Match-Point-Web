@@ -69,7 +69,7 @@ export default function TorneoHotelDelLagoPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-lime">
               {t.kicker}
             </p>
-            <h1 className="mt-4 text-balance text-3xl font-semibold uppercase leading-tight text-cream sm:text-4xl md:text-[2.75rem]">
+            <h1 className="mt-4 text-balance text-[clamp(1.375rem,5.5vw,2.75rem)] font-semibold uppercase leading-[1.15] text-cream">
               {t.pageHeadline}
             </h1>
             <p className="mt-5 text-lg font-semibold text-lime sm:text-xl">
@@ -78,18 +78,18 @@ export default function TorneoHotelDelLagoPage() {
             <p className="mx-auto mt-2 text-xs font-medium uppercase tracking-[0.2em] text-cream/75">
               {t.venueLocality}
             </p>
-            <p className="mx-auto mt-6 max-w-xl text-pretty text-sm leading-relaxed text-cream/90 sm:text-base">
+            <p className="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-cream/90">
               {t.presentation}
             </p>
-            <p className="mx-auto mt-4 max-w-xl text-sm font-semibold uppercase tracking-[0.12em] text-cream/95 sm:text-[13px]">
+            <p className="mx-auto mt-4 max-w-xl text-base font-semibold uppercase tracking-[0.1em] text-cream/95 sm:tracking-[0.12em]">
               {t.audienceLine}
             </p>
-            <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:items-center sm:justify-center">
+            <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mx-auto sm:max-w-lg sm:flex-row sm:items-center sm:justify-center">
               <a
                 href={t.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-cta text-xs tracking-[0.18em]"
+                className="btn-cta min-h-11 w-full text-xs tracking-[0.18em] sm:w-auto"
               >
                 {t.registrationCtaLabel}
               </a>
@@ -97,7 +97,7 @@ export default function TorneoHotelDelLagoPage() {
                 href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-8 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-8 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:w-auto"
               >
                 Consultar por WhatsApp
               </a>
@@ -113,7 +113,7 @@ export default function TorneoHotelDelLagoPage() {
           </div>
         </section>
 
-        <section className="relative z-10 px-6 py-12 sm:py-16">
+        <section className="relative z-10 px-4 py-12 sm:px-6 sm:py-16">
           <div className="mx-auto max-w-6xl space-y-8">
             <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-primary px-6 py-10 text-center shadow-lg sm:px-10 sm:py-14">
               <div
@@ -157,7 +157,7 @@ export default function TorneoHotelDelLagoPage() {
                 </h2>
               </div>
 
-              <ul className="grid gap-4 sm:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {t.weekendBlocks.map((block) => (
                   <li
                     key={block.title}
@@ -166,13 +166,31 @@ export default function TorneoHotelDelLagoPage() {
                     <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
                       {block.title}
                     </p>
-                    <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">{block.body}</p>
+                    <p className="mt-3 text-base leading-relaxed text-brand-blue/85">{block.body}</p>
                   </li>
                 ))}
               </ul>
 
-              <p className="border-t border-brand-blue/10 pt-6 text-center text-sm leading-relaxed text-brand-blue/85 sm:text-base">
+              <p className="border-t border-brand-blue/10 pt-6 text-center text-base leading-relaxed text-brand-blue/85">
                 {t.closingParagraph}
+              </p>
+            </article>
+
+            <article
+              id="experiencia-hotel"
+              className="mx-auto max-w-3xl space-y-4 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:space-y-5 sm:p-10"
+              aria-labelledby="experiencia-hotel-heading"
+            >
+              <div className="space-y-2 text-center">
+                <h2
+                  id="experiencia-hotel-heading"
+                  className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl"
+                >
+                  {t.hotelExperience.sectionTitle}
+                </h2>
+              </div>
+              <p className="text-center text-base leading-relaxed text-brand-blue/85">
+                {t.hotelExperience.body}
               </p>
             </article>
 
@@ -201,7 +219,7 @@ export default function TorneoHotelDelLagoPage() {
                   <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-blue/70">
                     {t.pricing.socialCategoriesHeading}
                   </p>
-                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand-blue/90">
+                  <ul className="mt-3 space-y-2 text-base leading-relaxed text-brand-blue/90">
                     {t.pricing.socialTiers.map((tier) => (
                       <li key={tier.label} className="flex flex-wrap items-baseline gap-x-2">
                         <span>{tier.label}:</span>
@@ -217,14 +235,17 @@ export default function TorneoHotelDelLagoPage() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
                     {t.pricing.primeraHeading}
                   </p>
-                  <p className="mt-3 text-sm leading-relaxed text-brand-blue/90">
+                  <p className="mt-3 text-base leading-relaxed text-brand-blue/90">
                     <span>{t.pricing.primeraRegistration.label}: </span>
                     <span className="font-semibold text-brand-blue">
                       {formatHotelDelLagoPriceUyu(t.pricing.primeraRegistration.amountUyu)} por
                       jugador.
                     </span>
                   </p>
-                  <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">
+                  <p className="mt-3 text-base leading-relaxed text-brand-blue/90">
+                    {t.pricing.primeraPrizeMoneyNote}
+                  </p>
+                  <p className="mt-3 text-base leading-relaxed text-brand-blue/85">
                     {t.pricing.primeraEarlyBirdNote}
                   </p>
                 </div>
@@ -233,7 +254,7 @@ export default function TorneoHotelDelLagoPage() {
                   <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-blue/70">
                     Aclaraciones
                   </p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-brand-blue/85">
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed text-brand-blue/85">
                     {t.pricing.clarifications.map((note) => (
                       <li key={note}>{note}</li>
                     ))}
@@ -246,7 +267,7 @@ export default function TorneoHotelDelLagoPage() {
                   href={t.registrationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-cta text-xs tracking-[0.18em]"
+                  className="btn-cta min-h-11 w-full text-xs tracking-[0.18em] sm:w-auto"
                 >
                   {t.registrationCtaLabel}
                 </a>
@@ -258,7 +279,7 @@ export default function TorneoHotelDelLagoPage() {
                 href={t.registrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-cta text-xs tracking-[0.18em]"
+                className="btn-cta min-h-11 w-full text-xs tracking-[0.18em] sm:w-auto"
               >
                 {t.registrationCtaLabel}
               </a>
@@ -266,7 +287,7 @@ export default function TorneoHotelDelLagoPage() {
                 href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary text-xs tracking-[0.16em]"
+                className="btn-secondary min-h-11 w-full text-xs tracking-[0.16em] sm:w-auto"
               >
                 Consultar por WhatsApp
               </a>

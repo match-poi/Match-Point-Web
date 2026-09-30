@@ -34,8 +34,15 @@ export type HotelDelLagoTournamentPricing = {
   socialTiers: readonly HotelDelLagoPricingItem[];
   primeraHeading: string;
   primeraRegistration: HotelDelLagoPricingItem;
+  primeraPrizeMoneyNote: string;
   primeraEarlyBirdNote: string;
   clarifications: readonly string[];
+};
+
+/** Bloque informativo — actividades del hotel (no incluidas en inscripción). */
+export type HotelDelLagoHotelExperience = {
+  sectionTitle: string;
+  body: string;
 };
 
 /** Formato $X.XXX (punto de miles) para montos en UYU. */
@@ -79,6 +86,7 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
     ],
     primeraHeading: "Primera categoría",
     primeraRegistration: { label: "Inscripción", amountUyu: 1600 },
+    primeraPrizeMoneyNote: "US$1.000 de prize money total.",
     primeraEarlyBirdNote:
       "La tarifa anticipada de las categorías sociales no aplica a Primera.",
     clarifications: [
@@ -108,6 +116,10 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
   ] satisfies readonly HotelDelLagoWeekendBlock[],
   closingParagraph:
     "Dos días de tenis para jugadores de todos los niveles, clubes y profes. Vení a competir, encontrarte con gente de otras canchas y cerrar el año haciendo lo que más nos gusta.",
+  hotelExperience: {
+    sectionTitle: "Experiencia en el hotel",
+    body: "La estadía, el sunset, la barbacoa y el fogón se contratan por separado y no están incluidos en la inscripción al torneo. Próximamente comunicaremos sus precios y los beneficios para quienes participen del torneo."
+  } satisfies HotelDelLagoHotelExperience,
   /** Texto breve en la tarjeta de #eventos. */
   cardTeaser: "Tenis, sunset, barbacoa y fogón"
 } as const;

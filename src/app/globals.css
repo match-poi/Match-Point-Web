@@ -11,15 +11,36 @@
   --yellow: 255 222 89;
 }
 
+html {
+  scroll-padding-top: 7.5rem;
+}
+
 html,
 body {
   height: 100%;
   scroll-behavior: smooth;
 }
 
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 8.5rem;
+  }
+}
+
+main [id] {
+  scroll-margin-top: 7.5rem;
+}
+
+@media (min-width: 640px) {
+  main [id] {
+    scroll-margin-top: 8.5rem;
+  }
+}
+
 body {
   background: #f5f7e8;
   color: #143559;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -29,11 +50,11 @@ body {
 
 @layer components {
   .btn-cta {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-sm font-extrabold uppercase tracking-[0.18em] text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
   }
 
   .btn-cta-sm {
-    @apply inline-flex cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg;
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg;
   }
 
   .btn-secondary {

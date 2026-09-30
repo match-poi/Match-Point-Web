@@ -115,6 +115,67 @@ export default function TorneoHotelDelLagoPage() {
 
         <section className="relative z-10 px-6 py-12 sm:py-16">
           <div className="mx-auto max-w-6xl space-y-8">
+            <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-primary px-6 py-10 text-center shadow-lg sm:px-10 sm:py-14">
+              <div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(241,254,159,0.14),transparent_55%)]"
+                aria-hidden
+              />
+              <div className="relative z-[1] grid gap-10 md:grid-cols-2 md:gap-8 md:text-left">
+                <div className="flex flex-col items-center md:items-start">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-lime/20 text-lime">
+                    <CalendarDays className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-lime">
+                    Fecha
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl md:text-4xl">
+                    {t.displayDates}
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-center border-t border-cream/15 pt-10 md:items-start md:border-l md:border-t-0 md:pl-10 md:pt-0">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-lime/20 text-lime">
+                    <MapPin className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-lime">
+                    Sede
+                  </p>
+                  <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl">
+                    {t.venueName}
+                  </p>
+                  <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-cream/80">
+                    {t.venueLocality}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <article className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10">
+              <div className="space-y-2 text-center">
+                <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl">
+                  {t.weekendSectionTitle}
+                </h2>
+              </div>
+
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {t.weekendBlocks.map((block) => (
+                  <li
+                    key={block.title}
+                    className="rounded-xl border border-brand-blue/10 bg-cream/60 p-5 text-left"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                      {block.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">{block.body}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="border-t border-brand-blue/10 pt-6 text-center text-sm leading-relaxed text-brand-blue/85 sm:text-base">
+                {t.closingParagraph}
+              </p>
+            </article>
+
             <article
               id="inscripcion-y-precios"
               className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10"
@@ -190,69 +251,6 @@ export default function TorneoHotelDelLagoPage() {
                   {t.registrationCtaLabel}
                 </a>
               </div>
-            </article>
-
-
-
-            <div className="relative overflow-hidden rounded-3xl border border-primary/25 bg-primary px-6 py-10 text-center shadow-lg sm:px-10 sm:py-14">
-              <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(241,254,159,0.14),transparent_55%)]"
-                aria-hidden
-              />
-              <div className="relative z-[1] grid gap-10 md:grid-cols-2 md:gap-8 md:text-left">
-                <div className="flex flex-col items-center md:items-start">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-lime/20 text-lime">
-                    <CalendarDays className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-lime">
-                    Fecha
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl md:text-4xl">
-                    {t.displayDates}
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center border-t border-cream/15 pt-10 md:items-start md:border-l md:border-t-0 md:pl-10 md:pt-0">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-lime/20 text-lime">
-                    <MapPin className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.32em] text-lime">
-                    Sede
-                  </p>
-                  <p className="mt-2 text-2xl font-semibold text-cream sm:text-3xl">
-                    {t.venueName}
-                  </p>
-                  <p className="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-cream/80">
-                    {t.venueLocality}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <article className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10">
-              <div className="space-y-2 text-center">
-                <h2 className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl">
-                  {t.weekendSectionTitle}
-                </h2>
-              </div>
-
-              <ul className="grid gap-4 sm:grid-cols-2">
-                {t.weekendBlocks.map((block) => (
-                  <li
-                    key={block.title}
-                    className="rounded-xl border border-brand-blue/10 bg-cream/60 p-5 text-left"
-                  >
-                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
-                      {block.title}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-brand-blue/85">{block.body}</p>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="border-t border-brand-blue/10 pt-6 text-center text-sm leading-relaxed text-brand-blue/85 sm:text-base">
-                {t.closingParagraph}
-              </p>
             </article>
 
             <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">

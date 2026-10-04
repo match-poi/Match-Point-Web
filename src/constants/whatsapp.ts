@@ -83,6 +83,39 @@ export const WHATSAPP_ALQUILER_CANCHA_URL = createWhatsAppUrl(
   WHATSAPP_ALQUILER_CANCHA_MESSAGE
 );
 
+export type AlquilerHorarioInquiry = {
+  dateIso: string;
+  time: string;
+  endTime?: string;
+  notes?: string;
+};
+
+function formatCalendarDateForWhatsApp(dateIso: string): string {
+  const [year, month, day] = dateIso.split("-");
+  if (!year || !month || !day) return dateIso;
+  return `${day}/${month}/${year}`;
+}
+
+/** Solicitud de horario desde el formulario de alquiler (sin confirmar disponibilidad). */
+export function whatsAppAlquilerHorarioUrl(inquiry: AlquilerHorarioInquiry): string {
+  const dateLabel = formatCalendarDateForWhatsApp(inquiry.dateIso.trim());
+  const timeLabel = inquiry.time.trim();
+  let message = `Hola, quiero consultar alquiler de cancha para el ${dateLabel} a las ${timeLabel}.`;
+
+  const endTime = inquiry.endTime?.trim();
+  if (endTime) {
+    message += ` Hasta las ${endTime}.`;
+  }
+
+  const notes = inquiry.notes?.trim();
+  if (notes) {
+    message += ` Notas: ${notes}.`;
+  }
+
+  message += " ¿Está disponible ese horario?";
+  return createWhatsAppUrl(message);
+}
+
 export const WHATSAPP_RESERVAR_EVENTO_URL = createWhatsAppUrl(
   openTrainingEventWhatsAppMessage()
 );

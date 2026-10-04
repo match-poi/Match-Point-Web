@@ -8,7 +8,6 @@ import {
   SERVICES_UYU_DISCLAIMER
 } from "@/constants/services";
 import {
-  WHATSAPP_ALQUILER_CANCHA_URL,
   WHATSAPP_CLASES_PARTICULARES_URL,
   whatsAppClasesGrupalesUrl
 } from "@/constants/whatsapp";
@@ -17,6 +16,12 @@ import {
   QUIZ_LEVEL_UPDATED_EVENT,
   readQuizLevelFromSession
 } from "@/constants/quiz-session";
+import {
+  FeatureList,
+  PriceLine,
+  ServiceCardEyebrow
+} from "@/components/ServicePricingBlocks";
+import Link from "next/link";
 import { useSyncExternalStore } from "react";
 
 function subscribeQuizLevel(onStoreChange: () => void) {
@@ -38,54 +43,6 @@ function getQuizLevelSnapshot(): string | null {
 
 function getQuizLevelServerSnapshot(): string | null {
   return null;
-}
-
-function FeatureList({ items }: { items: readonly string[] }) {
-  return (
-    <ul className="mt-4 space-y-2 text-sm leading-relaxed text-brand-blue/80">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-2">
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function PriceLine({
-  label,
-  amount,
-  suffix,
-  note
-}: {
-  label: string;
-  amount: string;
-  suffix?: string;
-  note?: string;
-}) {
-  return (
-    <li className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-brand-blue/10 py-2.5 last:border-b-0">
-      <span className="text-sm font-medium text-brand-blue">{label}</span>
-      <span className="text-right">
-        <span className="text-lg font-bold tabular-nums text-brand-blue">{amount}</span>
-        {suffix ? (
-          <span className="ml-0.5 text-sm font-medium text-brand-blue/70">{suffix}</span>
-        ) : null}
-        {note ? (
-          <span className="mt-0.5 block text-xs font-medium text-brand-blue/60">{note}</span>
-        ) : null}
-      </span>
-    </li>
-  );
-}
-
-function ServiceCardEyebrow({ children }: { children: string }) {
-  return (
-    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-blue/60">
-      {children}
-    </p>
-  );
 }
 
 export default function ClasesYServiciosSection() {
@@ -156,14 +113,22 @@ export default function ClasesYServiciosSection() {
 
             <FeatureList items={CLASES_GRUPALES.details} />
 
-            <a
-              href={gruposUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-normal mt-6 w-full text-center"
-            >
-              {CLASES_GRUPALES.ctaLabel}
-            </a>
+            <div className="mt-6 flex flex-col gap-2">
+              <a
+                href={gruposUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-cta-normal w-full text-center"
+              >
+                {CLASES_GRUPALES.ctaLabel}
+              </a>
+              <Link
+                href="/clases-de-tenis/#grupales"
+                className="text-center text-xs font-semibold text-brand-blue/70 underline-offset-2 hover:text-primary hover:underline"
+              >
+                Ver detalle de clases grupales
+              </Link>
+            </div>
           </article>
 
           <article className="card-light flex flex-col">
@@ -214,14 +179,22 @@ export default function ClasesYServiciosSection() {
               </p>
             </div>
 
-            <a
-              href={WHATSAPP_CLASES_PARTICULARES_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-normal mt-6 w-full text-center"
-            >
-              {CLASES_PARTICULARES.ctaLabel}
-            </a>
+            <div className="mt-6 flex flex-col gap-2">
+              <a
+                href={WHATSAPP_CLASES_PARTICULARES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-cta-normal w-full text-center"
+              >
+                {CLASES_PARTICULARES.ctaLabel}
+              </a>
+              <Link
+                href="/clases-de-tenis/#particulares"
+                className="text-center text-xs font-semibold text-brand-blue/70 underline-offset-2 hover:text-primary hover:underline"
+              >
+                Ver detalle de clases particulares
+              </Link>
+            </div>
           </article>
 
           <article
@@ -240,14 +213,20 @@ export default function ClasesYServiciosSection() {
 
             <FeatureList items={ALQUILER_CANCHA.details} />
 
-            <a
-              href={WHATSAPP_ALQUILER_CANCHA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-cta-normal mt-6 w-full text-center"
-            >
-              {ALQUILER_CANCHA.ctaLabel}
-            </a>
+            <div className="mt-6 flex flex-col gap-2">
+              <Link
+                href="/alquiler-de-cancha/"
+                className="btn-cta-normal w-full text-center"
+              >
+                {ALQUILER_CANCHA.ctaLabel}
+              </Link>
+              <Link
+                href="/alquiler-de-cancha/"
+                className="text-center text-xs font-semibold text-brand-blue/70 underline-offset-2 hover:text-primary hover:underline"
+              >
+                Ver tarifas y solicitar horario
+              </Link>
+            </div>
           </article>
         </div>
 

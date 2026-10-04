@@ -25,14 +25,14 @@ export const HOME_ACCESOS = [
     id: "clases",
     title: "Clases de tenis",
     description: "Grupos fijos y clases particulares para todos los niveles.",
-    href: "/#servicios",
+    href: "/clases-de-tenis/",
     ctaLabel: "Ver clases"
   },
   {
     id: "alquiler",
     title: "Alquiler de cancha",
     description: "Reservá turno en nuestra cancha de polvo de ladrillo en Carrasco.",
-    href: "/#alquiler",
+    href: "/alquiler-de-cancha/",
     ctaLabel: "Ver alquiler"
   },
   {

@@ -28,6 +28,40 @@ function openingHoursSpecification() {
   }));
 }
 
+export function buildBreadcrumbListJsonLd(
+  items: { name: string; url?: string }[]
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      ...(item.url ? { item: item.url } : {})
+    }))
+  };
+}
+
+export function buildFaqPageJsonLd(
+  faqs: { question: string; answer: string }[],
+  pageUrl: string
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+}
+
 export function buildStructuredDataGraph(): Record<string, unknown> {
   const organization: Record<string, unknown> = {
     "@type": ["SportsActivityLocation", "LocalBusiness"],

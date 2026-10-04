@@ -35,13 +35,13 @@ export const CLASES_DE_TENIS_PAGE = {
     title: "Cómo empezar",
     items: [
       "Escribinos por WhatsApp contando si buscás grupo fijo o clase particular.",
-      "Hacé el quiz de nivel en la home (orientativo) o contanos tu experiencia.",
+      "Hacé el quiz de nivel en esta página (orientativo) o contanos tu experiencia.",
       "Un profesor confirma tu nivel, cupos y horarios antes de tu primera clase."
     ]
   },
   galleryHeading: "Entrenamiento en la cancha",
   quizCta:
-    "¿No estás seguro de tu nivel? Hacé el quiz orientativo en la home y un profesor lo confirma antes de asignarte un grupo."
+    "¿No estás seguro de tu nivel? Hacé el quiz orientativo más abajo y un profesor lo confirma antes de asignarte un grupo."
 } as const;
 
 /** FAQ solo de esta página (duración, edades, niveles, cuponeras). */
@@ -59,7 +59,7 @@ export const CLASES_DE_TENIS_FAQS: FaqItem[] = [
   {
     question: "¿Qué niveles aceptan?",
     answer:
-      "Todos los niveles, desde quien nunca tomó una raqueta hasta jugadores avanzados. El quiz de la home es orientativo; un profesor confirma tu nivel antes de ubicarte en un grupo."
+      "Todos los niveles, desde quien nunca tomó una raqueta hasta jugadores avanzados. El quiz de esta página es orientativo; un profesor confirma tu nivel antes de ubicarte en un grupo."
   },
   {
     question: "¿Cómo funcionan las cuponeras de clases particulares?",

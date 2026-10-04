@@ -1,16 +1,68 @@
 "use client";
 
 import BrandWordmark from "@/components/BrandWordmark";
-import { SITE_NAV_LINKS } from "@/constants/navigation";
+import { SITE_MAIN_NAV_LINKS, type SiteNavItem } from "@/constants/navigation";
 import { WHATSAPP_CONSULTAR_CUPOS_URL } from "@/constants/whatsapp";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+function normalizePathname(pathname: string): string {
+  if (pathname === "/") return "/";
+  return pathname.endsWith("/") ? pathname : `${pathname}/`;
+}
+
+function isNavLinkCurrent(
+  link: SiteNavItem,
+  pathname: string,
+  homeHash: string
+): boolean {
+  const normalized = normalizePathname(pathname);
+  if (link.activePath) {
+    return normalized === link.activePath;
+  }
+  if (link.homeFragment && normalized === "/") {
+    return homeHash === link.homeFragment;
+  }
+  return false;
+}
 
 export default function SiteTopBanner() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [homeHash, setHomeHash] = useState("");
+  const pathname = usePathname();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    const readHash = () => setHomeHash(window.location.hash.replace(/^#/, ""));
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    const firstFocusable = mobileNavRef.current?.querySelector<HTMLElement>(
+      "a[href], button:not([disabled])"
+    );
+    firstFocusable?.focus();
+
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen, closeMenu]);
 
   return (
     <header className="site-chrome-primary sticky top-0 z-50 isolate border-b border-cream/10 shadow-sm">
@@ -29,6 +81,7 @@ export default function SiteTopBanner() {
               />
             </Link>
             <button
+              ref={menuButtonRef}
               type="button"
               className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full border border-cream/35 bg-cream/5 text-cream transition-colors hover:border-lime hover:text-lime sm:hidden"
               aria-expanded={menuOpen}
@@ -43,11 +96,19 @@ export default function SiteTopBanner() {
               className="hidden flex-1 flex-wrap items-center justify-center gap-1.5 sm:flex md:gap-2"
               aria-label="Secciones del sitio"
             >
-              {SITE_NAV_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} className="nav-pill-on-primary">
-                  {link.label}
-                </Link>
-              ))}
+              {SITE_MAIN_NAV_LINKS.map((link) => {
+                const current = isNavLinkCurrent(link, pathname, homeHash);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="nav-pill-on-primary"
+                    aria-current={current ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             <a
@@ -62,20 +123,25 @@ export default function SiteTopBanner() {
 
           {menuOpen ? (
             <nav
+              ref={mobileNavRef}
               id="site-mobile-nav"
               className="flex w-full flex-col gap-2 border-t border-cream/15 pt-3 sm:hidden"
               aria-label="Secciones del sitio"
             >
-              {SITE_NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="nav-pill-on-primary inline-flex min-h-11 w-full items-center justify-center text-center"
-                  onClick={closeMenu}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {SITE_MAIN_NAV_LINKS.map((link) => {
+                const current = isNavLinkCurrent(link, pathname, homeHash);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="nav-pill-on-primary inline-flex min-h-11 w-full items-center justify-center text-center"
+                    aria-current={current ? "page" : undefined}
+                    onClick={closeMenu}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
               <a
                 href={WHATSAPP_CONSULTAR_CUPOS_URL}
                 target="_blank"

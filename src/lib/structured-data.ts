@@ -107,7 +107,7 @@ export function buildStructuredDataGraph(): Record<string, unknown> {
         "@type": "Person",
         "@id": FOUNDER_ID,
         name: "Lic. Mario Tomczuk",
-        jobTitle: "Fundador y Director · Certificación ITF 2026",
+        jobTitle: "Fundador y Director · Certificación ITF Nivel 1 · 2026",
         worksFor: { "@id": ORGANIZATION_ID },
         image: FOUNDER_PHOTO
       },

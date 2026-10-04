@@ -108,7 +108,7 @@ export const HOME_NIVELES = {
 export const HOME_FOUNDER = {
   badge: "Fundador & Director",
   headline: "Lic. Mario Tomczuk",
-  certification: "Certificación ITF · 2026",
+  certification: "Certificación ITF Nivel 1 · 2026",
   lead:
     "Entrenador y fundador de Match Point Club. Creé este espacio para que el tenis sea técnica y pertenencia: entrenás, competís y crecés con otros jugadores en Carrasco.",
   professional:

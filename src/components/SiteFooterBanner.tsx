@@ -2,7 +2,11 @@ import BrandWordmark from "@/components/BrandWordmark";
 import SiteChromeWatermark from "@/components/SiteChromeWatermark";
 import { Instagram } from "lucide-react";
 import Link from "next/link";
-import { SITE_FOOTER_SERVICE_LINKS, SITE_NAV_LINKS } from "@/constants/navigation";
+import {
+  SITE_FOOTER_SECTION_LINKS,
+  SITE_FOOTER_SERVICE_LINKS,
+  SITE_MAIN_NAV_LINKS
+} from "@/constants/navigation";
 import { INSTAGRAM_FOOTER_URL } from "@/constants/social";
 import { WHATSAPP_CTA_URL, WHATSAPP_DISPLAY_NUMBER } from "@/constants/whatsapp";
 
@@ -54,13 +58,22 @@ export default function SiteFooterBanner() {
             >
               Inicio
             </Link>
-            {SITE_NAV_LINKS.map((link) => (
+            {SITE_MAIN_NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue/80 transition-colors hover:text-primary"
               >
-                {link.label === "FAQ" ? "Preguntas frecuentes" : link.label}
+                {link.label}
+              </Link>
+            ))}
+            {SITE_FOOTER_SECTION_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue/80 transition-colors hover:text-primary"
+              >
+                {link.label}
               </Link>
             ))}
             {SITE_FOOTER_SERVICE_LINKS.map((link) => (

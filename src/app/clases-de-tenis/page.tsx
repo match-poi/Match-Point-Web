@@ -6,6 +6,7 @@ import {
   PriceLine,
   ServiceCardEyebrow
 } from "@/components/ServicePricingBlocks";
+import QuizAutonivelacion from "@/components/QuizAutonivelacion";
 import SiteFooterBanner from "@/components/SiteFooterBanner";
 import SiteTopBanner from "@/components/SiteTopBanner";
 import {
@@ -129,6 +130,22 @@ export default function ClasesDeTenisPage() {
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-cream/90">
               {page.intro}
             </p>
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <a
+                href={WHATSAPP_CLASES_GRUPALES_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-cta-normal min-h-11 w-full sm:w-auto"
+              >
+                Consultar clases
+              </a>
+              <Link
+                href="#quiz"
+                className="btn-secondary min-h-11 w-full text-center sm:w-auto"
+              >
+                Quiz de nivel
+              </Link>
+            </div>
             <p className="mt-6">
               <Link
                 href="/"
@@ -294,7 +311,7 @@ export default function ClasesDeTenisPage() {
               <p className="mt-6 text-center text-sm leading-relaxed text-brand-blue/75">
                 {page.quizCta}{" "}
                 <Link
-                  href="/#quiz-nivel"
+                  href="#quiz"
                   className="font-semibold text-primary underline-offset-2 hover:underline"
                 >
                   Ir al quiz de nivel
@@ -324,6 +341,8 @@ export default function ClasesDeTenisPage() {
                 ))}
               </ul>
             </section>
+
+            <QuizAutonivelacion sectionId="quiz" />
 
             <article
               id="faq-clases"

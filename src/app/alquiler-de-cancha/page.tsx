@@ -98,6 +98,30 @@ export default function AlquilerDeCanchaPage() {
             <p className="mt-4 text-sm font-semibold uppercase tracking-[0.14em] text-lime">
               {page.locationLine}
             </p>
+            <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <Link
+                href="#solicitar-horario"
+                className="btn-cta-normal min-h-11 w-full sm:w-auto"
+              >
+                Solicitar un horario
+              </Link>
+              <a
+                href={GOOGLE_MAPS_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary min-h-11 w-full text-center sm:w-auto"
+              >
+                Cómo llegar
+              </a>
+              <a
+                href={WHATSAPP_ALQUILER_CANCHA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary min-h-11 w-full text-center text-xs tracking-[0.12em] sm:w-auto"
+              >
+                WhatsApp general
+              </a>
+            </div>
             <p className="mt-6">
               <Link
                 href="/"

@@ -58,7 +58,12 @@ function getRecommendedLevel(answers: number[]): string {
   return "Pre-Principiantes";
 }
 
-export default function QuizAutonivelacion() {
+type QuizAutonivelacionProps = {
+  /** Id del ancla de la sección (home: quiz-nivel, clases: quiz). */
+  sectionId?: string;
+};
+
+export default function QuizAutonivelacion({ sectionId = "quiz-nivel" }: QuizAutonivelacionProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
 
@@ -94,7 +99,7 @@ export default function QuizAutonivelacion() {
 
   return (
     <section
-      id="quiz-nivel"
+      id={sectionId}
       className="scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 pb-20"
     >
       <div className="mx-auto max-w-6xl">

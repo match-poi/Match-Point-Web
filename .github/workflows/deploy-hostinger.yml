@@ -36,7 +36,7 @@ jobs:
           rm -rf "out/_next 2" 2>/dev/null || true
           test -f out/index.html
           ! grep -q 'Conocé el club' out/index.html
-          grep -q 'Conocer el Club' out/index.html
+          grep -q 'Tu club de tenis en Carrasco' out/index.html
           test -f out/robots.txt
           test -f out/sitemap.xml
           test -f out/og-matchpoint.jpg
@@ -91,7 +91,7 @@ jobs:
             robots="$(curl -sfI "https://matchpointmvd.com/robots.txt" | head -1)" || true
             if echo "$html" | grep -q "logo-lockup-green" \
               && echo "$html" | grep -qv "Conocé el club" \
-              && echo "$html" | grep -q "Conocer el Club" \
+              && echo "$html" | grep -q "Tu club de tenis en Carrasco" \
               && echo "$html" | grep -q "og-matchpoint.jpg" \
               && echo "$og" | grep -q "200" \
               && echo "$mario" | grep -q "200" \

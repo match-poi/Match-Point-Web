@@ -1,3 +1,4 @@
+import AccesosPrincipales from "../components/AccesosPrincipales";
 import AcademiaTipsLazy from "../components/AcademiaTipsLazy";
 import SiteFooterBanner from "../components/SiteFooterBanner";
 import SiteTopBanner from "../components/SiteTopBanner";
@@ -5,9 +6,12 @@ import QuizAutonivelacion from "../components/QuizAutonivelacion";
 import FaqSection from "../components/FaqSection";
 import ExperienciaPilares from "../components/ExperienciaPilares";
 import ClasesYServiciosSection from "../components/ClasesYServiciosSection";
+import GalleryMatchPoint from "../components/GalleryMatchPoint";
 import ProximosEventos from "../components/ProximosEventos";
-import { CLUB_INSTAGRAM_REEL_URL, FOUNDER_PHOTO_SRC } from "../constants/club";
+import { FOUNDER_PHOTO_SRC } from "../constants/club";
+import { HOME_HERO } from "../constants/home";
 import {
+  WHATSAPP_CONSULTAR_CLASES_URL,
   WHATSAPP_CONSULTAR_CUPOS_URL,
   WHATSAPP_CTA_URL,
   WHATSAPP_DISPLAY_NUMBER
@@ -32,64 +36,57 @@ export default function HomePage() {
       >
         <div className="max-w-3xl">
           <h1 className="text-balance text-4xl font-extrabold tracking-tight text-brand-blue sm:text-5xl md:text-6xl">
-            Tu club de tenis en Montevideo
+            {HOME_HERO.title}
           </h1>
 
-          <p className="mt-6 max-w-xl text-pretty text-base md:text-lg leading-relaxed text-brand-blue/75">
-            Entrenamiento, competencia y comunidad en un solo lugar.
+          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-brand-blue/75 md:text-lg">
+            {HOME_HERO.description}
           </p>
 
           <div className="relative z-10 mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
-              href={WHATSAPP_CONSULTAR_CUPOS_URL}
+              href={WHATSAPP_CONSULTAR_CLASES_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-cta"
             >
-              Consultar cupos
+              {HOME_HERO.primaryCtaLabel}
             </a>
 
-            <a
-              href={CLUB_INSTAGRAM_REEL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary"
-            >
-              Conocer el Club
+            <a href={HOME_HERO.secondaryCtaHref} className="btn-secondary">
+              {HOME_HERO.secondaryCtaLabel}
             </a>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-6 text-xs text-brand-blue/60">
-            <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Cancha premium · Carrasco
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Torneos y Ranking MP
-            </span>
-            <span className="inline-flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Comunidad activa de jugadores
-            </span>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-brand-blue/65">
+            {HOME_HERO.highlights.map((label) => (
+              <span key={label} className="inline-flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                {label}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Experiencia MatchPoint Club */}
+      <AccesosPrincipales />
+
+      <ClasesYServiciosSection />
+
+      {/* Presentación institucional del club */}
       <section
         id="experiencia"
-        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
+        className="relative z-10 scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
         <div className="mx-auto max-w-6xl space-y-10">
           <header className="space-y-3 text-center">
-            <p className="section-label">Experiencia MatchPoint Club</p>
+            <p className="section-label">El club</p>
             <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">
               Más que una cancha: un ecosistema completo de tenis
             </h2>
-            <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
-              Tocá cada pilar para ver más. Infraestructura, comunidad, competencia y beneficios del
-              club.
+            <p className="mx-auto max-w-2xl text-base text-brand-blue/70">
+              Tocá cada pilar para ampliar el detalle: infraestructura, comunidad, competencia y
+              beneficios del club.
             </p>
           </header>
 
@@ -97,12 +94,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ClasesYServiciosSection />
-
       {/* Tu Camino al Éxito */}
       <section
         id="niveles"
-        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
+        className="relative z-10 scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
         <div className="relative z-10 mx-auto max-w-6xl">
           <header className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -273,35 +268,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Galería compacta tipo carrusel simple */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cream/70">
-                Galería MATCH POINT
-              </p>
-              <div className="flex gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/70">
-                <button
-                  type="button"
-                  className="h-7 w-7 rounded-full border border-cream/30 text-cream transition-all duration-200 hover:border-lime hover:text-lime"
-                  aria-label="Foto anterior"
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  className="h-7 w-7 rounded-full border border-cream/30 text-cream transition-all duration-200 hover:border-lime hover:text-lime"
-                  aria-label="Foto siguiente"
-                >
-                  ›
-                </button>
-              </div>
-            </div>
-
-            <div className="relative mx-auto aspect-[4/3] max-w-xl overflow-hidden rounded-2xl border border-cream/20 bg-primary-dark">
-              <div className="absolute inset-0 bg-[url('/map-match-point.png')] bg-cover bg-center opacity-50" />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-            </div>
-          </div>
+          <GalleryMatchPoint />
         </div>
       </section>
 
@@ -312,7 +279,7 @@ export default function HomePage() {
       {/* Ubicación y Contacto */}
       <section
         id="ubicacion"
-        className="relative z-10 border-t border-brand-blue/10 bg-cream px-6 py-20"
+        className="relative z-10 scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 py-20"
       >
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row">
           <div className="w-full overflow-hidden rounded-2xl border border-brand-blue/10 bg-white p-3 shadow-sm lg:max-w-[60%]">

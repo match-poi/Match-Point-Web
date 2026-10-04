@@ -68,7 +68,7 @@ export default function ExperienciaPilares() {
               </p>
             ) : null}
             <span className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              {isOpen ? "Cerrar ↑" : "Ver más →"}
+              {isOpen ? "Ocultar detalle ↑" : "Ampliar detalle →"}
             </span>
           </button>
         );

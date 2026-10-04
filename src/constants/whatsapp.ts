@@ -26,32 +26,52 @@ export const WHATSAPP_CONSULTAR_CUPOS_URL = createWhatsAppUrl(
   WHATSAPP_CONSULTAR_CUPOS_MESSAGE
 );
 
-export const WHATSAPP_GRUPOS_FIJOS_MESSAGE =
-  "Hola, quiero consultar por los grupos fijos de Match Point. ¿Qué niveles, frecuencias y horarios tienen disponibles?";
+/** Hero principal: consulta por clases (grupos, particulares, alquiler). */
+export const WHATSAPP_CONSULTAR_CLASES_MESSAGE =
+  "Hola, quiero consultar por clases en Match Point (grupos fijos, clases particulares o alquiler de cancha). ¿Qué opciones tienen disponibles?";
 
-export const WHATSAPP_GRUPOS_FIJOS_URL = createWhatsAppUrl(
-  WHATSAPP_GRUPOS_FIJOS_MESSAGE
+export const WHATSAPP_CONSULTAR_CLASES_URL = createWhatsAppUrl(
+  WHATSAPP_CONSULTAR_CLASES_MESSAGE
 );
 
-export function whatsAppGruposFijosUrl(recommendedLevel?: string | null): string {
+/** Clases grupales (sección servicios). */
+export const WHATSAPP_CLASES_GRUPALES_MESSAGE =
+  "Hola, me interesan las clases grupales. ¿Me cuentan qué grupos y horarios tienen disponibles?";
+
+export const WHATSAPP_CLASES_GRUPALES_URL = createWhatsAppUrl(
+  WHATSAPP_CLASES_GRUPALES_MESSAGE
+);
+
+export function whatsAppClasesGrupalesUrl(recommendedLevel?: string | null): string {
   const level = recommendedLevel?.trim();
   if (level) {
     return createWhatsAppUrl(
-      `${WHATSAPP_GRUPOS_FIJOS_MESSAGE} Mi nivel aproximado es ${level}.`
+      `${WHATSAPP_CLASES_GRUPALES_MESSAGE} Mi nivel aproximado es ${level}.`
     );
   }
-  return WHATSAPP_GRUPOS_FIJOS_URL;
+  return WHATSAPP_CLASES_GRUPALES_URL;
+}
+
+/** @deprecated Usar WHATSAPP_CLASES_GRUPALES_* */
+export const WHATSAPP_GRUPOS_FIJOS_MESSAGE = WHATSAPP_CLASES_GRUPALES_MESSAGE;
+
+/** @deprecated Usar WHATSAPP_CLASES_GRUPALES_URL */
+export const WHATSAPP_GRUPOS_FIJOS_URL = WHATSAPP_CLASES_GRUPALES_URL;
+
+/** @deprecated Usar whatsAppClasesGrupalesUrl */
+export function whatsAppGruposFijosUrl(recommendedLevel?: string | null): string {
+  return whatsAppClasesGrupalesUrl(recommendedLevel);
 }
 
 export const WHATSAPP_CLASES_PARTICULARES_MESSAGE =
-  "Hola, quiero consultar precios y disponibilidad de clases particulares para una o dos personas.";
+  "Hola, me interesa coordinar una clase particular. ¿Qué horarios tienen disponibles?";
 
 export const WHATSAPP_CLASES_PARTICULARES_URL = createWhatsAppUrl(
   WHATSAPP_CLASES_PARTICULARES_MESSAGE
 );
 
 export const WHATSAPP_ALQUILER_CANCHA_MESSAGE =
-  "Hola, quiero consultar horarios y tarifas para alquilar la cancha. ¿Qué disponibilidad tienen?";
+  "Hola, quiero consultar disponibilidad para alquilar la cancha.";
 
 export const WHATSAPP_ALQUILER_CANCHA_URL = createWhatsAppUrl(
   WHATSAPP_ALQUILER_CANCHA_MESSAGE
@@ -66,9 +86,7 @@ export const WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL = createWhatsAppUrl(
 );
 
 export function whatsAppQuizNivelUrl(level: string): string {
-  return createWhatsAppUrl(
-    `Hola, hice el test de nivel de Match Point y mi nivel recomendado fue ${level}. Quiero consultar qué grupos tienen cupo.`
-  );
+  return whatsAppClasesGrupalesUrl(level);
 }
 
 /** @deprecated Usar WHATSAPP_CONSULTAR_CUPOS_URL */

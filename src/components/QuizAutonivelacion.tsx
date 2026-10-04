@@ -171,7 +171,7 @@ export default function QuizAutonivelacion() {
                 rel="noopener noreferrer"
                 className="btn-cta w-full text-center text-xs tracking-[0.22em]"
               >
-                Consultar grupos para este nivel
+                Consultar por un grupo para este nivel
               </a>
             </div>
           )}

@@ -14,7 +14,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="border-t border-brand-blue/10 bg-cream px-6 py-20">
+    <section id="faq" className="scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 py-20">
       <div className="mx-auto max-w-4xl">
         <header className="mb-10 space-y-3 text-center">
           <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">

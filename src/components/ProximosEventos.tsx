@@ -9,7 +9,10 @@ import Link from "next/link";
 
 export default function ProximosEventos() {
   return (
-    <section id="eventos" className="border-t border-brand-blue/10 bg-cream px-4 py-20 sm:px-6">
+    <section
+      id="eventos"
+      className="scroll-mt-24 border-t border-brand-blue/10 bg-cream px-4 py-20 sm:px-6"
+    >
       <div className="mx-auto max-w-6xl space-y-10">
         <header className="space-y-3 text-center">
           <p className="section-label">Social & Eventos</p>

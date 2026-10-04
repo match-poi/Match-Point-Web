@@ -57,8 +57,12 @@ body {
     @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full bg-accent px-5 py-2.5 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg;
   }
 
+  .btn-cta-normal {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center rounded-full bg-accent px-8 py-3 text-sm font-bold normal-case tracking-normal text-brand-blue shadow-md transition-all duration-200 hover:bg-[#e55a00] hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border-2 border-brand-blue bg-transparent px-8 py-3 text-sm font-semibold text-brand-blue transition-all duration-200 hover:bg-brand-blue/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+    @apply inline-flex min-h-11 items-center justify-center rounded-full border-2 border-brand-blue bg-transparent px-8 py-3 text-sm font-semibold text-brand-blue transition-all duration-200 hover:bg-brand-blue/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
   }
 
   .nav-pill {

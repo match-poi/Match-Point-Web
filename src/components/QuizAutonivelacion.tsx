@@ -90,20 +90,25 @@ export default function QuizAutonivelacion() {
     clearQuizLevelFromSession();
   };
 
-  const quizWhatsAppUrl = recommendedLevel
-    ? whatsAppQuizNivelUrl(recommendedLevel)
-    : "#";
+  const quizWhatsAppUrl = recommendedLevel ? whatsAppQuizNivelUrl(recommendedLevel) : "#";
 
   return (
-    <section className="border-t border-brand-blue/10 bg-cream px-6 pb-20">
+    <section
+      id="quiz-nivel"
+      className="scroll-mt-24 border-t border-brand-blue/10 bg-cream px-6 pb-20"
+    >
       <div className="mx-auto max-w-6xl">
         <div className="rounded-3xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-8">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="section-label">Quiz de Autonivelación</p>
+              <p className="section-label">Quiz orientativo</p>
               <h3 className="mt-2 text-xl font-semibold text-brand-blue sm:text-2xl">
                 Descubrí tu punto de partida en Match Point Club
               </h3>
+              <p className="mt-2 text-sm leading-relaxed text-brand-blue/70">
+                Es una guía rápida: un profesor del club confirma tu nivel antes de asignarte un
+                grupo.
+              </p>
             </div>
 
             <div className="flex items-center gap-2 text-xs text-brand-blue/70">
@@ -115,7 +120,7 @@ export default function QuizAutonivelacion() {
                 <button
                   type="button"
                   onClick={handleRestart}
-                  className="inline-flex h-7 items-center rounded-full border border-brand-blue/25 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime/50"
+                  className="inline-flex min-h-11 items-center rounded-full border border-brand-blue/25 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime/50"
                 >
                   Rehacer test
                 </button>
@@ -135,7 +140,7 @@ export default function QuizAutonivelacion() {
                     key={option.label}
                     type="button"
                     onClick={() => handleAnswer(option.value)}
-                    className="rounded-2xl border border-brand-blue/20 bg-cream px-4 py-3 text-left text-sm text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime active:scale-[0.99]"
+                    className="min-h-11 rounded-2xl border border-brand-blue/20 bg-cream px-4 py-3 text-left text-sm text-brand-blue transition-all duration-200 hover:border-primary hover:bg-lime active:scale-[0.99]"
                   >
                     {option.label}
                   </button>
@@ -157,11 +162,14 @@ export default function QuizAutonivelacion() {
             <div className="space-y-5">
               <div className="rounded-2xl border border-primary/30 bg-lime/40 px-4 py-4 sm:px-6 sm:py-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-blue">
-                  Resultado
+                  Resultado orientativo
                 </p>
-                <p className="mt-2 text-sm text-brand-blue/80">Tu nivel recomendado es:</p>
+                <p className="mt-2 text-sm text-brand-blue/80">Tu nivel sugerido es:</p>
                 <p className="mt-1 text-2xl font-semibold text-brand-blue sm:text-3xl">
                   {recommendedLevel}
+                </p>
+                <p className="mt-3 text-xs leading-relaxed text-brand-blue/65">
+                  Un profesor del club validará este resultado antes de ubicarte en un grupo.
                 </p>
               </div>
 
@@ -169,7 +177,7 @@ export default function QuizAutonivelacion() {
                 href={quizWhatsAppUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-cta w-full text-center text-xs tracking-[0.22em]"
+                className="btn-cta-normal w-full text-center"
               >
                 Consultar por un grupo para este nivel
               </a>

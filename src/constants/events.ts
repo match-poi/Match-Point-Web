@@ -121,7 +121,10 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
     body: "La estadía, el sunset, la barbacoa y el fogón se contratan por separado y no están incluidos en la inscripción al torneo. Próximamente comunicaremos sus precios y los beneficios para quienes participen del torneo."
   } satisfies HotelDelLagoHotelExperience,
   /** Texto breve en la tarjeta de #eventos. */
-  cardTeaser: "Tenis, sunset, barbacoa y fogón"
+  cardTeaser: "Tenis, sunset, barbacoa y fogón",
+  /** Aclaración de estadía en la tarjeta de home (#eventos). */
+  cardStayNote:
+    "La estadía en el hotel, el sunset, la barbacoa y el fogón se contratan aparte y no están incluidos en la inscripción al torneo."
 } as const;
 
 export function hotelDelLagoTournamentWhatsAppMessage(): string {

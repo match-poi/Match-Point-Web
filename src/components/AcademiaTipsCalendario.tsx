@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ChevronDown,
   Hand,
   Lock,
   Ruler,
@@ -11,7 +12,7 @@ import {
   Users,
   Zap
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const TIPS_YEAR = 2026;
 
@@ -150,10 +151,23 @@ function defaultSelectedMonth(now: Date): number {
   return 0;
 }
 
+function tipsIntroCopy(now: Date, mounted: boolean): string {
+  if (!mounted) {
+    return "Calendario mensual de tips técnicos del club. El mes en curso se muestra primero.";
+  }
+  if (now.getFullYear() === TIPS_YEAR && now.getMonth() === 9) {
+    return "Octubre ya está activo: este es el tip del mes. Los meses anteriores del calendario 2026 quedan en el archivo expandible.";
+  }
+  if (now.getFullYear() === TIPS_YEAR && now.getMonth() < 9) {
+    return "Elegí un mes desbloqueado para leer el tip. Los meses futuros se habilitan el 1 de cada mes.";
+  }
+  return "Todos los meses de 2026 están disponibles. El tip del mes en curso aparece primero; el resto queda en el archivo.";
+}
+
 export default function AcademiaTipsCalendario() {
   const [mounted, setMounted] = useState(false);
   const [now, setNow] = useState<Date>(() => new Date());
-  const [selectedId, setSelectedId] = useState(8);
+  const [selectedId, setSelectedId] = useState(0);
 
   useEffect(() => {
     const current = new Date();
@@ -161,6 +175,18 @@ export default function AcademiaTipsCalendario() {
     setSelectedId(defaultSelectedMonth(current));
     setMounted(true);
   }, []);
+
+  const currentMonthId = mounted ? defaultSelectedMonth(now) : 0;
+  const featured = MONTHS[currentMonthId] ?? MONTHS[0];
+  const FeaturedIcon = featured.icon;
+  const featuredUnlocked = mounted ? isMonthUnlocked(currentMonthId, now) : false;
+
+  const archiveMonths = useMemo(() => {
+    if (!mounted) return [];
+    return MONTHS.filter(
+      (month) => month.id < currentMonthId && isMonthUnlocked(month.id, now)
+    ).reverse();
+  }, [mounted, currentMonthId, now]);
 
   const selected = mounted ? MONTHS[selectedId] ?? MONTHS[0] : MONTHS[0];
   const unlocked = mounted ? isMonthUnlocked(selectedId, now) : false;
@@ -173,11 +199,10 @@ export default function AcademiaTipsCalendario() {
         <header className="space-y-2 text-center">
           <p className="section-label">Academia de Tips {TIPS_YEAR}</p>
           <h2 className="text-3xl font-semibold text-brand-blue md:text-4xl">
-            Tip calendario — elegí el mes
+            Tip del mes — calendario {TIPS_YEAR}
           </h2>
           <p className="mx-auto max-w-2xl text-sm text-brand-blue/70">
-            Enero a septiembre están activos. Octubre, noviembre y diciembre se desbloquean
-            automáticamente el 1 de cada mes.
+            {tipsIntroCopy(now, mounted)}
           </p>
         </header>
 
@@ -187,9 +212,69 @@ export default function AcademiaTipsCalendario() {
           </div>
         ) : (
           <>
+            <article className="rounded-2xl border border-primary/35 bg-lime/35 p-6 shadow-sm">
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <FeaturedIcon className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                      Tip del mes · {featured.label} {TIPS_YEAR}
+                    </p>
+                    <h3 className="text-lg font-semibold text-brand-blue">{featured.theme}</h3>
+                  </div>
+                </div>
+                {featuredUnlocked ? (
+                  <span className="rounded-full bg-lime px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
+                    Activo ahora
+                  </span>
+                ) : (
+                  <span className="rounded-full bg-brand-blue/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue/60">
+                    Se desbloquea el 1 de {featured.label}
+                  </span>
+                )}
+              </div>
+              {featuredUnlocked ? (
+                <p className="text-sm leading-relaxed text-brand-blue/80">{featured.body}</p>
+              ) : (
+                <p className="text-sm text-brand-blue/60">
+                  Volvé el 1 de {featured.label} de {TIPS_YEAR} para leer este tip en la web.
+                </p>
+              )}
+            </article>
+
+            {archiveMonths.length > 0 ? (
+              <details className="rounded-2xl border border-brand-blue/15 bg-white p-4 shadow-sm sm:p-5">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 text-sm font-semibold text-brand-blue [&::-webkit-details-marker]:hidden">
+                  <span>Archivo de tips anteriores ({archiveMonths.length})</span>
+                  <ChevronDown className="h-4 w-4 shrink-0 text-brand-blue/50" aria-hidden />
+                </summary>
+                <ul className="mt-4 space-y-2 border-t border-brand-blue/10 pt-4">
+                  {archiveMonths.map((month) => (
+                    <li key={month.id}>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedId(month.id)}
+                        className="flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-brand-blue/10 px-3 py-2 text-left text-sm text-brand-blue transition-colors hover:border-primary hover:bg-lime/30"
+                      >
+                        <span>
+                          <span className="font-semibold">{month.label}</span>
+                          <span className="text-brand-blue/65"> — {month.theme}</span>
+                        </span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-accent">
+                          Ver
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : null}
+
             <div className="rounded-2xl border border-brand-blue/15 bg-white p-4 shadow-sm sm:p-6">
               <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.28em] text-brand-blue/55">
-                Calendario {TIPS_YEAR}
+                Calendario completo {TIPS_YEAR}
               </p>
               <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12">
                 {MONTHS.map((month) => {
@@ -202,7 +287,7 @@ export default function AcademiaTipsCalendario() {
                       type="button"
                       disabled={!monthUnlocked}
                       onClick={() => setSelectedId(month.id)}
-                      className={`relative flex flex-col items-center rounded-xl border px-2 py-3 text-center transition-all duration-200 ${
+                      className={`relative flex min-h-11 flex-col items-center justify-center rounded-xl border px-2 py-3 text-center transition-all duration-200 ${
                         !monthUnlocked
                           ? "cursor-not-allowed border-brand-blue/10 bg-cream/50 text-brand-blue/35"
                           : isSelected
@@ -230,46 +315,48 @@ export default function AcademiaTipsCalendario() {
               </div>
             </div>
 
-            <article
-              className={`rounded-2xl border p-6 shadow-sm ${
-                isActive ? "border-primary/35 bg-lime/35" : "border-brand-blue/10 bg-cream"
-              }`}
-            >
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+            {selectedId !== currentMonthId ? (
+              <article
+                className={`rounded-2xl border p-6 shadow-sm ${
+                  isActive ? "border-primary/35 bg-lime/35" : "border-brand-blue/10 bg-cream"
+                }`}
+              >
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+                        {selected.label} {TIPS_YEAR}
+                      </p>
+                      <h3 className="text-lg font-semibold text-brand-blue">{selected.theme}</h3>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-                      {selected.label} {TIPS_YEAR}
-                    </p>
-                    <h3 className="text-lg font-semibold text-brand-blue">{selected.theme}</h3>
-                  </div>
+                  {isActive && (
+                    <span className="rounded-full bg-lime px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
+                      Tip activo
+                    </span>
+                  )}
+                  {!unlocked && (
+                    <span className="rounded-full bg-brand-blue/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue/60">
+                      Se desbloquea el 1 de {selected.label}
+                    </span>
+                  )}
                 </div>
-                {isActive && (
-                  <span className="rounded-full bg-lime px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue">
-                    Tip activo
-                  </span>
-                )}
+
                 {!unlocked && (
-                  <span className="rounded-full bg-brand-blue/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-blue/60">
-                    Se desbloquea el 1 de {selected.label}
-                  </span>
+                  <p className="text-sm text-brand-blue/60">
+                    Este tip ya está listo en el calendario del club. Se habilita automáticamente el
+                    1 de {selected.label} de {TIPS_YEAR}.
+                  </p>
                 )}
-              </div>
 
-              {!unlocked && (
-                <p className="text-sm text-brand-blue/60">
-                  Este tip ya está listo en el calendario del club. Se habilita automáticamente el
-                  1 de {selected.label} de {TIPS_YEAR}. Volvé ese día para leerlo acá.
-                </p>
-              )}
-
-              {unlocked && (
-                <p className="text-sm leading-relaxed text-brand-blue/80">{selected.body}</p>
-              )}
-            </article>
+                {unlocked && (
+                  <p className="text-sm leading-relaxed text-brand-blue/80">{selected.body}</p>
+                )}
+              </article>
+            ) : null}
           </>
         )}
       </div>

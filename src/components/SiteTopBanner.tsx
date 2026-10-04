@@ -14,16 +14,19 @@ export default function SiteTopBanner() {
 
   return (
     <header className="site-chrome-primary sticky top-0 z-50 isolate border-b border-cream/10 shadow-sm">
-      <div className="relative z-[1] mx-auto max-w-6xl px-3 py-3.5 sm:px-6 sm:py-4">
+      <div className="relative z-[1] mx-auto max-w-6xl px-3 py-2 sm:px-6 sm:py-3">
         <div className="flex flex-col items-stretch">
-          <div className="flex w-full items-center justify-between gap-3 pb-3.5 sm:justify-center sm:pb-4">
+          <div className="flex w-full items-center justify-between gap-2">
             <Link
               href="/"
-              className="flex min-w-0 flex-1 justify-center sm:flex-none"
+              className="flex min-h-11 min-w-0 flex-1 items-center justify-start sm:flex-none"
               aria-label="Match Point Tenis — Inicio"
               onClick={closeMenu}
             >
-              <BrandWordmark tone="light" />
+              <BrandWordmark
+                tone="light"
+                className="max-h-[52px] sm:max-h-[64px] md:max-h-[72px]"
+              />
             </Link>
             <button
               type="button"
@@ -35,11 +38,9 @@ export default function SiteTopBanner() {
             >
               {menuOpen ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
             </button>
-          </div>
 
-          <div className="hidden w-full flex-col items-stretch gap-2.5 border-t border-cream/15 pt-3.5 sm:flex sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <nav
-              className="flex w-full flex-1 flex-wrap items-center justify-center gap-1.5 sm:justify-between sm:gap-2 md:gap-3"
+              className="hidden flex-1 flex-wrap items-center justify-center gap-1.5 sm:flex md:gap-2"
               aria-label="Secciones del sitio"
             >
               {SITE_NAV_LINKS.map((link) => (
@@ -48,11 +49,12 @@ export default function SiteTopBanner() {
                 </Link>
               ))}
             </nav>
+
             <a
               href={WHATSAPP_CONSULTAR_CUPOS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-cta-sm mx-auto shrink-0 sm:mx-0"
+              className="btn-cta-sm hidden shrink-0 sm:inline-flex"
             >
               Consultar cupos
             </a>
@@ -61,7 +63,7 @@ export default function SiteTopBanner() {
           {menuOpen ? (
             <nav
               id="site-mobile-nav"
-              className="flex w-full flex-col gap-2 border-t border-cream/15 pt-3.5 sm:hidden"
+              className="flex w-full flex-col gap-2 border-t border-cream/15 pt-3 sm:hidden"
               aria-label="Secciones del sitio"
             >
               {SITE_NAV_LINKS.map((link) => (

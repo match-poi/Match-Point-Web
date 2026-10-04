@@ -22,14 +22,14 @@ export default function BrandWordmark({ tone, className = "" }: BrandWordmarkPro
   const { src, wrap } = LOCKUP[tone];
 
   return (
-    <span className={`max-w-full ${wrap} ${className}`}>
+    <span className={`max-w-full ${wrap}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt="Match Point Tenis — Entrena para jugar"
         decoding="async"
         fetchPriority={tone === "light" ? "high" : "auto"}
-        className={LOCKUP_SIZE}
+        className={`${LOCKUP_SIZE} ${className}`.trim()}
       />
     </span>
   );

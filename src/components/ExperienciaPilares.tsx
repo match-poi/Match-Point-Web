@@ -1,7 +1,7 @@
 "use client";
 
 import { Building2, Gift, Trophy, UserPlus } from "lucide-react";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 const PILARES = [
   {
@@ -31,27 +31,32 @@ const PILARES = [
   {
     id: "ventajas",
     icon: Gift,
-    title: "Ventajas Exclusivas & Pro-Shop",
-    desc: "10% OFF en Top Ten con código MATCHPOINT y beneficios para la comunidad Match Point.",
+    title: "Ventajas del club",
+    desc: "Alquiler de raquetas y pelotas, promos puntuales y beneficios para quienes entrenan en Match Point.",
     detail:
-      "Beneficio exclusivo para la comunidad Match Point: descuento en Top Ten con el código MATCHPOINT, acceso a alquiler de raquetas y pelotas, y promos puntuales del club en equipamiento."
+      "Acceso a alquiler de raquetas y pelotas en el club, promos de equipamiento y ventajas para la comunidad activa. Consultá en recepción o por WhatsApp qué hay disponible esta temporada."
   }
 ] as const;
 
 export default function ExperienciaPilares() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const baseId = useId();
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {PILARES.map((item) => {
         const Icon = item.icon;
         const isOpen = openId === item.id;
+        const panelId = `${baseId}-pilar-${item.id}`;
+        const buttonId = `${baseId}-pilar-btn-${item.id}`;
 
         return (
           <button
             key={item.id}
+            id={buttonId}
             type="button"
             aria-expanded={isOpen}
+            aria-controls={panelId}
             onClick={() => setOpenId(isOpen ? null : item.id)}
             className={`card-light group flex w-full flex-col text-left transition-all duration-200 hover:border-primary hover:shadow-md ${
               isOpen ? "border-primary ring-1 ring-primary/25" : ""
@@ -63,7 +68,10 @@ export default function ExperienciaPilares() {
             <h3 className="text-base font-semibold text-brand-blue">{item.title}</h3>
             <p className="mt-2 text-sm text-brand-blue/70">{item.desc}</p>
             {isOpen ? (
-              <p className="mt-4 border-t border-brand-blue/10 pt-4 text-sm leading-relaxed text-brand-blue/80">
+              <p
+                id={panelId}
+                className="mt-4 border-t border-brand-blue/10 pt-4 text-sm leading-relaxed text-brand-blue/80"
+              >
                 {item.detail}
               </p>
             ) : null}

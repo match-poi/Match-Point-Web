@@ -1,7 +1,6 @@
 /** Precios y copy de la sección Clases y servicios (home). Montos en UYU. */
 
-export const SERVICES_UYU_DISCLAIMER =
-  "Precios en pesos uruguayos (UYU). Sujetos a confirmación al consultar." as const;
+export const SERVICES_UYU_DISCLAIMER = "Precios en pesos uruguayos (UYU)." as const;
 
 export const CLASES_GRUPALES = {
   eyebrow: "Clases grupales",

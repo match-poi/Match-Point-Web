@@ -21,6 +21,21 @@ export const SITE_FAQS: FaqItem[] = [
       "Con 24 horas de aviso podés reprogramar. Así cuidamos la dinámica de cada grupo y el respeto entre jugadores."
   },
   {
+    question: "¿Cuánto duran las clases?",
+    answer:
+      "Las clases grupales y particulares son de 1 hora. En particulares, la duración puede adaptarse previa coordinación con el profesor."
+  },
+  {
+    question: "¿Hay clases para niños y adultos?",
+    answer:
+      "Sí. Trabajamos con niños, adolescentes y adultos en grupos fijos y clases particulares, según cupos y horarios disponibles."
+  },
+  {
+    question: "¿Cómo funcionan las cuponeras de clases particulares?",
+    answer:
+      "Podés comprar paquetes de 4 u 8 clases con descuento sobre la clase suelta. Las cuponeras de 4 y 8 clases tienen vigencia de 1 mes desde la primera clase coordinada."
+  },
+  {
     question: "¿Hay estacionamiento?",
     answer:
       "Es en la calle, en una zona tranquila de Carrasco. Casi siempre hay lugar y la cancha queda a la vista."

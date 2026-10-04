@@ -34,6 +34,12 @@ export const WHATSAPP_CONSULTAR_CLASES_URL = createWhatsAppUrl(
   WHATSAPP_CONSULTAR_CLASES_MESSAGE
 );
 
+/** Sección «Empezar es simple». */
+export const WHATSAPP_QUIERO_EMPEZAR_MESSAGE =
+  "Hola, quiero empezar en Match Point. ¿Me cuentan cómo arrancar con clases o alquiler de cancha?";
+
+export const WHATSAPP_QUIERO_EMPEZAR_URL = createWhatsAppUrl(WHATSAPP_QUIERO_EMPEZAR_MESSAGE);
+
 /** Clases grupales (sección servicios). */
 export const WHATSAPP_CLASES_GRUPALES_MESSAGE =
   "Hola, me interesan las clases grupales. ¿Me cuentan qué grupos y horarios tienen disponibles?";

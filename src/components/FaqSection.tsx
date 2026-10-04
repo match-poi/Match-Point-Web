@@ -34,7 +34,7 @@ export default function FaqSection() {
             return (
               <div
                 key={item.question}
-                className="overflow-hidden rounded-2xl border border-brand-blue/15 bg-white shadow-sm"
+                className="rounded-2xl border border-brand-blue/15 bg-white shadow-sm"
               >
                 <button
                   id={buttonId}
@@ -42,7 +42,7 @@ export default function FaqSection() {
                   onClick={() => handleToggle(index)}
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  className="flex w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5"
+                  className="flex min-h-11 w-full items-center gap-4 px-4 py-4 text-left sm:px-5 sm:py-5"
                 >
                   <span
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-200 ${
@@ -58,18 +58,16 @@ export default function FaqSection() {
                   </span>
                 </button>
 
-                <div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={buttonId}
-                  className={`grid transition-all duration-200 ${
-                    isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                  }`}
-                >
-                  <div className="overflow-hidden border-t border-primary/20 px-4 pb-4 pt-2 text-sm text-brand-blue/80 sm:px-5 sm:pb-5">
+                {isOpen ? (
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={buttonId}
+                    className="border-t border-primary/20 px-4 pb-4 pt-2 text-sm leading-relaxed text-brand-blue/80 sm:px-5 sm:pb-5"
+                  >
                     {item.answer}
                   </div>
-                </div>
+                ) : null}
               </div>
             );
           })}
@@ -80,7 +78,7 @@ export default function FaqSection() {
             href={WHATSAPP_CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex cursor-pointer items-center justify-center rounded-full border-2 border-accent bg-transparent px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent transition-all duration-200 hover:bg-accent hover:text-brand-blue"
+            className="btn-cta-normal border-2 border-accent bg-transparent hover:bg-accent"
           >
             ¿Querés charlar con el club? Escribinos
           </a>

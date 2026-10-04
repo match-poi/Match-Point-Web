@@ -22,10 +22,21 @@ export const SITE_FOOTER_SECTION_LINKS = [
   { href: "/#faq", label: "Preguntas frecuentes" }
 ] as const;
 
-/** Páginas de servicio enlazadas desde el pie. */
+/** Páginas de servicio (etiquetas completas; el header usa nombres cortos). */
 export const SITE_FOOTER_SERVICE_LINKS = [
   { href: "/clases-de-tenis/", label: "Clases de tenis" },
   { href: "/alquiler-de-cancha/", label: "Alquiler de cancha" }
+] as const;
+
+/**
+ * Navegación del pie: un enlace por destino (sin repetir Clases/Cancha del header).
+ */
+export const SITE_FOOTER_NAV_LINKS = [
+  { href: "/#experiencia", label: "El Club" },
+  ...SITE_FOOTER_SERVICE_LINKS,
+  { href: "/#eventos", label: "Eventos" },
+  { href: "/#ubicacion", label: "Ubicación" },
+  ...SITE_FOOTER_SECTION_LINKS
 ] as const;
 
 /** @deprecated Usar SITE_MAIN_NAV_LINKS */

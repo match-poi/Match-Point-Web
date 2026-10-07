@@ -27,7 +27,7 @@ export default function HomePage() {
       <SiteTopBanner />
 
       <main className="relative min-h-screen bg-cream text-brand-blue">
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-60">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-60">
           <div className="absolute -top-40 left-1/2 h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         </div>
 

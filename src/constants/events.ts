@@ -45,6 +45,26 @@ export type HotelDelLagoHotelExperience = {
   body: string;
 };
 
+/** Modalidad con etiquetas de categoría (torneo Hotel del Lago). */
+export type HotelDelLagoCategoryModality = {
+  title: string;
+  labels: readonly string[];
+};
+
+/** Sección «Encontrá tu categoría» — torneo Hotel del Lago. */
+export type HotelDelLagoCategoriesSection = {
+  sectionTitle: string;
+  intro: string;
+  modalities: readonly HotelDelLagoCategoryModality[];
+  libreHeading: string;
+  libreItems: readonly string[];
+  primeraHeading: string;
+  primeraScheduleLine: string;
+  scheduleNote: string;
+  choicePrompt: string;
+  heroCategoriesLinkLabel: string;
+};
+
 /** Formato $X.XXX (punto de miles) para montos en UYU. */
 export function formatHotelDelLagoPriceUyu(amountUyu: number): string {
   const digits = Math.round(amountUyu).toString();
@@ -75,6 +95,29 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
   presentation:
     "Te invitamos a cerrar el año compartiendo cancha con quienes te cruzaste durante el año y con jugadores de otros clubes, para disfrutar de este deporte que tanto nos gusta.",
   audienceLine: "Todos los niveles · Todos los clubes · Todos los profes",
+  categories: {
+    sectionTitle: "Encontrá tu categoría",
+    intro:
+      "Opciones de singles y dobles para distintos niveles, categorías libres con saque de abajo y Primera Categoría.",
+    modalities: [
+      { title: "Singles caballeros", labels: ["A", "B", "C", "D"] },
+      { title: "Singles femenino", labels: ["A", "B", "C"] },
+      { title: "Dobles caballeros", labels: ["A", "B", "C"] },
+      { title: "Dobles femenino", labels: ["A", "B", "C"] },
+      { title: "Dobles mixto", labels: ["A/B", "C"] }
+    ],
+    libreHeading: "Categorías libres",
+    libreItems: [
+      "Libre con saque de abajo · Sábado",
+      "Libre con saque de abajo · Domingo"
+    ],
+    primeraHeading: "Primera Categoría",
+    primeraScheduleLine: "Se disputa durante ambos días.",
+    scheduleNote:
+      "Las categorías sociales comienzan y terminan en el mismo día. Primera Categoría se disputa durante ambos días.",
+    choicePrompt: "¿No sabés cuál elegir? Consultanos y te orientamos.",
+    heroCategoriesLinkLabel: "Ver categorías"
+  } satisfies HotelDelLagoCategoriesSection,
   pricing: {
     sectionTitle: "Inscripción y precios",
     earlyBirdHeading: "Inscripción anticipada",
@@ -129,4 +172,8 @@ export const HOTEL_DEL_LAGO_TOURNAMENT = {
 
 export function hotelDelLagoTournamentWhatsAppMessage(): string {
   return "Hola, quiero consultar por el torneo de Match Point del 19 y 20 de diciembre de 2026 en Hotel del Lago, Punta del Este.";
+}
+
+export function hotelDelLagoCategoryChoiceWhatsAppMessage(): string {
+  return "Hola, quiero inscribirme al torneo de Match Point del 19 y 20 de diciembre de 2026 en Hotel del Lago, Punta del Este. ¿Me orientan sobre qué categoría me conviene elegir?";
 }

@@ -13,7 +13,10 @@ import {
   SITE_NAME,
   absoluteUrl
 } from "@/constants/site";
-import { WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL } from "@/constants/whatsapp";
+import {
+  WHATSAPP_TORNEO_HOTEL_DEL_LAGO_CATEGORIA_URL,
+  WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL
+} from "@/constants/whatsapp";
 import { CalendarDays, MapPin } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -94,12 +97,10 @@ export default function TorneoHotelDelLagoPage() {
                 {t.registrationCtaLabel}
               </a>
               <a
-                href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#categorias"
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-cream/40 bg-cream/5 px-8 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-200 hover:border-lime hover:bg-cream/15 hover:text-lime focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:w-auto"
               >
-                Consultar por WhatsApp
+                {t.categories.heroCategoriesLinkLabel}
               </a>
             </div>
             <p className="mt-5">
@@ -149,6 +150,85 @@ export default function TorneoHotelDelLagoPage() {
                 </div>
               </div>
             </div>
+
+            <article
+              id="categorias"
+              className="mx-auto max-w-6xl space-y-6 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:space-y-8 sm:p-10"
+              aria-labelledby="categorias-heading"
+            >
+              <div className="mx-auto max-w-3xl space-y-2 text-center">
+                <h2
+                  id="categorias-heading"
+                  className="text-lg font-semibold uppercase tracking-[0.08em] text-brand-blue sm:text-xl"
+                >
+                  {t.categories.sectionTitle}
+                </h2>
+                <p className="text-base leading-relaxed text-brand-blue/85">{t.categories.intro}</p>
+              </div>
+
+              <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {t.categories.modalities.map((modality) => (
+                  <li
+                    key={modality.title}
+                    className="rounded-xl border border-brand-blue/10 bg-cream/60 p-4 sm:p-5"
+                  >
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                      {modality.title}
+                    </p>
+                    <ul className="mt-3 flex flex-wrap gap-2" aria-label={modality.title}>
+                      {modality.labels.map((label) => (
+                        <li
+                          key={label}
+                          className="rounded-full border border-brand-blue/20 bg-white px-3 py-1 text-sm font-semibold text-brand-blue"
+                        >
+                          {label}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+
+                <li className="rounded-xl border border-brand-blue/10 bg-cream/60 p-4 sm:p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                    {t.categories.libreHeading}
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm leading-snug text-brand-blue/90 sm:text-base">
+                    {t.categories.libreItems.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-lg border border-brand-blue/10 bg-white px-3 py-2 font-medium text-brand-blue"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+
+                <li className="rounded-xl border-2 border-primary bg-primary/5 p-4 shadow-sm sm:p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                    {t.categories.primeraHeading}
+                  </p>
+                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-brand-blue/90 sm:text-base">
+                    <li>{t.categories.primeraScheduleLine}</li>
+                    <li className="font-semibold text-brand-blue">{t.pricing.primeraPrizeMoneyNote}</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <div className="mx-auto max-w-3xl space-y-4 border-t border-brand-blue/10 pt-6 text-center">
+                <p className="text-base leading-relaxed text-brand-blue/85">{t.categories.scheduleNote}</p>
+                <p className="text-base leading-relaxed text-brand-blue/90">
+                  <a
+                    href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_CATEGORIA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-primary underline-offset-2 transition-colors hover:text-brand-blue hover:underline"
+                  >
+                    {t.categories.choicePrompt}
+                  </a>
+                </p>
+              </div>
+            </article>
 
             <article className="mx-auto max-w-3xl space-y-8 rounded-2xl border border-brand-blue/15 bg-white p-6 shadow-sm sm:p-10">
               <div className="space-y-2 text-center">
@@ -274,15 +354,7 @@ export default function TorneoHotelDelLagoPage() {
               </div>
             </article>
 
-            <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <a
-                href={t.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-cta min-h-11 w-full text-xs tracking-[0.18em] sm:w-auto"
-              >
-                {t.registrationCtaLabel}
-              </a>
+            <div className="flex justify-center">
               <a
                 href={WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL}
                 target="_blank"

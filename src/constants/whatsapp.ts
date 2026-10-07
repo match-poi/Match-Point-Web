@@ -1,4 +1,5 @@
 import {
+  hotelDelLagoCategoryChoiceWhatsAppMessage,
   hotelDelLagoTournamentWhatsAppMessage,
   openTrainingEventWhatsAppMessage
 } from "@/constants/events";
@@ -122,6 +123,10 @@ export const WHATSAPP_RESERVAR_EVENTO_URL = createWhatsAppUrl(
 
 export const WHATSAPP_TORNEO_HOTEL_DEL_LAGO_URL = createWhatsAppUrl(
   hotelDelLagoTournamentWhatsAppMessage()
+);
+
+export const WHATSAPP_TORNEO_HOTEL_DEL_LAGO_CATEGORIA_URL = createWhatsAppUrl(
+  hotelDelLagoCategoryChoiceWhatsAppMessage()
 );
 
 export function whatsAppQuizNivelUrl(level: string): string {
